@@ -1,4 +1,4 @@
-# Raider Randomizer
+# Raider Spinner 3
 
 A complete classroom toolkit for Regis Jesuit High School teachers — name picker, group maker, seating chart, and timer in one tool.
 
