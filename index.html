@@ -43,6 +43,14 @@ textarea::placeholder{color:#555}
 .rb{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
 
 /* Tabs */
+.topbar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.top-btn{flex:1;min-width:150px;padding:13px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.08);cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;background:rgba(255,255,255,.04);color:#999;text-align:center;line-height:1.35}
+.top-btn .sub{display:block;font-size:10.5px;font-weight:600;color:#777;margin-top:3px}
+.top-btn.a{background:linear-gradient(135deg,rgba(193,20,48,.16),rgba(193,20,48,.07));border-color:rgba(193,20,48,.35);color:#fff}
+.top-btn.a .sub{color:#D4243B}
+body.fs .topbar{gap:4px;margin-bottom:10px}
+body.fs .top-btn{padding:7px 12px;min-width:0;font-size:12px}
+body.fs .top-btn .sub{display:none}
 .tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
 .tab{padding:6px 12px;border-radius:6px;border:1px solid transparent;cursor:pointer;font-size:11px;font-weight:700;font-family:inherit;background:rgba(255,255,255,.04);color:#888;white-space:nowrap}
 .tab.a{background:rgba(193,20,48,.15);color:#C11430;border-color:rgba(193,20,48,.3)}
@@ -69,6 +77,53 @@ textarea::placeholder{color:#555}
 .whl{width:100%;height:100%;border-radius:50%;position:relative}
 .cdot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:radial-gradient(circle,#fff,#e0e0e0);box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:5;pointer-events:none;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#555;letter-spacing:.5px}
 .shint{text-align:center;font-size:12px;color:#666;margin-top:8px}
+/* Who Answers */
+.who-stack{position:relative;margin-bottom:20px}
+.who-stack::before,.who-stack::after{content:"";position:absolute;left:0;right:0;top:0;bottom:0;border-radius:12px;border:1px solid rgba(193,20,48,.14);background:rgba(193,20,48,.035);z-index:0}
+.who-stack::before{transform:translateY(11px) rotate(-1.2deg) scale(.985)}
+.who-stack::after{transform:translateY(6px) rotate(1deg) scale(.993)}
+.who-card{position:relative;z-index:2;overflow:hidden;text-align:center;padding:30px 22px;border-radius:12px;background:linear-gradient(135deg,rgba(193,20,48,.10),rgba(193,20,48,.05));border:1px solid rgba(193,20,48,.2);cursor:pointer;user-select:none;-webkit-user-select:none;min-height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px}
+.who-card.deal{animation:whoDeal .32s cubic-bezier(.2,.9,.3,1.1)}
+@keyframes whoDeal{0%{opacity:0;transform:translateY(-16px) rotate(-2.5deg) scale(.955)}60%{opacity:1;transform:translateY(2px) rotate(.5deg) scale(1.012)}100%{opacity:1;transform:none}}
+.who-ghost{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:150px;line-height:1;opacity:.07;pointer-events:none;z-index:0}
+.who-pip{position:absolute;font-size:22px;line-height:1;opacity:.30;pointer-events:none;z-index:1}
+.who-pip.tl{top:11px;left:13px}
+.who-pip.br{bottom:11px;right:13px;transform:rotate(180deg)}
+.who-star{position:absolute;top:8px;right:10px;z-index:3;background:0 0;border:none;cursor:pointer;font-size:19px;line-height:1;padding:4px 6px;color:#888;font-family:inherit}
+.who-star.on{color:#D4243B}
+.who-dchip{padding:5px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#ccc;cursor:pointer;font-size:11px;font-family:inherit;font-weight:600}
+.who-dchip .dx{color:#C11430;margin-left:6px;font-weight:700}
+.who-cat{font-size:10px;color:#D4243B;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+.who-txt{font-size:22px;font-weight:700;color:#fff;line-height:1.35;max-width:660px}
+.who-txt .wk{color:#D4243B}
+.who-tie{font-size:11px;color:#777;margin-top:2px;position:relative;z-index:1}
+.who-task{position:relative;z-index:1;font-size:16px;font-weight:600;font-style:italic;color:#ddd;line-height:1.35;max-width:640px;padding-top:8px;margin-top:2px;border-top:1px solid rgba(193,20,48,.22);display:none}
+.who-task.show{display:block}
+.who-lead{font-size:12px;color:#8b8b8b;line-height:1.55;margin-bottom:14px;max-width:640px}
+.set-hide{display:none!important}
+label.bo{display:inline-block;line-height:1.4}
+.who-sum{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,.04);margin-bottom:12px;font-size:12px}
+.who-sum-t{color:#ccc;font-weight:600}
+.who-sum-t b{color:#D4243B;font-weight:700}
+.who-opts{display:none;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px;margin-bottom:12px}
+.who-opts.show{display:block}
+.who-orow{margin-bottom:16px}
+.who-orow:last-child{margin-bottom:0}
+.who-olbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#aaa;margin-bottom:6px}
+.who-orow .modes{margin-bottom:6px;justify-content:flex-start}
+.who-help{font-size:11.5px;color:#8b8b8b;line-height:1.55;max-width:640px}
+.mode-btn .who-n{opacity:.55;font-size:10px;margin-left:2px}
+.who-tsk-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.who-tsk-row input{flex:1;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.3);color:#eee;font-size:13px;font-family:inherit;outline:none}
+.who-tsk-row label{font-size:11px;color:#888;white-space:nowrap}
+.who-cat,.who-txt{position:relative;z-index:1}
+.who-n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#666}
+body.fs .who-txt{font-size:min(5.5vh,42px)}
+body.fs .who-card{min-height:42vh}
+body.fs .who-task{font-size:min(3.4vh,26px)}
+body.fs .who-ghost{font-size:min(34vh,300px)}
+body.fs .who-pip{font-size:34px}
+@media (prefers-reduced-motion:reduce){.who-card.deal{animation:none}}
 
 /* Slot machine */
 .slot-area{width:260px;max-width:85vw;margin:0 auto;height:200px;position:relative;overflow:hidden;border-radius:12px;border:2px solid rgba(255,255,255,.1);background:rgba(0,0,0,.4);cursor:pointer}
@@ -209,6 +264,10 @@ body.light textarea::placeholder{color:#aaa}
 body.light .bo{border-color:rgba(0,0,0,.15);color:#444}
 body.light .bo:hover{background:rgba(0,0,0,.04)}
 body.light .bg{border-color:rgba(0,0,0,.1);color:#C11430}
+body.light .top-btn{background:rgba(0,0,0,.03);color:#666;border-color:rgba(0,0,0,.07)}
+body.light .top-btn .sub{color:#888}
+body.light .top-btn.a{background:linear-gradient(135deg,rgba(193,20,48,.08),rgba(193,20,48,.03));border-color:rgba(193,20,48,.25);color:#1a1a1a}
+body.light .top-btn.a .sub{color:#C11430}
 body.light .tab{background:rgba(0,0,0,.03);color:#888;border-color:transparent}
 body.light .tab.a{background:rgba(193,20,48,.08);color:#C11430;border-color:rgba(193,20,48,.2)}
 body.light .mode-btn{background:rgba(0,0,0,.03);color:#888;border-color:rgba(0,0,0,.06)}
@@ -219,6 +278,24 @@ body.light .res-ban{background:linear-gradient(135deg,rgba(193,20,48,.06),rgba(1
 body.light .res-ban .nm{color:#1a1a1a}
 body.light .res-ban .lb{color:#C11430}
 body.light .shint{color:#999}
+body.light .who-card{background:linear-gradient(135deg,rgba(193,20,48,.06),rgba(193,20,48,.03));border-color:rgba(193,20,48,.15)}
+body.light .who-txt{color:#1a1a1a}
+body.light .who-tie{color:#999}
+body.light .who-stack::before,body.light .who-stack::after{border-color:rgba(193,20,48,.10);background:rgba(193,20,48,.02)}
+body.light .who-ghost{opacity:.06}
+body.light .who-pip{opacity:.22}
+body.light .who-task{color:#333;border-top-color:rgba(193,20,48,.16)}
+body.light .who-tsk-row input{border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.02);color:#1a1a1a}
+body.light .who-tsk-row label{color:#666}
+body.light .who-lead,body.light .who-help{color:#777}
+body.light .who-olbl{color:#666}
+body.light .who-star{color:#aaa}
+body.light .who-star.on{color:#C11430}
+body.light .who-dchip{border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.02);color:#444}
+body.light .who-sum{background:rgba(0,0,0,.03)}
+body.light .who-sum-t{color:#333}
+body.light .who-opts{border-color:rgba(0,0,0,.1)}
+body.light .who-n{color:#999}
 body.light .tb{border-color:rgba(0,0,0,.08);background:rgba(0,0,0,.02);color:#888}
 body.light .tb:hover{background:rgba(0,0,0,.05);color:#444}
 body.light .tb.a{color:#C11430;border-color:rgba(193,20,48,.2)}
@@ -266,7 +343,7 @@ body.light .ptr{border-top-color:#C11430}
       <img class="rj-mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAABQCAYAAACu/a1QAAAKKElEQVR4nO2cWWxcVx3Gf9+513ZiJ21ju7S0LxAKgkSN3QXK0hIHRCshqvahtlTEIkqliPIAqhAPLHIskBAgeOOl9AUkNlssLyxKqsROQ9VCI7JAkEqJgtSmbRJnT7zM3PPxcGcS2xlPxvb1IiWfdDQz955zz/nO8l/O+d/RcEf3HuNWicjywjYtwfpTU+uqgQ+/9uKY6U3EULZYFYbFevA8IIkJBz9SGhv/2XD7Xe8TQ5khGLQYFa4k8gACn7W8UfIvhju6Py2IAg9CUnRlK408oAR03tjC20Y6un+068aum/ogG6S30A5YgeQBnCBilE9F/LBS/Xpn+6b7+gpe/yuUPAASSiROSr4thPDsSEfX1lfuuKOlKBmwkslXkUYYN3HM0reOnl7z8VwGLHwJpOBMcgYzVZ2u9nCDC1GPRlKdgRAEoXKEC4ndXESdAKnROplWTSHvXOefr9te04zUUkQjAsQI5+t1gLEwwchF1AmQytoWQ2wKyMIysqNvCQpfsK4cWeMIWgPsCJE/RocQFOc3A2whOQbfF6zPRvm00JItxbTn5D9+N/PiC+1dt5fgiVnKWKZZgf9sPr5/e0Ht2D7c0TWB9aTF6XozoEikUwXHKQ6HdayPZf51I9RdWnZ0S6VsAsxbBfUCQ0DP6NAPhju7V4EfNz63FDMgnao7+8Fb2Rv36M7sqmyE+xjKBullofp3kN7EoN0OeyLZZyQKW9f1sGJUncBR5VYVKNCuhhVDHkCEJfUsVxT5pcaKIb9Ybms9rAjyN3NMAgMWXrJOSOdd0qiq6gbpnfdjTnE4bGGkNNJ5z9sj5S8BYyyRoTNf8nLQREXFLdTNzPZ03HVb5vJPJdZbnFsyI2euBYSC4aIi94/c3L3WdpAUnXsnl9RU9bc9fS1X89j58Fq4HP0RiXcCZ1S3TXKhtv08ykhiQmYD0XcLcibAVNOk+vuKBezL9135bRhz7tjUIx6BJhfp1c2znCwmwGNFNKJiytbz6DLBWqQjq1K/nPfp0IJtgvkLPFADPv+CUSHeJsKxJGRPfuitg0cMVe2wIKwIVTc7LhMPIXvygWMHDw9CUgRxWELyAldTg/kjVxDvTfoWrl0uYSHTvi5sNFXYTZV9BoKIdaw622qydMyJn9j81sEjOfFid28XZORUjRGBY37BVFRZ9fhLlY2+3FtzdeRTm0Ad19U4yJo8G9Jj/RB6CxBwMzFn8s5PUNqQ/haI3yvZSpTEJqXRmnSqEMeBdDKNAONAM+OOCm4huBTSGGK2LopnZLcishozQMjjmDvWlrJHBuBXG+lNWO6RV77XFwznPnriwCvzrPeNkY6uEaPHIJ6upTUCkqVxmUcMvylCtc3EvKe9cdKfC8zAFdveV2JbRdANsznpYSTbrfhbSB4Rqmmy5QeU8SLSpl3tm97/sZMHXip63c+bvJAHIPYDAw2QH7j0baRs0M4TB/d9rKPrgKVNwhddQ/MoP7ZOQtBjwEu9bCh0lycYVE0bK5+NupVTy1RTI+WG6A0DEC3+gN0S8SyklCg3eze/0N51Owy40kkqIoWp+rcPMoEVYrkR7tPKzEGHVyW3S2wHXpdDM7OUtVy2WVcSj+bPtyt5F5z0YvsHbqhWNJZNhNVJSyyFsXdHJ886P8aaAWXCNxiGm1etfvpc6WJY29R6adp/6LUXxxvphOr6He7s+qbM5y2fmsVczk+H4KjLPL72THrhMGNaz+oFLwENd3bvmnYBbDtBtM1ayggxiXWW3Pl2xAnSxESITzz01oFjV7O/DUEQd7d3b8jkX0tMMMuyUd4BiaXjmMnZ8s0VqcxNNauj1qhful0ZDd9qV71SEvB4zCYbcnZEbuHp5L5DIx3dL4M/ONt5nUGIzPatFLjXl1qebX3XryS3ziYrmWyTCCZXKTQ8HYfoDTCUGf3e9v2S68lMSUw2+uxGUE9yNoJpZTTHUakKvok02ynxP6wW6suLQqR8NS2rS1sNMnjorQMXsP8CtLmgM/9GsOz+/L8YMkAWmv4gdE5LsEFSxbKTr1iJ4ePH9/4X+UWgra6wLRAhr2ihiWpoy7wavZFeAYSo38kkzsVpY6kxuLI5YuVeaRTEVNa6+TR4OmQgsTReitmcZ1NfLvh0S/v554+ebjsk6x1IEw2a2Vc1q2VarNyanZo3FXx9ZuZY6dFQ2WyIRkF46vXqtbyEK7vXytasXncKKoZJ4zDAe159dWLH2vd+sbVt9ZryxGSE1bMWiLGUhFDOYki/GqRPmni2poVoFJV8Q5Rfz3CIU9pVmMGwXNjV0bVN6HFUe18Ao0nCww+O/uPozFtp0SGdC/W3DdrWwKDcxj3JUfZmxomull1uM4RhCD1T3O+06E3BhUKXva66GGS9trI3DjdwfJUoiarsPWyZQn7ZVd1y4jr5axXXyV+ruE7+WsV18tcqrpO/VnGd/LWKa5p8oTE5Bg2zOTnO2zwzGneIPMC4h5GoBo60lwKFks998ZFGTnhXBAohb/qDGIjPd959TznGBxW4aDxtSQlFR1pJ+fuWY/ue66c/DDCwrDOgoJE/JIBIuVvS08AJefqzJZcRHbKeAZ7bWCmznCg2Ds8aR5wwPoWmv+8uyCRZ5qJBQwVU159Hlsz77YRCpb3yw4YUSISmJUOCacrkksDrObygum/mmAYgyvVfAKyHJQw/lSxNyN60p+PDa+9lb6n6Pt1c0y42p1sYKe/q6HpU4iHkc7NEddTFkpHPQ8t8EXR3pou/2N3evaGPoWnxPI2mLYyUd9/c/ZjE9+Klx88dixZ7WwuVCJbzxusd9PPdHV3fzcoMp0SNh+arSv5VcTKsDs3xQih/KtrfBs5X3tyoE9Ewu01ROHmjWH8glIAuYJotf0cpo1GJm2uccVZZVT9jknCBDJtO8lfc6xIHZ4a2xLXPDwsmb0msieikLkd91MqXIMpACXRjrSi8akHP+KzcHK90Sj1BX8bqQPw1deubtQKkClrzQ9GglsmWPwG/TEwHrh5/zwoZAnK5VvIs18ljiOqezBpnNm+z2H62KX3q/tEXzl26NbUBCyd+JYY7u/oEX4uwRnCWpZMtzkPpWAc82zO6//uQ2wMDNfyJQsn7cmBS3NG56T3N1oDhXolTlfuLqV2q639NUPhJqRx3JknSnpRK/3zgzMFTizjtc1RUURykN/nEiQOvtI2mnxM8E2GNTYsXKdzEECuhcK1B+lbZ8XAa6ImUb8uaQu8LN2xov9zEy1iUkehjKOuHcC97S5tH9/8wNU8hncRaV3S8TeXlhxZBYvPl1nKyI1FYFUVzINwq4svl5uY7Z0ZlwCJOw8oa0yC9yQOj+4dDSh/wZ6Ebrla2UQhigFUyZ0BP9ozu33UuHVsNcW0aOSL53ya5tUyo+c8vi23hVf9aIvnom/uObxnd/xXBj+cQSFT32babDMftsLVndN/fX+aepi3HD70JfsMJNzmqM+Dbt5x4177Kmp8m9P4PGALmSB+aZc8AAAAASUVORK5CYII=" alt="Regis Jesuit" />
       <div class="header-text">
         <div class="brand">Raider <span class="accent">Randomizer</span></div>
-        <div class="tagline">Name picker · Groups · Teams · Seating</div>
+        <div class="tagline">Pick with names · Pick without names · Timer</div>
       </div>
     </div>
     <div class="hdr-tools">
@@ -279,43 +356,68 @@ body.light .ptr{border-top-color:#C11430}
     </div>
   </header>
 
-  <div class="card" id="inputCard">
-    <div class="rb" style="margin-bottom:6px">
-      <label class="sl" style="margin:0">Student Names</label>
+  <div class="topbar" id="topBar">
+    <button class="top-btn a" data-x="names" type="button">🎯 Pick With Names<span class="sub">Wheel · groups · teams · seating</span></button>
+    <button class="top-btn" data-x="cards" type="button">🙋 Pick Without Names<span class="sub">Question cards · no roster</span></button>
+    <button class="top-btn" data-x="timer" type="button">⏱️ Timer<span class="sub">Countdown for any activity</span></button>
+  </div>
+
+  <div id="inputCard">
+    <div class="who-sum">
+      <span class="who-sum-t" id="namesSumT"></span>
+      <button class="bo" id="namesSetTgl" style="margin-left:auto">⚙ Settings</button>
     </div>
-    <textarea id="inp" placeholder="Paste names — one per line or comma-separated"></textarea>
-    <div class="r" style="margin-top:8px">
-      <button class="btn" id="loadBtn">Load Names</button>
-      <button class="bo" id="saveBtn">Save as Class</button>
-      <span id="cnt" style="font-size:11px;color:#888"></span>
-    </div>
-    <div class="sv-sec" id="svSec">
-      <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Saved Classes</div>
-      <div class="r" id="svList" style="gap:5px"></div>
-      <div id="noSv" style="font-size:11px;color:#555">No saved classes yet</div>
+    <div class="who-opts show" id="namesSet">
+      <div class="who-orow">
+        <div class="who-olbl">Student names</div>
+        <textarea id="inp" placeholder="Paste names — one per line or comma-separated"></textarea>
+        <div class="r" style="margin:8px 0 6px">
+          <button class="btn" id="loadBtn">Load Names</button>
+          <button class="bo" id="saveBtn">Save as Class</button>
+          <span id="cnt" style="font-size:11px;color:#888"></span>
+        </div>
+        <div class="r" id="svList" style="gap:5px;margin-bottom:5px"></div>
+        <div class="who-help" id="noSv">Paste or type a class list, then Load Names. Save it under a name and it comes back next time.</div>
+      </div>
+      <div class="who-orow">
+        <div class="who-olbl" id="bkLblA">Backup</div>
+        <div class="r" style="gap:6px">
+          <button class="bo" id="bkSaveA">⬇ Download backup</button>
+          <label class="bo" for="bkFileA" id="bkRestA">⬆ Restore from file</label>
+          <input type="file" id="bkFileA" accept="application/json,.json" style="display:none">
+        </div>
+        <div class="who-help" id="bkHelpA">Saved classes, starred cards, your own cards, and saved decks are stored in this browser only. Clearing your browsing data, using a different computer, or switching browsers will lose them. Download a backup file and keep it somewhere safe — you can restore it here on any device.</div>
+        </div>
+      <div class="who-orow">
+        <div class="who-olbl">Which picker</div>
+        <div class="tabs" id="tabBar">
+          <button class="tab a" data-t="spinner">🎡 Spinner</button>
+          <button class="tab" data-t="single">⚡ Single Name</button>
+          <button class="tab" data-t="lineup">🔢 Lineup</button>
+          <button class="tab" data-t="groups">👥 Groups</button>
+          <button class="tab" data-t="teams">🏆 Teams</button>
+          <button class="tab" data-t="seat">🪑 Seating</button>
+        </div>
+        <div class="who-help">Spinner animates the pick on screen. Single Name is instant. The rest split the whole class at once.</div>
+      </div>
+      <div class="who-orow" id="spinStyleRow">
+        <div class="who-olbl">Spinner style</div>
+        <div class="modes" id="modeBar">
+          <button class="mode-btn a" data-m="wheel">🎡 Wheel</button>
+          <button class="mode-btn" data-m="slot">🎰 Slots</button>
+          <button class="mode-btn" data-m="cards">🃏 Cards</button>
+          <button class="mode-btn" data-m="lotto">🎱 Lottery</button>
+          <button class="mode-btn" data-m="spot">💡 Spotlight</button>
+        </div>
+        <div class="who-help">How the pick is animated. All five land on the same random result.</div>
+      </div>
     </div>
   </div>
 
   <div id="tool" class="hid">
-    <div class="tabs" id="tabBar">
-      <button class="tab a" data-t="spinner">Spinner</button>
-      <button class="tab" data-t="single">Single Name</button>
-      <button class="tab" data-t="lineup">Lineup</button>
-      <button class="tab" data-t="groups">Groups</button>
-      <button class="tab" data-t="teams">Teams</button>
-      <button class="tab" data-t="seat">Seating</button>
-      <button class="tab" data-t="timer">Timer</button>
-    </div>
 
     <!-- SPINNER -->
     <div id="p-spinner">
-      <div class="modes" id="modeBar">
-        <button class="mode-btn a" data-m="wheel">🎡 Wheel</button>
-        <button class="mode-btn" data-m="slot">🎰 Slots</button>
-        <button class="mode-btn" data-m="cards">🃏 Cards</button>
-        <button class="mode-btn" data-m="lotto">🎱 Lottery</button>
-        <button class="mode-btn" data-m="spot">💡 Spotlight</button>
-      </div>
       <div class="obar">
         <label><input type="checkbox" id="rmCb"> Remove after picked</label>
         <button class="bg hid" id="rstBtn">Reset</button>
@@ -378,15 +480,106 @@ body.light .ptr{border-top-color:#C11430}
       <div class="seat-grid" id="seatGrid"></div>
     </div>
 
+    <!-- WHO ANSWERS -->
+    <div id="p-who" class="hid">
+      <div class="who-lead" id="whoLead">Picks one student in every pair or group at once, using something true about them. Draw a card, read it aloud, and whoever it lands on does the move.</div>
+      <div class="who-sum">
+        <span class="who-sum-t" id="whoSumT"></span>
+        <button class="bo" id="whoOptTgl" style="margin-left:auto">⚙ Settings</button>
+      </div>
+      <div class="who-opts" id="whoOpts">
+        <div class="who-orow">
+          <div class="who-olbl">Language · Idioma · Langue</div>
+          <div class="modes" id="whoLangBar"></div>
+          <div class="who-help">Switches the cards and this panel into Spanish or French. The rest of the Randomizer stays in English.</div>
+        </div>
+        <div class="who-orow">
+          <div class="who-olbl" id="whoLblGrp">Working in</div>
+          <div class="modes" id="whoGrpBar"></div>
+          <div class="who-help" id="whoHelpGrp"><b>Groups</b> and <b>Pairs</b> pick one student inside each group you already have — only the wording changes. <b>Make groups</b> is different: it gives the whole class one instruction that sorts everybody into new groups.</div>
+        </div>
+        <div class="who-orow">
+          <div class="who-olbl" id="whoLblDeck">Which cards to draw from</div>
+          <div class="modes" id="whoCats"></div>
+          <div class="who-help" id="whoHelpDeck"><b>Quick</b> cards settle in one glance — reach for these when you just need somebody talking about the question on the board. <b>Conversation</b> cards are worth a minute and make a good warm-up. Or narrow it to one topic.</div>
+        </div>
+        <div class="who-orow" id="whoMoveRow">
+          <div class="who-olbl" id="whoLblMove">What the picked student does</div>
+          <div class="modes" id="whoStyle"></div>
+          <div class="who-help" id="whoHelpMove"><b>Goes first</b> and <b>Goes last</b> set the order for the whole group. <b>Sits out</b> flips it — they are the one who doesn't.</div>
+        </div>
+        <div class="who-orow">
+          <div class="who-olbl" id="whoLblTask">Your question (optional)</div>
+          <div class="who-tsk-row" id="whoTskRow">
+            <input type="text" id="whoTask" maxlength="180" placeholder="e.g. explain why Lincoln waited until September">
+            <button class="bo" id="whoTaskClr">Clear</button>
+          </div>
+          <div class="who-help" id="whoHelpTask">Type it once and it stays on every card you draw, so students see who is talking and what about.</div>
+        </div>
+        <div class="who-orow">
+          <div class="who-olbl" id="whoLblOwn">Your own cards</div>
+          <div class="who-tsk-row">
+            <input type="text" id="whoNew" maxlength="120" placeholder="has the coolest socks">
+            <button class="bo" id="whoNewAdd">Add</button>
+          </div>
+          <div class="r" id="whoDeckList" style="gap:5px;margin:9px 0 7px"></div>
+          <div class="r" style="gap:6px;margin-bottom:7px">
+            <button class="bo" id="whoSaveDeck">Save this deck as…</button>
+            <button class="bg" id="whoClrStar">Clear stars</button>
+          </div>
+        <div class="who-orow">
+          <div class="who-olbl" id="bkLblB">Backup</div>
+          <div class="r" style="gap:6px">
+            <button class="bo" id="bkSaveB">⬇ Download backup</button>
+            <label class="bo" for="bkFileB" id="bkRestB">⬆ Restore from file</label>
+            <input type="file" id="bkFileB" accept="application/json,.json" style="display:none">
+          </div>
+          <div class="who-help" id="bkHelpB">Saved classes, starred cards, your own cards, and saved decks are stored in this browser only. Clearing your browsing data, using a different computer, or switching browsers will lose them. Download a backup file and keep it somewhere safe — you can restore it here on any device.</div>
+        </div>
+          <div class="who-help" id="whoHelpOwn">Tap ☆ on any card to star it. Starred cards become their own deck. Write your own above — finish the sentence "The one who …". Save any deck under a name and it comes back next time.</div>
+        </div>
+      </div>
+      <div class="who-stack">
+        <div class="who-card" id="whoCard">
+          <button class="who-star" id="whoStarBtn" type="button" aria-label="Star this card">☆</button>
+          <span class="who-ghost" id="whoGhost" aria-hidden="true">🙋</span>
+          <span class="who-pip tl" id="whoPipA" aria-hidden="true">🙋</span>
+          <span class="who-pip br" id="whoPipB" aria-hidden="true">🙋</span>
+          <div class="who-cat" id="whoCat">Ready</div>
+          <div class="who-txt" id="whoTxt">Tap to draw a prompt</div>
+          <div class="who-task" id="whoTaskOut"></div>
+          <div class="who-tie" id="whoTie"></div>
+        </div>
+      </div>
+      <div class="r" style="justify-content:center;margin-top:2px;gap:8px">
+        <button class="btn" id="whoNext" style="font-size:14px;padding:10px 28px">Draw a Card</button>
+        <button class="bo" id="whoCopy">📋 Copy</button>
+      </div>
+      <div class="shint" id="whoHint">Tap the card to draw · no student names needed</div>
+    </div>
+
     <!-- TIMER -->
     <div id="p-timer" class="hid">
-      <div class="card" style="text-align:center">
-        <div class="t-pre" id="tPre"></div>
-        <div style="margin-bottom:6px">
-          <label style="font-size:11px;color:#888">Custom (sec): </label>
-          <input type="number" id="tCust" min="5" max="600" placeholder="45" style="width:60px;padding:3px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.3);color:#eee;font-size:12px;outline:none">
-          <button class="bo" id="tCustBtn" style="margin-left:3px">Set</button>
+      <div class="who-sum">
+        <span class="who-sum-t" id="timerSumT"></span>
+        <button class="bo" id="timerSetTgl" style="margin-left:auto">⚙ Settings</button>
+      </div>
+      <div class="who-opts" id="timerSet">
+        <div class="who-orow">
+          <div class="who-olbl">Preset lengths</div>
+          <div class="t-pre" id="tPre"></div>
+          <div class="who-help">Tap a preset to load it. The timer beeps for the last five seconds and buzzes at zero.</div>
         </div>
+        <div class="who-orow">
+          <div class="who-olbl">Custom length</div>
+          <div class="r" style="gap:6px">
+            <input type="number" id="tCust" min="5" max="600" placeholder="45" style="width:80px;padding:7px 9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#eee;font-size:13px;font-family:inherit;outline:none">
+            <button class="bo" id="tCustBtn">Set</button>
+            <span style="font-size:11px;color:#888">seconds</span>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="text-align:center">
         <div class="t-display" id="tDisp">0:30</div>
         <div class="t-ctrls">
           <button class="btn" id="tStart">Start</button>
@@ -452,7 +645,9 @@ function loadNames(){
   allN=parseInput();if(!allN.length)return;
   pool=allN.slice();picked=[];curRot=0;
   $("cnt").textContent=allN.length+" name"+(allN.length!==1?"s":"")+" loaded";
-  $("tool").classList.remove("hid");
+  if(topMode==="names"){$("tool").classList.remove("hid");switchTab(lastNameTab)}
+  $("namesSet").classList.remove("show");$("namesSetTgl").textContent="\u2699 Settings";
+  updNamesSum();
   $("resBan").classList.remove("show");
   $("pkList").classList.add("hid");$("pkTags").innerHTML="";
   buildAnim();updateUI();
@@ -460,7 +655,7 @@ function loadNames(){
 $("loadBtn").addEventListener("click",loadNames);
 
 // Tabs
-var panels=["spinner","single","lineup","groups","teams","seat","timer"];
+var panels=["spinner","single","lineup","groups","teams","seat","timer","who"];
 function switchTab(t){
   panels.forEach(function(p){
     var el=$("p-"+p);if(el)el.classList.toggle("hid",p!==t);
@@ -476,7 +671,7 @@ document.querySelectorAll("#modeBar .mode-btn").forEach(function(b){
   b.addEventListener("click",function(){
     animMode=b.getAttribute("data-m");
     document.querySelectorAll("#modeBar .mode-btn").forEach(function(x){x.classList.toggle("a",x===b)});
-    buildAnim();
+    updNamesSum();buildAnim();
   });
 });
 
@@ -494,7 +689,8 @@ $("sndTgl").addEventListener("click",function(){sndOn=!sndOn;$("sndTgl").textCon
 var isFs=false;
 $("fsTgl").addEventListener("click",function(){
   isFs=!isFs;document.body.classList.toggle("fs",isFs);
-  $("hdr").classList.toggle("hid",isFs);$("inputCard").classList.toggle("hid",isFs);$("ftr").classList.toggle("hid",isFs);
+  $("hdr").classList.toggle("hid",isFs);$("ftr").classList.toggle("hid",isFs);
+  $("inputCard").classList.toggle("hid",isFs||topMode!=="names");
   $("fsTgl").textContent=isFs?"⛶ Exit":"⛶ Fullscreen";$("fsTgl").classList.toggle("a",isFs);
   if(isFs&&document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(function(){});
   else if(!isFs&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
@@ -820,7 +1016,7 @@ $("cpSeat").addEventListener("click",function(){
 // ============ TIMER ============
 function fmtTime(s){var m=Math.floor(s/60),sec=s%60;return m+":"+(sec<10?"0":"")+sec}
 function updTimerDisp(){$("tDisp").textContent=fmtTime(tRem);$("tDisp").classList.remove("tw","td");if(tRem<=5&&tRem>0)$("tDisp").classList.add("td");else if(tRem<=15)$("tDisp").classList.add("tw")}
-function setTimer(s){tSec=s;tRem=s;clearInterval(tInt);tRun=false;$("tStart").textContent="Start";updTimerDisp()}
+function setTimer(s){tSec=s;tRem=s;updTimerSum();clearInterval(tInt);tRun=false;$("tStart").textContent="Start";updTimerDisp()}
 
 [30,60,90,120,180,300].forEach(function(s){
   var b=document.createElement("button");b.className="tp"+(s===30?" a":"");b.textContent=fmtTime(s);b.setAttribute("data-s",s);
@@ -840,6 +1036,967 @@ $("tStart").addEventListener("click",function(){
 });
 $("tReset").addEventListener("click",function(){setTimer(tSec)});
 updTimerDisp();
+
+// ============ WHO ANSWERS (roster-free) ============
+var WCAT={now:"Right Now",space:"Where You Sit",cal:"Calendar & Clock",know:"Get to Know You",fun:"Just for Fun",rj:"Regis Jesuit"};
+var WICON={now:"\uD83D\uDC40",space:"\uD83D\uDCCD",cal:"\uD83D\uDCC5",know:"\uD83E\uDD1D",fun:"\uD83C\uDF89",rj:"\uD83D\uDD34"};
+var WP={
+now:[
+"is wearing the most colors right now",
+"is wearing the most red",
+"has the most stickers on their laptop or water bottle",
+"has the most water left in their bottle",
+"has the least water left in their bottle",
+"has the shortest pencil",
+"has the longest sleeves",
+"has the most pockets in what they are wearing",
+"has the most buttons or zippers on what they are wearing",
+"has the most things on their desk right now",
+"has the fewest things on their desk right now",
+"sat down last",
+"sat down first",
+"has the most colorful shoes",
+"is wearing the most layers",
+"has the most interesting thing in their backpack right now",
+"thinks they could name the most things in their backpack without looking",
+"has the most writing on what they are wearing",
+"has the most school colors on right now",
+"opened their laptop most recently",
+"has the most tabs open right now",
+"has the tidiest desk area, honor system",
+"has the messiest desk area, honor system",
+"most recently picked something up",
+"has the most keys on their keychain",
+"has the most pens or pencils out on their desk",
+"has the fewest pens or pencils out on their desk",
+"has the oldest thing with them right now",
+"has the newest thing with them right now",
+"is wearing the most black",
+"is wearing the most blue",
+"has the most patterns on what they are wearing",
+"has the plainest outfit today, honor system",
+"has the most things clipped to their bag",
+"has the most zippers on their bag",
+"has the biggest bag with them",
+"has the smallest bag with them",
+"brought the most stuff to class today",
+"has the most highlighter on a page in front of them",
+"has the most colors of ink on them",
+"has their notebook open to the earliest page",
+"has the thickest notebook with them",
+"has the thinnest notebook with them",
+"has the most crumpled paper near them",
+"has the tallest object on their desk",
+"has the roundest object on their desk",
+"has the loudest zipper",
+"has the quietest shoes when they walk",
+"has the most worn-in shoes, honor system",
+"has the most colors on their bag",
+"has the most reusable items with them",
+"has the fullest pocket right now",
+"has the most writing in their notebook from today",
+"is wearing something they have owned the longest"
+],
+space:[
+"is closest to the door",
+"is farthest from the door",
+"is closest to the board or display",
+"is farthest from the board or display",
+"is closest to a window",
+"is farthest from a window",
+"is closest to the teacher's desk",
+"is farthest from the teacher's desk",
+"is closest to the wall clock",
+"is closest to the nearest trash can",
+"is closest to the hallway",
+"is closest to the nearest outlet",
+"is closest to a wall",
+"is closest to the center of the room",
+"is closest to another group",
+"is farthest from every other group",
+"would reach the door first in a fire drill",
+"is closest to the light switch",
+"is nearest the biggest thing in the room that is not a person",
+"is facing the front of the room most directly",
+"has the best view of the board from where they sit",
+"is nearest the middle of their own group",
+"is closest to the front row",
+"is closest to the back row",
+"is closest to a corner of the room",
+"is farthest from any corner",
+"would be first to reach the board",
+"would be last to reach the board",
+"has the shortest walk to the teacher",
+"has the longest walk to the teacher",
+"has the most people between them and the door",
+"has the fewest people between them and the door",
+"is closest to north, best guess",
+"is closest to where the sun comes in",
+"is nearest the most empty space in the room",
+"would be the first person a visitor sees walking in",
+"would be the last person a visitor sees walking in",
+"is closest to the tallest piece of furniture",
+"is nearest the most writing on a wall",
+"is closest to where the teacher stands most",
+"moved their chair most recently",
+"is closest to the room number on the door",
+"is second-farthest from the door",
+"is happiest with the seat they are sitting in",
+"is closest to the quietest part of the room",
+"could touch the most walls without standing up",
+"is closest to the middle of the whole class"
+],
+cal:[
+"has the birthday closest to today's date, any year",
+"has the birthday farthest from today's date",
+"has the next birthday coming up",
+"had the most recent birthday",
+"was born on the earliest day of the month",
+"was born on the latest day of the month",
+"has the birthday closest to a holiday",
+"has the birthday closest to the first day of school",
+"woke up earliest today",
+"woke up latest today",
+"has been awake the longest right now",
+"hit snooze the most times this morning",
+"drank water most recently",
+"has been in this building the longest today",
+"has the most classes left today",
+"has the fewest classes left today",
+"can guess closest to how many minutes until the bell",
+"got the most sleep last night",
+"got the least sleep last night",
+"went to bed earliest last night",
+"went to bed latest last night",
+"has the birthday closest to Halloween",
+"has the birthday closest to New Year's Day",
+"has the birthday closest to the last day of school",
+"has the birthday in the month that comes first alphabetically",
+"has the birthday closest to the first of the month",
+"has the most days until their birthday",
+"has the earliest first class of the day",
+"has the latest last class of the day",
+"got to school earliest today",
+"got to school latest today",
+"had the longest commute this morning",
+"had the shortest commute this morning",
+"spent the most time getting here today",
+"passed the most stoplights on the way in",
+"left home earliest this morning",
+"has the longest wait until their next break",
+"has the shortest wait until their next break",
+"has been in this room the longest today",
+"has been awake the fewest hours right now",
+"checked a calendar most recently",
+"has the most on their schedule tomorrow",
+"has the least on their schedule tomorrow",
+"has the longest streak of doing something every single day",
+"can guess closest to how many minutes this class has been going",
+"can guess closest to today's date without checking"
+],
+know:[
+"has the most letters in their first name",
+"has the fewest letters in their first name",
+"has the most letters in their full name",
+"has the most vowels in their name",
+"has a first initial closest to the letter R",
+"has a last name closest to the front of the alphabet",
+"has a last name closest to the end of the alphabet",
+"can say hello in the most languages",
+"knows the most words in a language they do not speak fluently",
+"most recently learned something that surprised them",
+"most recently helped someone without being asked",
+"most recently said thank you and meant it",
+"most recently finished a book, show, or game",
+"has been listening to the same song on repeat most recently",
+"has the strongest opinion about the best cereal",
+"has the most specific favorite snack",
+"is most confident they could name the most teachers in this building",
+"has the longest-running habit or routine",
+"most recently tried something for the first time",
+"has the best story about the last thing that made them laugh",
+"would give the most creative name to a boat",
+"has the best idea for a class pet",
+"knows the most useless fact and is willing to share it",
+"has the most unusual skill they are willing to describe",
+"most recently talked to someone over sixty",
+"would be quickest to name one thing they are good at",
+"has the most siblings",
+"has the fewest siblings",
+"is the oldest in their family",
+"is the youngest in their family",
+"has the most cousins",
+"has the fewest cousins",
+"has the most pets right now",
+"has the fewest pets right now",
+"has had the most different kinds of pets",
+"has the pet with the longest name",
+"lives with the most people",
+"lives farthest from school",
+"lives closest to school",
+"lives closest to the mountains",
+"has the most people in their house with the same first initial",
+"has the most letters in their last name",
+"has the fewest letters in their last name",
+"has the longest middle name",
+"has the shortest middle name",
+"has the most middle names",
+"has the grandparent with the shortest name",
+"has the grandparent with the longest name",
+"has the family member with the longest name",
+"has the family member with the shortest name",
+"has the pet with the shortest name",
+"has the sibling with the longest name",
+"has the sibling with the shortest name",
+"has the cousin with the longest name",
+"has the longest first name of anyone in their house",
+"has the shortest first name of anyone in their house",
+"went to the elementary school with the longest name",
+"has the teacher this year with the longest last name",
+"has the teacher this year with the shortest last name",
+"has the most syllables in their full name",
+"has the fewest syllables in their full name",
+"has the most syllables in their first name",
+"has the most repeated letters in their full name",
+"has the most vowels in a row anywhere in their name",
+"has a first and last name that start closest together in the alphabet",
+"has a first and last name that start farthest apart in the alphabet",
+"has the best-sounding full name said out loud, group decides",
+"knows the most people who share their first name",
+"has a middle name closest to the front of the alphabet",
+"shares a first initial with the most people in this room",
+"has the most nicknames",
+"knows the most about what their own name means",
+"knows the most people in this room by full name",
+"thinks they could name the most people in this room without looking",
+"has the longest friendship in this room",
+"has moved seats the most this year",
+"has the longest walk to their first class",
+"would bet they could count backward from twenty the fastest",
+"thinks they could name the most colors in ten seconds",
+"would bet they could name the most fruits in ten seconds",
+"is most confident they could name the most countries in ten seconds",
+"thinks they could name the most animals that start with B",
+"has the strongest opinion about the best sandwich",
+"has the strongest opinion about the best board game",
+"has the strongest opinion about the best season",
+"has the strongest opinion about cilantro",
+"has the most confident answer for the best pizza topping",
+"would win an argument about the best holiday",
+"has the best recommendation for something to watch",
+"has the best recommendation for something to listen to",
+"most recently made something with their hands",
+"most recently fixed something that was broken",
+"most recently taught someone how to do something",
+"most recently apologized and meant it",
+"most recently gave someone a real compliment",
+"most recently wrote something by hand that was not for school",
+"has the oldest thing they still use every day",
+"has the best answer for what they would do with an extra hour today",
+"has the most things memorized that nobody asked them to memorize",
+"would be missed most by a pet if they left for a week",
+"has the best story about how they got their name"
+],
+fun:[
+"would most confidently fight a goose and win",
+"would survive longest if this school turned into a maze",
+"has the strongest opinion about pineapple on pizza",
+"would rather be too hot than too cold",
+"would rather have hands for feet",
+"would win a staring contest, in their own opinion",
+"would invent the best new ice cream flavor",
+"would make the best superhero name out of their own name",
+"would pick the best walk-up song",
+"would rather fight one horse-sized duck than a hundred duck-sized horses",
+"has the best plan for a snow day",
+"would be the best at hiding in this room",
+"would be first to notice if something in this room moved",
+"would be best at reading a map with no phone",
+"would most want a dragon as a pet",
+"would be the best tour guide for this hallway",
+"would name the best mascot for this class",
+"would rather explore the ocean than space",
+"would be most useful on a group project about dinosaurs",
+"thinks they have the best sense of direction",
+"would be the calmest if the fire alarm went off right now",
+"wins one round of rock-paper-scissors",
+"says the highest number when everyone says a number from one to ten at the same time",
+"throws the most fingers when everyone throws one to five at the same time",
+"the group picks in five seconds, no debate",
+"would be the best at explaining this class to an alien",
+"would be the best at surviving one week locked in a library",
+"would be the first to find the exit in a corn maze",
+"would be the best at naming a new color",
+"would be the best at inventing a holiday",
+"would rather have a rewind button than a pause button",
+"would rather be able to fly than turn invisible",
+"would win at hide and seek in this building",
+"would be the best at giving directions using no words",
+"would make the best voice for a cartoon character",
+"would be the best at guessing the ending of a movie",
+"would last the longest in a completely silent room",
+"would be the first to laugh in a completely silent room",
+"would be the best at building a fort in here",
+"would be the best at packing for a trip in five minutes",
+"would be the best at remembering everyone's order at a restaurant",
+"would be the best at naming a band",
+"would be the best at coming up with a class motto",
+"would rather face one very angry swan than a swarm of bees",
+"thinks they could beat a raccoon at a strategy game",
+"would be the best at explaining a rule they just made up",
+"would most likely win a game they had never played before",
+"would rather live in a treehouse than a submarine",
+"would rather have a robot that carries their bag than one that folds laundry",
+"has the best guess for what is directly above this ceiling",
+"would be the best at drawing this room from memory",
+"would be the best at describing this class in three words",
+"would be the most useful in a group stranded on an island",
+"would notice first if something in this room changed overnight",
+"has the strongest opinion about whether a hot dog is a sandwich",
+"has the strongest opinion about the right way to eat pizza",
+"would be the best at inventing a new sport",
+"thinks they could fold the paper airplane that flies farthest",
+"would be the first to volunteer for something without knowing what it is",
+"would be the best at keeping a secret about a surprise party",
+"would be the most likely to read the instructions first",
+"would be the least likely to read the instructions first",
+"would be the best at winning an argument they do not believe in",
+"would be the calmest person to have around in a power outage"
+],
+rj:[
+"would bet they could name the most Jesuit saints",
+"is most confident they could name the most Grad at Grad characteristics",
+"is wearing the most Regis Jesuit gear right now",
+"has the locker farthest from this room",
+"has the locker closest to this room",
+"has their next class farthest from this room",
+"has been at Regis Jesuit the longest",
+"thinks they could name the most buildings on campus",
+"most recently went to a Regis Jesuit game, play, or event",
+"would bet they could explain men and women for others in one sentence",
+"has walked the most stairs in this building today",
+"knows the most about what the Raider mascot is supposed to be",
+"thinks they could name the most clubs at Regis Jesuit",
+"would give the best campus tour to a new student",
+"most recently did something that fits cura personalis",
+"is most confident they could name the most people who work in this building",
+"would bet they could name the most Regis Jesuit teams or sports",
+"thinks they could name the most Regis Jesuit traditions",
+"would bet they could name a club nobody else has heard of",
+"knows the most about how this school got started",
+"is most confident they could name every language taught at Regis Jesuit",
+"has the shortest walk from here to the main office",
+"has the longest walk from here to the main office",
+"would be most useful to a lost visitor",
+"would bet they could explain what Ignatian means in one sentence",
+"thinks they could explain the Examen in one sentence",
+"would bet they could name the most Jesuit schools anywhere",
+"is most confident they could name the most saints, any tradition",
+"thinks they could name every room on this floor",
+"has walked past this room the most times today",
+"knows the most about what happens in the room next door",
+"has the best idea for a new Regis Jesuit tradition",
+"most recently prayed for somebody else",
+"would bet they could name the most things on campus named after a person",
+"has been to the most different rooms in this building today"
+]};
+var WTIES=["Still tied? One round of rock-paper-scissors.","Still tied? Both of you answer.","Still tied? Whoever calls it first wins it.","Still tied? Closest to the door goes."];
+var TRX={"es":{"is wearing the most colors right now":"lleva más colores en este momento","is wearing the most red":"lleva más rojo","has the most stickers on their laptop or water bottle":"tiene más pegatinas en su portátil o su botella","has the most water left in their bottle":"tiene más agua en su botella","has the least water left in their bottle":"tiene menos agua en su botella","has the shortest pencil":"tiene el lápiz más corto","has the longest sleeves":"tiene las mangas más largas","has the most pockets in what they are wearing":"tiene más bolsillos en su ropa","has the most buttons or zippers on what they are wearing":"tiene más botones o cremalleras en su ropa","has the most things on their desk right now":"tiene más cosas en su pupitre ahora mismo","has the fewest things on their desk right now":"tiene menos cosas en su pupitre ahora mismo","sat down last":"se sentó el último","sat down first":"se sentó el primero","has the most colorful shoes":"lleva los zapatos más coloridos","is wearing the most layers":"lleva más capas de ropa","has the most interesting thing in their backpack right now":"tiene lo más interesante en su mochila ahora mismo","thinks they could name the most things in their backpack without looking":"cree que podría nombrar más cosas de su mochila sin mirar","has the most writing on what they are wearing":"lleva más letras escritas en su ropa","has the most school colors on right now":"lleva más colores del colegio ahora mismo","opened their laptop most recently":"abrió su portátil más recientemente","has the most tabs open right now":"tiene más pestañas abiertas ahora mismo","has the tidiest desk area, honor system":"tiene el espacio más ordenado, por honestidad","has the messiest desk area, honor system":"tiene el espacio más desordenado, por honestidad","most recently picked something up":"recogió algo más recientemente","has the most keys on their keychain":"tiene más llaves en su llavero","has the most pens or pencils out on their desk":"tiene más bolígrafos o lápices sobre su pupitre","has the fewest pens or pencils out on their desk":"tiene menos bolígrafos o lápices sobre su pupitre","has the oldest thing with them right now":"tiene consigo lo más viejo ahora mismo","has the newest thing with them right now":"tiene consigo lo más nuevo ahora mismo","is wearing the most black":"lleva más negro","is wearing the most blue":"lleva más azul","has the most patterns on what they are wearing":"lleva más estampados en su ropa","has the plainest outfit today, honor system":"lleva la ropa más sencilla hoy, por honestidad","has the most things clipped to their bag":"tiene más cosas enganchadas a su mochila","has the most zippers on their bag":"tiene más cremalleras en su mochila","has the biggest bag with them":"trae la mochila más grande","has the smallest bag with them":"trae la mochila más pequeña","brought the most stuff to class today":"trajo más cosas a clase hoy","has the most highlighter on a page in front of them":"tiene más marcador en la página que tiene delante","has the most colors of ink on them":"tiene más colores de tinta encima","has their notebook open to the earliest page":"tiene su cuaderno abierto en la página más temprana","has the thickest notebook with them":"trae el cuaderno más grueso","has the thinnest notebook with them":"trae el cuaderno más delgado","has the most crumpled paper near them":"tiene más papel arrugado cerca","has the tallest object on their desk":"tiene el objeto más alto sobre su pupitre","has the roundest object on their desk":"tiene el objeto más redondo sobre su pupitre","has the loudest zipper":"tiene la cremallera más ruidosa","has the quietest shoes when they walk":"tiene los zapatos más silenciosos al caminar","has the most worn-in shoes, honor system":"tiene los zapatos más gastados, por honestidad","has the most colors on their bag":"tiene más colores en su mochila","has the most reusable items with them":"trae más objetos reutilizables","has the fullest pocket right now":"tiene el bolsillo más lleno ahora mismo","has the most writing in their notebook from today":"tiene más escrito en su cuaderno de hoy","is wearing something they have owned the longest":"lleva algo que tiene desde hace más tiempo","is closest to the door":"está más cerca de la puerta","is farthest from the door":"está más lejos de la puerta","is closest to the board or display":"está más cerca de la pizarra o la pantalla","is farthest from the board or display":"está más lejos de la pizarra o la pantalla","is closest to a window":"está más cerca de una ventana","is farthest from a window":"está más lejos de una ventana","is closest to the teacher's desk":"está más cerca del escritorio del profesor","is farthest from the teacher's desk":"está más lejos del escritorio del profesor","is closest to the wall clock":"está más cerca del reloj de pared","is closest to the nearest trash can":"está más cerca de la papelera más cercana","is closest to the hallway":"está más cerca del pasillo","is closest to the nearest outlet":"está más cerca del enchufe más cercano","is closest to a wall":"está más cerca de una pared","is closest to the center of the room":"está más cerca del centro del aula","is closest to another group":"está más cerca de otro grupo","is farthest from every other group":"está más lejos de todos los demás grupos","would reach the door first in a fire drill":"llegaría primero a la puerta en un simulacro de incendio","is closest to the light switch":"está más cerca del interruptor de la luz","is nearest the biggest thing in the room that is not a person":"está más cerca de la cosa más grande del aula que no sea una persona","is facing the front of the room most directly":"mira más directamente hacia el frente del aula","has the best view of the board from where they sit":"tiene la mejor vista de la pizarra desde su sitio","is nearest the middle of their own group":"está más cerca del centro de su propio grupo","is closest to the front row":"está más cerca de la primera fila","is closest to the back row":"está más cerca de la última fila","is closest to a corner of the room":"está más cerca de una esquina del aula","is farthest from any corner":"está más lejos de cualquier esquina","would be first to reach the board":"llegaría primero a la pizarra","would be last to reach the board":"llegaría el último a la pizarra","has the shortest walk to the teacher":"tiene el camino más corto hasta el profesor","has the longest walk to the teacher":"tiene el camino más largo hasta el profesor","has the most people between them and the door":"tiene más personas entre su sitio y la puerta","has the fewest people between them and the door":"tiene menos personas entre su sitio y la puerta","is closest to north, best guess":"está más cerca del norte, adivinando","is closest to where the sun comes in":"está más cerca de donde entra el sol","is nearest the most empty space in the room":"está más cerca del espacio más vacío del aula","would be the first person a visitor sees walking in":"sería la primera persona que vería alguien al entrar","would be the last person a visitor sees walking in":"sería la última persona que vería alguien al entrar","is closest to the tallest piece of furniture":"está más cerca del mueble más alto","is nearest the most writing on a wall":"está más cerca de donde hay más escrito en la pared","is closest to where the teacher stands most":"está más cerca de donde el profesor se pone más tiempo","moved their chair most recently":"movió su silla más recientemente","is closest to the room number on the door":"está más cerca del número de aula en la puerta","is second-farthest from the door":"es el segundo más lejos de la puerta","is happiest with the seat they are sitting in":"está más contento con el sitio donde está sentado","is closest to the quietest part of the room":"está más cerca de la parte más silenciosa del aula","could touch the most walls without standing up":"podría tocar más paredes sin levantarse","is closest to the middle of the whole class":"está más cerca del centro de toda la clase","has the birthday closest to today's date, any year":"tiene el cumpleaños más cercano a la fecha de hoy, de cualquier año","has the birthday farthest from today's date":"tiene el cumpleaños más lejano a la fecha de hoy","has the next birthday coming up":"tiene el próximo cumpleaños","had the most recent birthday":"tuvo el cumpleaños más reciente","was born on the earliest day of the month":"nació en el día más temprano del mes","was born on the latest day of the month":"nació en el día más tardío del mes","has the birthday closest to a holiday":"tiene el cumpleaños más cercano a una fiesta","has the birthday closest to the first day of school":"tiene el cumpleaños más cercano al primer día de clases","woke up earliest today":"se despertó más temprano hoy","woke up latest today":"se despertó más tarde hoy","has been awake the longest right now":"lleva más tiempo despierto ahora mismo","hit snooze the most times this morning":"apagó la alarma más veces esta mañana","drank water most recently":"bebió agua más recientemente","has been in this building the longest today":"lleva más tiempo en este edificio hoy","has the most classes left today":"tiene más clases por delante hoy","has the fewest classes left today":"tiene menos clases por delante hoy","can guess closest to how many minutes until the bell":"puede adivinar mejor cuántos minutos faltan para el timbre","got the most sleep last night":"durmió más anoche","got the least sleep last night":"durmió menos anoche","went to bed earliest last night":"se acostó más temprano anoche","went to bed latest last night":"se acostó más tarde anoche","has the birthday closest to Halloween":"tiene el cumpleaños más cercano a Halloween","has the birthday closest to New Year's Day":"tiene el cumpleaños más cercano al Año Nuevo","has the birthday closest to the last day of school":"tiene el cumpleaños más cercano al último día de clases","has the birthday in the month that comes first alphabetically":"tiene el cumpleaños en el mes que va primero en orden alfabético","has the birthday closest to the first of the month":"tiene el cumpleaños más cercano al primero del mes","has the most days until their birthday":"tiene más días hasta su cumpleaños","has the earliest first class of the day":"tiene la primera clase más temprana del día","has the latest last class of the day":"tiene la última clase más tardía del día","got to school earliest today":"llegó al colegio más temprano hoy","got to school latest today":"llegó al colegio más tarde hoy","had the longest commute this morning":"tuvo el trayecto más largo esta mañana","had the shortest commute this morning":"tuvo el trayecto más corto esta mañana","spent the most time getting here today":"tardó más en llegar hoy","passed the most stoplights on the way in":"pasó más semáforos de camino aquí","left home earliest this morning":"salió de casa más temprano esta mañana","has the longest wait until their next break":"tiene la espera más larga hasta su próximo descanso","has the shortest wait until their next break":"tiene la espera más corta hasta su próximo descanso","has been in this room the longest today":"lleva más tiempo en esta aula hoy","has been awake the fewest hours right now":"lleva menos horas despierto ahora mismo","checked a calendar most recently":"miró un calendario más recientemente","has the most on their schedule tomorrow":"tiene más cosas en su horario de mañana","has the least on their schedule tomorrow":"tiene menos cosas en su horario de mañana","has the longest streak of doing something every single day":"lleva más días seguidos haciendo algo todos los días","can guess closest to how many minutes this class has been going":"puede adivinar mejor cuántos minutos lleva esta clase","can guess closest to today's date without checking":"puede adivinar mejor la fecha de hoy sin comprobarlo","has the most letters in their first name":"tiene más letras en su nombre","has the fewest letters in their first name":"tiene menos letras en su nombre","has the most letters in their full name":"tiene más letras en su nombre completo","has the most vowels in their name":"tiene más vocales en su nombre","has a first initial closest to the letter R":"tiene la inicial más cercana a la letra R","has a last name closest to the front of the alphabet":"tiene el apellido más cercano al principio del alfabeto","has a last name closest to the end of the alphabet":"tiene el apellido más cercano al final del alfabeto","can say hello in the most languages":"sabe decir hola en más idiomas","knows the most words in a language they do not speak fluently":"sabe más palabras en un idioma que no habla con fluidez","most recently learned something that surprised them":"aprendió algo sorprendente más recientemente","most recently helped someone without being asked":"ayudó a alguien sin que se lo pidieran más recientemente","most recently said thank you and meant it":"dio las gracias de verdad más recientemente","most recently finished a book, show, or game":"terminó un libro, una serie o un juego más recientemente","has been listening to the same song on repeat most recently":"lleva más tiempo escuchando la misma canción en bucle","has the strongest opinion about the best cereal":"tiene la opinión más fuerte sobre el mejor cereal","has the most specific favorite snack":"tiene la merienda favorita más específica","is most confident they could name the most teachers in this building":"está más seguro de que podría nombrar a más profesores de este edificio","has the longest-running habit or routine":"tiene la costumbre o rutina más antigua","most recently tried something for the first time":"probó algo por primera vez más recientemente","has the best story about the last thing that made them laugh":"tiene la mejor historia sobre lo último que le hizo reír","would give the most creative name to a boat":"le pondría el nombre más creativo a un barco","has the best idea for a class pet":"tiene la mejor idea para una mascota de clase","knows the most useless fact and is willing to share it":"sabe el dato más inútil y está dispuesto a compartirlo","has the most unusual skill they are willing to describe":"tiene la habilidad más rara que está dispuesto a describir","most recently talked to someone over sixty":"habló con alguien de más de sesenta años más recientemente","would be quickest to name one thing they are good at":"sería el más rápido en nombrar algo que se le da bien","has the most siblings":"tiene más hermanos","has the fewest siblings":"tiene menos hermanos","is the oldest in their family":"es el mayor de su familia","is the youngest in their family":"es el menor de su familia","has the most cousins":"tiene más primos","has the fewest cousins":"tiene menos primos","has the most pets right now":"tiene más mascotas ahora mismo","has the fewest pets right now":"tiene menos mascotas ahora mismo","has had the most different kinds of pets":"ha tenido más tipos distintos de mascotas","has the pet with the longest name":"tiene la mascota con el nombre más largo","lives with the most people":"vive con más personas","lives farthest from school":"vive más lejos del colegio","lives closest to school":"vive más cerca del colegio","lives closest to the mountains":"vive más cerca de las montañas","has the most people in their house with the same first initial":"tiene más personas en su casa con la misma inicial","has the most letters in their last name":"tiene más letras en su apellido","has the fewest letters in their last name":"tiene menos letras en su apellido","has the longest middle name":"tiene el segundo nombre más largo","has the shortest middle name":"tiene el segundo nombre más corto","has the most middle names":"tiene más nombres de pila","has the grandparent with the shortest name":"tiene el abuelo o la abuela con el nombre más corto","has the grandparent with the longest name":"tiene el abuelo o la abuela con el nombre más largo","has the family member with the longest name":"tiene el familiar con el nombre más largo","has the family member with the shortest name":"tiene el familiar con el nombre más corto","has the pet with the shortest name":"tiene la mascota con el nombre más corto","has the sibling with the longest name":"tiene el hermano o la hermana con el nombre más largo","has the sibling with the shortest name":"tiene el hermano o la hermana con el nombre más corto","has the cousin with the longest name":"tiene el primo o la prima con el nombre más largo","has the longest first name of anyone in their house":"tiene el nombre más largo de todos los de su casa","has the shortest first name of anyone in their house":"tiene el nombre más corto de todos los de su casa","went to the elementary school with the longest name":"fue a la escuela primaria con el nombre más largo","has the teacher this year with the longest last name":"tiene este año al profesor con el apellido más largo","has the teacher this year with the shortest last name":"tiene este año al profesor con el apellido más corto","has the most syllables in their full name":"tiene más sílabas en su nombre completo","has the fewest syllables in their full name":"tiene menos sílabas en su nombre completo","has the most syllables in their first name":"tiene más sílabas en su nombre","has the most repeated letters in their full name":"tiene más letras repetidas en su nombre completo","has the most vowels in a row anywhere in their name":"tiene más vocales seguidas en su nombre","has a first and last name that start closest together in the alphabet":"tiene el nombre y el apellido que empiezan más cerca en el alfabeto","has a first and last name that start farthest apart in the alphabet":"tiene el nombre y el apellido que empiezan más lejos en el alfabeto","has the best-sounding full name said out loud, group decides":"tiene el nombre completo que mejor suena en voz alta, lo decide el grupo","knows the most people who share their first name":"conoce a más personas con su mismo nombre","has a middle name closest to the front of the alphabet":"tiene el segundo nombre más cercano al principio del alfabeto","shares a first initial with the most people in this room":"comparte inicial con más personas de esta aula","has the most nicknames":"tiene más apodos","knows the most about what their own name means":"sabe más sobre lo que significa su propio nombre","knows the most people in this room by full name":"conoce por nombre y apellido a más personas de esta aula","thinks they could name the most people in this room without looking":"cree que podría nombrar a más personas de esta aula sin mirar","has the longest friendship in this room":"tiene la amistad más antigua de esta aula","has moved seats the most this year":"ha cambiado de sitio más veces este año","has the longest walk to their first class":"tiene el camino más largo hasta su primera clase","would bet they could count backward from twenty the fastest":"apostaría a que podría contar hacia atrás desde veinte más rápido","thinks they could name the most colors in ten seconds":"cree que podría nombrar más colores en diez segundos","would bet they could name the most fruits in ten seconds":"apostaría a que podría nombrar más frutas en diez segundos","is most confident they could name the most countries in ten seconds":"está más seguro de que podría nombrar más países en diez segundos","thinks they could name the most animals that start with B":"cree que podría nombrar más animales que empiecen por B","has the strongest opinion about the best sandwich":"tiene la opinión más fuerte sobre el mejor bocadillo","has the strongest opinion about the best board game":"tiene la opinión más fuerte sobre el mejor juego de mesa","has the strongest opinion about the best season":"tiene la opinión más fuerte sobre la mejor estación del año","has the strongest opinion about cilantro":"tiene la opinión más fuerte sobre el cilantro","has the most confident answer for the best pizza topping":"tiene la respuesta más segura sobre el mejor ingrediente de la pizza","would win an argument about the best holiday":"ganaría una discusión sobre la mejor fiesta del año","has the best recommendation for something to watch":"tiene la mejor recomendación de algo para ver","has the best recommendation for something to listen to":"tiene la mejor recomendación de algo para escuchar","most recently made something with their hands":"hizo algo con sus manos más recientemente","most recently fixed something that was broken":"arregló algo roto más recientemente","most recently taught someone how to do something":"le enseñó a alguien a hacer algo más recientemente","most recently apologized and meant it":"pidió perdón de verdad más recientemente","most recently gave someone a real compliment":"le hizo un cumplido sincero a alguien más recientemente","most recently wrote something by hand that was not for school":"escribió a mano algo que no era para clase más recientemente","has the oldest thing they still use every day":"tiene la cosa más antigua que todavía usa a diario","has the best answer for what they would do with an extra hour today":"tiene la mejor respuesta sobre qué haría con una hora extra hoy","has the most things memorized that nobody asked them to memorize":"tiene más cosas memorizadas que nadie le pidió memorizar","would be missed most by a pet if they left for a week":"sería el más echado de menos por una mascota si se fuera una semana","has the best story about how they got their name":"tiene la mejor historia sobre cómo le pusieron su nombre","would most confidently fight a goose and win":"se enfrentaría a un ganso con más confianza y ganaría","would survive longest if this school turned into a maze":"sobreviviría más tiempo si este colegio se convirtiera en un laberinto","has the strongest opinion about pineapple on pizza":"tiene la opinión más fuerte sobre la piña en la pizza","would rather be too hot than too cold":"prefiere pasar demasiado calor que demasiado frío","would rather have hands for feet":"preferiría tener manos en lugar de pies","would win a staring contest, in their own opinion":"ganaría un concurso de miradas, según su propia opinión","would invent the best new ice cream flavor":"inventaría el mejor sabor nuevo de helado","would make the best superhero name out of their own name":"haría el mejor nombre de superhéroe con su propio nombre","would pick the best walk-up song":"elegiría la mejor canción de entrada","would rather fight one horse-sized duck than a hundred duck-sized horses":"preferiría luchar contra un pato del tamaño de un caballo que contra cien caballos del tamaño de un pato","has the best plan for a snow day":"tiene el mejor plan para un día de nieve","would be the best at hiding in this room":"sería el mejor escondiéndose en esta aula","would be first to notice if something in this room moved":"sería el primero en notar si algo de esta aula se moviera","would be best at reading a map with no phone":"sería el mejor leyendo un mapa sin móvil","would most want a dragon as a pet":"sería quien más querría un dragón como mascota","would be the best tour guide for this hallway":"sería el mejor guía turístico de este pasillo","would name the best mascot for this class":"elegiría la mejor mascota para esta clase","would rather explore the ocean than space":"preferiría explorar el océano antes que el espacio","would be most useful on a group project about dinosaurs":"sería el más útil en un trabajo en grupo sobre dinosaurios","thinks they have the best sense of direction":"cree que tiene el mejor sentido de la orientación","would be the calmest if the fire alarm went off right now":"estaría más tranquilo si sonara la alarma de incendios ahora mismo","wins one round of rock-paper-scissors":"gana una ronda de piedra, papel o tijera","says the highest number when everyone says a number from one to ten at the same time":"dice el número más alto cuando todos dicen un número del uno al diez a la vez","throws the most fingers when everyone throws one to five at the same time":"saca más dedos cuando todos sacan de uno a cinco a la vez","the group picks in five seconds, no debate":"lo elige el grupo en cinco segundos, sin discutir","would be the best at explaining this class to an alien":"sería el mejor explicándole esta clase a un extraterrestre","would be the best at surviving one week locked in a library":"sería el mejor sobreviviendo una semana encerrado en una biblioteca","would be the first to find the exit in a corn maze":"sería el primero en encontrar la salida de un laberinto de maíz","would be the best at naming a new color":"sería el mejor poniéndole nombre a un color nuevo","would be the best at inventing a holiday":"sería el mejor inventando una fiesta","would rather have a rewind button than a pause button":"preferiría tener un botón de rebobinar que uno de pausa","would rather be able to fly than turn invisible":"preferiría poder volar que volverse invisible","would win at hide and seek in this building":"ganaría al escondite en este edificio","would be the best at giving directions using no words":"sería el mejor dando indicaciones sin usar palabras","would make the best voice for a cartoon character":"pondría la mejor voz a un personaje de dibujos animados","would be the best at guessing the ending of a movie":"sería el mejor adivinando el final de una película","would last the longest in a completely silent room":"aguantaría más tiempo en una sala en completo silencio","would be the first to laugh in a completely silent room":"sería el primero en reírse en una sala en completo silencio","would be the best at building a fort in here":"sería el mejor construyendo un fuerte aquí dentro","would be the best at packing for a trip in five minutes":"sería el mejor haciendo la maleta en cinco minutos","would be the best at remembering everyone's order at a restaurant":"sería el mejor recordando lo que pidió cada uno en un restaurante","would be the best at naming a band":"sería el mejor poniéndole nombre a un grupo de música","would be the best at coming up with a class motto":"sería el mejor inventando un lema para la clase","would rather face one very angry swan than a swarm of bees":"preferiría enfrentarse a un cisne muy enfadado que a un enjambre de abejas","thinks they could beat a raccoon at a strategy game":"cree que podría ganarle a un mapache en un juego de estrategia","would be the best at explaining a rule they just made up":"sería el mejor explicando una regla que acaba de inventarse","would most likely win a game they had never played before":"tendría más probabilidades de ganar a un juego que nunca ha jugado","would rather live in a treehouse than a submarine":"preferiría vivir en una casa del árbol que en un submarino","would rather have a robot that carries their bag than one that folds laundry":"preferiría un robot que le lleve la mochila antes que uno que doble la ropa","has the best guess for what is directly above this ceiling":"tiene la mejor suposición sobre qué hay justo encima de este techo","would be the best at drawing this room from memory":"sería el mejor dibujando esta aula de memoria","would be the best at describing this class in three words":"sería el mejor describiendo esta clase en tres palabras","would be the most useful in a group stranded on an island":"sería el más útil en un grupo varado en una isla","would notice first if something in this room changed overnight":"sería el primero en notar si algo de esta aula cambiara durante la noche","has the strongest opinion about whether a hot dog is a sandwich":"tiene la opinión más fuerte sobre si un perrito caliente es un bocadillo","has the strongest opinion about the right way to eat pizza":"tiene la opinión más fuerte sobre la forma correcta de comer pizza","would be the best at inventing a new sport":"sería el mejor inventando un deporte nuevo","thinks they could fold the paper airplane that flies farthest":"cree que podría doblar el avión de papel que vuele más lejos","would be the first to volunteer for something without knowing what it is":"sería el primero en apuntarse a algo sin saber qué es","would be the best at keeping a secret about a surprise party":"sería el mejor guardando el secreto de una fiesta sorpresa","would be the most likely to read the instructions first":"sería el más propenso a leer las instrucciones primero","would be the least likely to read the instructions first":"sería el menos propenso a leer las instrucciones primero","would be the best at winning an argument they do not believe in":"sería el mejor ganando una discusión en la que no cree","would be the calmest person to have around in a power outage":"sería la persona más tranquila en un apagón","would bet they could name the most Jesuit saints":"apostaría a que podría nombrar más santos jesuitas","is most confident they could name the most Grad at Grad characteristics":"está más seguro de que podría nombrar más características del Grad at Grad","is wearing the most Regis Jesuit gear right now":"lleva más ropa de Regis Jesuit ahora mismo","has the locker farthest from this room":"tiene la taquilla más lejos de esta aula","has the locker closest to this room":"tiene la taquilla más cerca de esta aula","has their next class farthest from this room":"tiene su próxima clase más lejos de esta aula","has been at Regis Jesuit the longest":"lleva más tiempo en Regis Jesuit","thinks they could name the most buildings on campus":"cree que podría nombrar más edificios del campus","most recently went to a Regis Jesuit game, play, or event":"fue a un partido, obra o evento de Regis Jesuit más recientemente","would bet they could explain men and women for others in one sentence":"apostaría a que podría explicar hombres y mujeres para los demás en una frase","has walked the most stairs in this building today":"ha subido más escaleras en este edificio hoy","knows the most about what the Raider mascot is supposed to be":"sabe más sobre qué se supone que es la mascota Raider","thinks they could name the most clubs at Regis Jesuit":"cree que podría nombrar más clubes de Regis Jesuit","would give the best campus tour to a new student":"daría el mejor recorrido del campus a un estudiante nuevo","most recently did something that fits cura personalis":"hizo algo que encaja con la cura personalis más recientemente","is most confident they could name the most people who work in this building":"está más seguro de que podría nombrar a más personas que trabajan en este edificio","would bet they could name the most Regis Jesuit teams or sports":"apostaría a que podría nombrar más equipos o deportes de Regis Jesuit","thinks they could name the most Regis Jesuit traditions":"cree que podría nombrar más tradiciones de Regis Jesuit","would bet they could name a club nobody else has heard of":"apostaría a que podría nombrar un club del que nadie más ha oído hablar","knows the most about how this school got started":"sabe más sobre cómo se fundó este colegio","is most confident they could name every language taught at Regis Jesuit":"está más seguro de que podría nombrar todos los idiomas que se enseñan en Regis Jesuit","has the shortest walk from here to the main office":"tiene el camino más corto desde aquí hasta la oficina principal","has the longest walk from here to the main office":"tiene el camino más largo desde aquí hasta la oficina principal","would be most useful to a lost visitor":"sería el más útil para un visitante perdido","would bet they could explain what Ignatian means in one sentence":"apostaría a que podría explicar qué significa ignaciano en una frase","thinks they could explain the Examen in one sentence":"cree que podría explicar el Examen en una frase","would bet they could name the most Jesuit schools anywhere":"apostaría a que podría nombrar más colegios jesuitas del mundo","is most confident they could name the most saints, any tradition":"está más seguro de que podría nombrar más santos, de cualquier tradición","thinks they could name every room on this floor":"cree que podría nombrar todas las aulas de este piso","has walked past this room the most times today":"ha pasado por delante de esta aula más veces hoy","knows the most about what happens in the room next door":"sabe más sobre lo que pasa en el aula de al lado","has the best idea for a new Regis Jesuit tradition":"tiene la mejor idea para una nueva tradición de Regis Jesuit","most recently prayed for somebody else":"rezó por otra persona más recientemente","would bet they could name the most things on campus named after a person":"apostaría a que podría nombrar más cosas del campus con nombre de persona","has been to the most different rooms in this building today":"ha estado en más aulas distintas de este edificio hoy"},"fr":{"is wearing the most colors right now":"porte le plus de couleurs en ce moment","is wearing the most red":"porte le plus de rouge","has the most stickers on their laptop or water bottle":"a le plus d'autocollants sur son ordinateur ou sa gourde","has the most water left in their bottle":"a le plus d'eau dans sa gourde","has the least water left in their bottle":"a le moins d'eau dans sa gourde","has the shortest pencil":"a le crayon le plus court","has the longest sleeves":"a les manches les plus longues","has the most pockets in what they are wearing":"a le plus de poches sur ses vêtements","has the most buttons or zippers on what they are wearing":"a le plus de boutons ou de fermetures éclair sur ses vêtements","has the most things on their desk right now":"a le plus de choses sur son bureau en ce moment","has the fewest things on their desk right now":"a le moins de choses sur son bureau en ce moment","sat down last":"s'est assise en dernier","sat down first":"s'est assise en premier","has the most colorful shoes":"a les chaussures les plus colorées","is wearing the most layers":"porte le plus de couches de vêtements","has the most interesting thing in their backpack right now":"a la chose la plus intéressante dans son sac en ce moment","thinks they could name the most things in their backpack without looking":"pense pouvoir nommer le plus de choses dans son sac sans regarder","has the most writing on what they are wearing":"a le plus de texte écrit sur ses vêtements","has the most school colors on right now":"porte le plus de couleurs de l'école en ce moment","opened their laptop most recently":"a ouvert son ordinateur le plus récemment","has the most tabs open right now":"a le plus d'onglets ouverts en ce moment","has the tidiest desk area, honor system":"a l'espace de travail le plus rangé, en toute honnêteté","has the messiest desk area, honor system":"a l'espace de travail le plus en désordre, en toute honnêteté","most recently picked something up":"a ramassé quelque chose le plus récemment","has the most keys on their keychain":"a le plus de clés sur son porte-clés","has the most pens or pencils out on their desk":"a le plus de stylos ou de crayons sortis sur son bureau","has the fewest pens or pencils out on their desk":"a le moins de stylos ou de crayons sortis sur son bureau","has the oldest thing with them right now":"a sur elle la chose la plus ancienne en ce moment","has the newest thing with them right now":"a sur elle la chose la plus récente en ce moment","is wearing the most black":"porte le plus de noir","is wearing the most blue":"porte le plus de bleu","has the most patterns on what they are wearing":"a le plus de motifs sur ses vêtements","has the plainest outfit today, honor system":"a la tenue la plus simple aujourd'hui, en toute honnêteté","has the most things clipped to their bag":"a le plus de choses accrochées à son sac","has the most zippers on their bag":"a le plus de fermetures éclair sur son sac","has the biggest bag with them":"a le plus grand sac avec elle","has the smallest bag with them":"a le plus petit sac avec elle","brought the most stuff to class today":"a apporté le plus d'affaires en classe aujourd'hui","has the most highlighter on a page in front of them":"a le plus de surligneur sur la page devant elle","has the most colors of ink on them":"a le plus de couleurs d'encre sur elle","has their notebook open to the earliest page":"a son cahier ouvert à la page la plus ancienne","has the thickest notebook with them":"a le cahier le plus épais avec elle","has the thinnest notebook with them":"a le cahier le plus fin avec elle","has the most crumpled paper near them":"a le plus de papier froissé près d'elle","has the tallest object on their desk":"a l'objet le plus haut sur son bureau","has the roundest object on their desk":"a l'objet le plus rond sur son bureau","has the loudest zipper":"a la fermeture éclair la plus bruyante","has the quietest shoes when they walk":"a les chaussures les plus silencieuses en marchant","has the most worn-in shoes, honor system":"a les chaussures les plus usées, en toute honnêteté","has the most colors on their bag":"a le plus de couleurs sur son sac","has the most reusable items with them":"a le plus d'objets réutilisables avec elle","has the fullest pocket right now":"a la poche la plus remplie en ce moment","has the most writing in their notebook from today":"a le plus d'écriture dans son cahier aujourd'hui","is wearing something they have owned the longest":"porte quelque chose qu'elle possède depuis le plus longtemps","is closest to the door":"est la plus proche de la porte","is farthest from the door":"est la plus éloignée de la porte","is closest to the board or display":"est la plus proche du tableau ou de l'écran","is farthest from the board or display":"est la plus éloignée du tableau ou de l'écran","is closest to a window":"est la plus proche d'une fenêtre","is farthest from a window":"est la plus éloignée d'une fenêtre","is closest to the teacher's desk":"est la plus proche du bureau du professeur","is farthest from the teacher's desk":"est la plus éloignée du bureau du professeur","is closest to the wall clock":"est la plus proche de l'horloge murale","is closest to the nearest trash can":"est la plus proche de la poubelle la plus proche","is closest to the hallway":"est la plus proche du couloir","is closest to the nearest outlet":"est la plus proche de la prise la plus proche","is closest to a wall":"est la plus proche d'un mur","is closest to the center of the room":"est la plus proche du centre de la salle","is closest to another group":"est la plus proche d'un autre groupe","is farthest from every other group":"est la plus éloignée de tous les autres groupes","would reach the door first in a fire drill":"arriverait la première à la porte lors d'une alerte incendie","is closest to the light switch":"est la plus proche de l'interrupteur","is nearest the biggest thing in the room that is not a person":"est la plus proche de la plus grande chose de la salle qui n'est pas une personne","is facing the front of the room most directly":"fait le plus directement face au devant de la salle","has the best view of the board from where they sit":"a la meilleure vue du tableau depuis sa place","is nearest the middle of their own group":"est la plus proche du centre de son propre groupe","is closest to the front row":"est la plus proche du premier rang","is closest to the back row":"est la plus proche du dernier rang","is closest to a corner of the room":"est la plus proche d'un coin de la salle","is farthest from any corner":"est la plus éloignée de tous les coins","would be first to reach the board":"arriverait la première au tableau","would be last to reach the board":"arriverait la dernière au tableau","has the shortest walk to the teacher":"a le chemin le plus court jusqu'au professeur","has the longest walk to the teacher":"a le chemin le plus long jusqu'au professeur","has the most people between them and the door":"a le plus de personnes entre sa place et la porte","has the fewest people between them and the door":"a le moins de personnes entre sa place et la porte","is closest to north, best guess":"est la plus proche du nord, à vue de nez","is closest to where the sun comes in":"est la plus proche de l'endroit où entre le soleil","is nearest the most empty space in the room":"est la plus proche du plus grand espace vide de la salle","would be the first person a visitor sees walking in":"serait la première personne qu'un visiteur verrait en entrant","would be the last person a visitor sees walking in":"serait la dernière personne qu'un visiteur verrait en entrant","is closest to the tallest piece of furniture":"est la plus proche du meuble le plus haut","is nearest the most writing on a wall":"est la plus proche de l'endroit du mur où il y a le plus d'écrit","is closest to where the teacher stands most":"est la plus proche de l'endroit où le professeur se tient le plus souvent","moved their chair most recently":"a bougé sa chaise le plus récemment","is closest to the room number on the door":"est la plus proche du numéro de salle sur la porte","is second-farthest from the door":"est la deuxième plus éloignée de la porte","is happiest with the seat they are sitting in":"est la plus contente de la place où elle est assise","is closest to the quietest part of the room":"est la plus proche de l'endroit le plus calme de la salle","could touch the most walls without standing up":"pourrait toucher le plus de murs sans se lever","is closest to the middle of the whole class":"est la plus proche du centre de toute la classe","has the birthday closest to today's date, any year":"a l'anniversaire le plus proche de la date d'aujourd'hui, toutes années confondues","has the birthday farthest from today's date":"a l'anniversaire le plus éloigné de la date d'aujourd'hui","has the next birthday coming up":"a le prochain anniversaire","had the most recent birthday":"a eu l'anniversaire le plus récent","was born on the earliest day of the month":"est née le jour le plus tôt dans le mois","was born on the latest day of the month":"est née le jour le plus tard dans le mois","has the birthday closest to a holiday":"a l'anniversaire le plus proche d'une fête","has the birthday closest to the first day of school":"a l'anniversaire le plus proche de la rentrée","woke up earliest today":"s'est réveillée le plus tôt aujourd'hui","woke up latest today":"s'est réveillée le plus tard aujourd'hui","has been awake the longest right now":"est réveillée depuis le plus longtemps en ce moment","hit snooze the most times this morning":"a repoussé son réveil le plus de fois ce matin","drank water most recently":"a bu de l'eau le plus récemment","has been in this building the longest today":"est dans ce bâtiment depuis le plus longtemps aujourd'hui","has the most classes left today":"a le plus de cours restants aujourd'hui","has the fewest classes left today":"a le moins de cours restants aujourd'hui","can guess closest to how many minutes until the bell":"devine au plus près combien de minutes il reste avant la sonnerie","got the most sleep last night":"a le plus dormi la nuit dernière","got the least sleep last night":"a le moins dormi la nuit dernière","went to bed earliest last night":"s'est couchée le plus tôt hier soir","went to bed latest last night":"s'est couchée le plus tard hier soir","has the birthday closest to Halloween":"a l'anniversaire le plus proche d'Halloween","has the birthday closest to New Year's Day":"a l'anniversaire le plus proche du Nouvel An","has the birthday closest to the last day of school":"a l'anniversaire le plus proche du dernier jour d'école","has the birthday in the month that comes first alphabetically":"a son anniversaire dans le mois qui vient en premier par ordre alphabétique","has the birthday closest to the first of the month":"a l'anniversaire le plus proche du premier du mois","has the most days until their birthday":"a le plus de jours avant son anniversaire","has the earliest first class of the day":"a le premier cours le plus tôt de la journée","has the latest last class of the day":"a le dernier cours le plus tard de la journée","got to school earliest today":"est arrivée à l'école le plus tôt aujourd'hui","got to school latest today":"est arrivée à l'école le plus tard aujourd'hui","had the longest commute this morning":"a eu le trajet le plus long ce matin","had the shortest commute this morning":"a eu le trajet le plus court ce matin","spent the most time getting here today":"a mis le plus de temps à venir aujourd'hui","passed the most stoplights on the way in":"a passé le plus de feux rouges en venant","left home earliest this morning":"est partie de chez elle le plus tôt ce matin","has the longest wait until their next break":"a la plus longue attente avant sa prochaine pause","has the shortest wait until their next break":"a la plus courte attente avant sa prochaine pause","has been in this room the longest today":"est dans cette salle depuis le plus longtemps aujourd'hui","has been awake the fewest hours right now":"est réveillée depuis le moins d'heures en ce moment","checked a calendar most recently":"a regardé un calendrier le plus récemment","has the most on their schedule tomorrow":"a le plus de choses prévues demain","has the least on their schedule tomorrow":"a le moins de choses prévues demain","has the longest streak of doing something every single day":"fait la même chose tous les jours depuis le plus longtemps","can guess closest to how many minutes this class has been going":"devine au plus près depuis combien de minutes ce cours a commencé","can guess closest to today's date without checking":"devine au plus près la date d'aujourd'hui sans vérifier","has the most letters in their first name":"a le plus de lettres dans son prénom","has the fewest letters in their first name":"a le moins de lettres dans son prénom","has the most letters in their full name":"a le plus de lettres dans son nom complet","has the most vowels in their name":"a le plus de voyelles dans son nom","has a first initial closest to the letter R":"a l'initiale la plus proche de la lettre R","has a last name closest to the front of the alphabet":"a le nom de famille le plus proche du début de l'alphabet","has a last name closest to the end of the alphabet":"a le nom de famille le plus proche de la fin de l'alphabet","can say hello in the most languages":"sait dire bonjour dans le plus de langues","knows the most words in a language they do not speak fluently":"connaît le plus de mots dans une langue qu'elle ne parle pas couramment","most recently learned something that surprised them":"a appris quelque chose de surprenant le plus récemment","most recently helped someone without being asked":"a aidé quelqu'un sans qu'on le lui demande le plus récemment","most recently said thank you and meant it":"a dit merci sincèrement le plus récemment","most recently finished a book, show, or game":"a fini un livre, une série ou un jeu le plus récemment","has been listening to the same song on repeat most recently":"écoute la même chanson en boucle depuis le plus récemment","has the strongest opinion about the best cereal":"a l'avis le plus tranché sur les meilleures céréales","has the most specific favorite snack":"a le goûter préféré le plus précis","is most confident they could name the most teachers in this building":"est la plus sûre de pouvoir nommer le plus de professeurs de ce bâtiment","has the longest-running habit or routine":"a l'habitude ou la routine la plus ancienne","most recently tried something for the first time":"a essayé quelque chose pour la première fois le plus récemment","has the best story about the last thing that made them laugh":"a la meilleure histoire sur la dernière chose qui l'a fait rire","would give the most creative name to a boat":"donnerait le nom le plus créatif à un bateau","has the best idea for a class pet":"a la meilleure idée de mascotte pour la classe","knows the most useless fact and is willing to share it":"connaît l'anecdote la plus inutile et accepte de la partager","has the most unusual skill they are willing to describe":"a le talent le plus inhabituel qu'elle accepte de décrire","most recently talked to someone over sixty":"a parlé à quelqu'un de plus de soixante ans le plus récemment","would be quickest to name one thing they are good at":"serait la plus rapide à nommer une chose qu'elle fait bien","has the most siblings":"a le plus de frères et sœurs","has the fewest siblings":"a le moins de frères et sœurs","is the oldest in their family":"est l'aînée de sa famille","is the youngest in their family":"est la plus jeune de sa famille","has the most cousins":"a le plus de cousins","has the fewest cousins":"a le moins de cousins","has the most pets right now":"a le plus d'animaux de compagnie en ce moment","has the fewest pets right now":"a le moins d'animaux de compagnie en ce moment","has had the most different kinds of pets":"a eu le plus d'espèces différentes d'animaux de compagnie","has the pet with the longest name":"a l'animal de compagnie au nom le plus long","lives with the most people":"vit avec le plus de personnes","lives farthest from school":"habite le plus loin de l'école","lives closest to school":"habite le plus près de l'école","lives closest to the mountains":"habite le plus près des montagnes","has the most people in their house with the same first initial":"a le plus de personnes chez elle avec la même initiale","has the most letters in their last name":"a le plus de lettres dans son nom de famille","has the fewest letters in their last name":"a le moins de lettres dans son nom de famille","has the longest middle name":"a le deuxième prénom le plus long","has the shortest middle name":"a le deuxième prénom le plus court","has the most middle names":"a le plus de prénoms","has the grandparent with the shortest name":"a le grand-parent au prénom le plus court","has the grandparent with the longest name":"a le grand-parent au prénom le plus long","has the family member with the longest name":"a le membre de sa famille au prénom le plus long","has the family member with the shortest name":"a le membre de sa famille au prénom le plus court","has the pet with the shortest name":"a l'animal de compagnie au nom le plus court","has the sibling with the longest name":"a le frère ou la sœur au prénom le plus long","has the sibling with the shortest name":"a le frère ou la sœur au prénom le plus court","has the cousin with the longest name":"a le cousin ou la cousine au prénom le plus long","has the longest first name of anyone in their house":"a le prénom le plus long de toute sa maison","has the shortest first name of anyone in their house":"a le prénom le plus court de toute sa maison","went to the elementary school with the longest name":"est allée à l'école primaire au nom le plus long","has the teacher this year with the longest last name":"a cette année le professeur au nom de famille le plus long","has the teacher this year with the shortest last name":"a cette année le professeur au nom de famille le plus court","has the most syllables in their full name":"a le plus de syllabes dans son nom complet","has the fewest syllables in their full name":"a le moins de syllabes dans son nom complet","has the most syllables in their first name":"a le plus de syllabes dans son prénom","has the most repeated letters in their full name":"a le plus de lettres répétées dans son nom complet","has the most vowels in a row anywhere in their name":"a le plus de voyelles à la suite dans son nom","has a first and last name that start closest together in the alphabet":"a un prénom et un nom qui commencent le plus près l'un de l'autre dans l'alphabet","has a first and last name that start farthest apart in the alphabet":"a un prénom et un nom qui commencent le plus loin l'un de l'autre dans l'alphabet","has the best-sounding full name said out loud, group decides":"a le nom complet qui sonne le mieux à voix haute, le groupe décide","knows the most people who share their first name":"connaît le plus de personnes qui portent son prénom","has a middle name closest to the front of the alphabet":"a le deuxième prénom le plus proche du début de l'alphabet","shares a first initial with the most people in this room":"partage son initiale avec le plus de personnes de cette salle","has the most nicknames":"a le plus de surnoms","knows the most about what their own name means":"en sait le plus sur la signification de son propre prénom","knows the most people in this room by full name":"connaît le plus de personnes de cette salle par prénom et nom","thinks they could name the most people in this room without looking":"pense pouvoir nommer le plus de personnes de cette salle sans regarder","has the longest friendship in this room":"a l'amitié la plus ancienne de cette salle","has moved seats the most this year":"a changé de place le plus de fois cette année","has the longest walk to their first class":"a le chemin le plus long jusqu'à son premier cours","would bet they could count backward from twenty the fastest":"parierait pouvoir compter à rebours depuis vingt le plus vite","thinks they could name the most colors in ten seconds":"pense pouvoir nommer le plus de couleurs en dix secondes","would bet they could name the most fruits in ten seconds":"parierait pouvoir nommer le plus de fruits en dix secondes","is most confident they could name the most countries in ten seconds":"est la plus sûre de pouvoir nommer le plus de pays en dix secondes","thinks they could name the most animals that start with B":"pense pouvoir nommer le plus d'animaux commençant par B","has the strongest opinion about the best sandwich":"a l'avis le plus tranché sur le meilleur sandwich","has the strongest opinion about the best board game":"a l'avis le plus tranché sur le meilleur jeu de société","has the strongest opinion about the best season":"a l'avis le plus tranché sur la meilleure saison","has the strongest opinion about cilantro":"a l'avis le plus tranché sur la coriandre","has the most confident answer for the best pizza topping":"a la réponse la plus assurée sur la meilleure garniture de pizza","would win an argument about the best holiday":"gagnerait une discussion sur la meilleure fête de l'année","has the best recommendation for something to watch":"a la meilleure recommandation de quelque chose à regarder","has the best recommendation for something to listen to":"a la meilleure recommandation de quelque chose à écouter","most recently made something with their hands":"a fabriqué quelque chose de ses mains le plus récemment","most recently fixed something that was broken":"a réparé quelque chose de cassé le plus récemment","most recently taught someone how to do something":"a appris à quelqu'un à faire quelque chose le plus récemment","most recently apologized and meant it":"s'est excusée sincèrement le plus récemment","most recently gave someone a real compliment":"a fait un vrai compliment à quelqu'un le plus récemment","most recently wrote something by hand that was not for school":"a écrit à la main quelque chose qui n'était pas pour l'école le plus récemment","has the oldest thing they still use every day":"a la chose la plus ancienne qu'elle utilise encore tous les jours","has the best answer for what they would do with an extra hour today":"a la meilleure réponse à ce qu'elle ferait d'une heure en plus aujourd'hui","has the most things memorized that nobody asked them to memorize":"a le plus de choses apprises par cœur que personne ne lui a demandé d'apprendre","would be missed most by a pet if they left for a week":"manquerait le plus à un animal de compagnie si elle partait une semaine","has the best story about how they got their name":"a la meilleure histoire sur la façon dont elle a reçu son prénom","would most confidently fight a goose and win":"affronterait une oie avec le plus d'assurance et gagnerait","would survive longest if this school turned into a maze":"survivrait le plus longtemps si cette école devenait un labyrinthe","has the strongest opinion about pineapple on pizza":"a l'avis le plus tranché sur l'ananas sur la pizza","would rather be too hot than too cold":"préfère avoir trop chaud que trop froid","would rather have hands for feet":"préférerait avoir des mains à la place des pieds","would win a staring contest, in their own opinion":"gagnerait un concours de regard, selon elle","would invent the best new ice cream flavor":"inventerait le meilleur nouveau parfum de glace","would make the best superhero name out of their own name":"ferait le meilleur nom de super-héros avec son propre nom","would pick the best walk-up song":"choisirait la meilleure musique d'entrée","would rather fight one horse-sized duck than a hundred duck-sized horses":"préférerait affronter un canard de la taille d'un cheval plutôt que cent chevaux de la taille d'un canard","has the best plan for a snow day":"a le meilleur programme pour un jour de neige","would be the best at hiding in this room":"serait la meilleure pour se cacher dans cette salle","would be first to notice if something in this room moved":"serait la première à remarquer si quelque chose bougeait dans cette salle","would be best at reading a map with no phone":"serait la meilleure pour lire une carte sans téléphone","would most want a dragon as a pet":"voudrait le plus un dragon comme animal de compagnie","would be the best tour guide for this hallway":"serait la meilleure guide de ce couloir","would name the best mascot for this class":"trouverait la meilleure mascotte pour cette classe","would rather explore the ocean than space":"préférerait explorer l'océan plutôt que l'espace","would be most useful on a group project about dinosaurs":"serait la plus utile dans un exposé de groupe sur les dinosaures","thinks they have the best sense of direction":"pense avoir le meilleur sens de l'orientation","would be the calmest if the fire alarm went off right now":"serait la plus calme si l'alarme incendie sonnait maintenant","wins one round of rock-paper-scissors":"gagne une manche de pierre-papier-ciseaux","says the highest number when everyone says a number from one to ten at the same time":"dit le chiffre le plus élevé quand tout le monde dit un chiffre de un à dix en même temps","throws the most fingers when everyone throws one to five at the same time":"montre le plus de doigts quand tout le monde en montre de un à cinq en même temps","the group picks in five seconds, no debate":"est choisie par le groupe en cinq secondes, sans débat","would be the best at explaining this class to an alien":"serait la meilleure pour expliquer ce cours à un extraterrestre","would be the best at surviving one week locked in a library":"serait la meilleure pour survivre une semaine enfermée dans une bibliothèque","would be the first to find the exit in a corn maze":"serait la première à trouver la sortie d'un labyrinthe de maïs","would be the best at naming a new color":"serait la meilleure pour nommer une nouvelle couleur","would be the best at inventing a holiday":"serait la meilleure pour inventer une fête","would rather have a rewind button than a pause button":"préférerait avoir un bouton retour en arrière plutôt qu'un bouton pause","would rather be able to fly than turn invisible":"préférerait pouvoir voler plutôt que devenir invisible","would win at hide and seek in this building":"gagnerait à cache-cache dans ce bâtiment","would be the best at giving directions using no words":"serait la meilleure pour indiquer un chemin sans utiliser de mots","would make the best voice for a cartoon character":"ferait la meilleure voix pour un personnage de dessin animé","would be the best at guessing the ending of a movie":"serait la meilleure pour deviner la fin d'un film","would last the longest in a completely silent room":"tiendrait le plus longtemps dans une salle en silence complet","would be the first to laugh in a completely silent room":"serait la première à rire dans une salle en silence complet","would be the best at building a fort in here":"serait la meilleure pour construire une cabane ici","would be the best at packing for a trip in five minutes":"serait la meilleure pour faire sa valise en cinq minutes","would be the best at remembering everyone's order at a restaurant":"serait la meilleure pour retenir la commande de tout le monde au restaurant","would be the best at naming a band":"serait la meilleure pour trouver un nom de groupe de musique","would be the best at coming up with a class motto":"serait la meilleure pour inventer une devise de classe","would rather face one very angry swan than a swarm of bees":"préférerait affronter un cygne très en colère plutôt qu'un essaim d'abeilles","thinks they could beat a raccoon at a strategy game":"pense pouvoir battre un raton laveur à un jeu de stratégie","would be the best at explaining a rule they just made up":"serait la meilleure pour expliquer une règle qu'elle vient d'inventer","would most likely win a game they had never played before":"aurait le plus de chances de gagner à un jeu auquel elle n'a jamais joué","would rather live in a treehouse than a submarine":"préférerait vivre dans une cabane dans un arbre plutôt que dans un sous-marin","would rather have a robot that carries their bag than one that folds laundry":"préférerait un robot qui porte son sac plutôt qu'un qui plie le linge","has the best guess for what is directly above this ceiling":"a la meilleure idée de ce qu'il y a juste au-dessus de ce plafond","would be the best at drawing this room from memory":"serait la meilleure pour dessiner cette salle de mémoire","would be the best at describing this class in three words":"serait la meilleure pour décrire ce cours en trois mots","would be the most useful in a group stranded on an island":"serait la plus utile dans un groupe échoué sur une île","would notice first if something in this room changed overnight":"remarquerait la première si quelque chose changeait dans cette salle pendant la nuit","has the strongest opinion about whether a hot dog is a sandwich":"a l'avis le plus tranché sur la question de savoir si un hot-dog est un sandwich","has the strongest opinion about the right way to eat pizza":"a l'avis le plus tranché sur la bonne façon de manger une pizza","would be the best at inventing a new sport":"serait la meilleure pour inventer un nouveau sport","thinks they could fold the paper airplane that flies farthest":"pense pouvoir plier l'avion en papier qui vole le plus loin","would be the first to volunteer for something without knowing what it is":"serait la première à se porter volontaire sans savoir pour quoi","would be the best at keeping a secret about a surprise party":"serait la meilleure pour garder le secret d'une fête surprise","would be the most likely to read the instructions first":"serait la plus susceptible de lire la notice en premier","would be the least likely to read the instructions first":"serait la moins susceptible de lire la notice en premier","would be the best at winning an argument they do not believe in":"serait la meilleure pour gagner un débat auquel elle ne croit pas","would be the calmest person to have around in a power outage":"serait la personne la plus calme à avoir près de soi pendant une coupure de courant","would bet they could name the most Jesuit saints":"parierait pouvoir nommer le plus de saints jésuites","is most confident they could name the most Grad at Grad characteristics":"est la plus sûre de pouvoir nommer le plus de caractéristiques du Grad at Grad","is wearing the most Regis Jesuit gear right now":"porte le plus de vêtements Regis Jesuit en ce moment","has the locker farthest from this room":"a le casier le plus éloigné de cette salle","has the locker closest to this room":"a le casier le plus proche de cette salle","has their next class farthest from this room":"a son prochain cours le plus loin de cette salle","has been at Regis Jesuit the longest":"est à Regis Jesuit depuis le plus longtemps","thinks they could name the most buildings on campus":"pense pouvoir nommer le plus de bâtiments du campus","most recently went to a Regis Jesuit game, play, or event":"est allée à un match, une pièce ou un événement de Regis Jesuit le plus récemment","would bet they could explain men and women for others in one sentence":"parierait pouvoir expliquer des hommes et des femmes pour les autres en une phrase","has walked the most stairs in this building today":"a monté le plus de marches dans ce bâtiment aujourd'hui","knows the most about what the Raider mascot is supposed to be":"en sait le plus sur ce que la mascotte Raider est censée être","thinks they could name the most clubs at Regis Jesuit":"pense pouvoir nommer le plus de clubs de Regis Jesuit","would give the best campus tour to a new student":"ferait la meilleure visite du campus à un nouvel élève","most recently did something that fits cura personalis":"a fait quelque chose qui correspond à la cura personalis le plus récemment","is most confident they could name the most people who work in this building":"est la plus sûre de pouvoir nommer le plus de personnes qui travaillent dans ce bâtiment","would bet they could name the most Regis Jesuit teams or sports":"parierait pouvoir nommer le plus d'équipes ou de sports de Regis Jesuit","thinks they could name the most Regis Jesuit traditions":"pense pouvoir nommer le plus de traditions de Regis Jesuit","would bet they could name a club nobody else has heard of":"parierait pouvoir nommer un club dont personne d'autre n'a entendu parler","knows the most about how this school got started":"en sait le plus sur la création de cette école","is most confident they could name every language taught at Regis Jesuit":"est la plus sûre de pouvoir nommer toutes les langues enseignées à Regis Jesuit","has the shortest walk from here to the main office":"a le chemin le plus court d'ici jusqu'au secrétariat","has the longest walk from here to the main office":"a le chemin le plus long d'ici jusqu'au secrétariat","would be most useful to a lost visitor":"serait la plus utile à un visiteur perdu","would bet they could explain what Ignatian means in one sentence":"parierait pouvoir expliquer ce que veut dire ignatien en une phrase","thinks they could explain the Examen in one sentence":"pense pouvoir expliquer l'Examen en une phrase","would bet they could name the most Jesuit schools anywhere":"parierait pouvoir nommer le plus d'écoles jésuites au monde","is most confident they could name the most saints, any tradition":"est la plus sûre de pouvoir nommer le plus de saints, toutes traditions confondues","thinks they could name every room on this floor":"pense pouvoir nommer toutes les salles de cet étage","has walked past this room the most times today":"est passée devant cette salle le plus de fois aujourd'hui","knows the most about what happens in the room next door":"en sait le plus sur ce qui se passe dans la salle d'à côté","has the best idea for a new Regis Jesuit tradition":"a la meilleure idée de nouvelle tradition pour Regis Jesuit","most recently prayed for somebody else":"a prié pour quelqu'un d'autre le plus récemment","would bet they could name the most things on campus named after a person":"parierait pouvoir nommer le plus de choses du campus qui portent le nom d'une personne","has been to the most different rooms in this building today":"est allée dans le plus de salles différentes de ce bâtiment aujourd'hui"}};
+var TRG={"es":{"Line up by birthday, January through December.":"Ponte en fila por cumpleaños, de enero a diciembre.","Line up by the day of the month you were born.":"Ponte en fila por el día del mes en que naciste.","Line up by whose birthday is closest to today.":"Ponte en fila según quién tiene el cumpleaños más cerca de hoy.","Line up by how many letters are in your first name.":"Ponte en fila por cuántas letras tiene tu nombre.","Line up by how many letters are in your last name.":"Ponte en fila por cuántas letras tiene tu apellido.","Line up by how many syllables are in your full name.":"Ponte en fila por cuántas sílabas tiene tu nombre completo.","Line up alphabetically by middle name.":"Ponte en fila por orden alfabético de tu segundo nombre.","Line up by how many letters are in your grandparent's name.":"Ponte en fila por cuántas letras tiene el nombre de tu abuelo o abuela.","Line up by how far you live from school.":"Ponte en fila por lo lejos que vives del colegio.","Line up by how long your commute was this morning.":"Ponte en fila por lo largo que fue tu trayecto esta mañana.","Line up by how early you woke up today.":"Ponte en fila por lo temprano que te despertaste hoy.","Line up by how much sleep you got last night.":"Ponte en fila por cuánto dormiste anoche.","Line up by how many people live in your house.":"Ponte en fila por cuántas personas viven en tu casa.","Line up by how many pets you have right now.":"Ponte en fila por cuántas mascotas tienes ahora.","Line up by how many cousins you have.":"Ponte en fila por cuántos primos tienes.","Line up by how many years you have been at Regis Jesuit.":"Ponte en fila por cuántos años llevas en Regis Jesuit.","Line up by how many different schools you have attended.":"Ponte en fila por a cuántos colegios distintos has ido.","Line up by how many languages you can say hello in.":"Ponte en fila por en cuántos idiomas sabes decir hola.","Line up by how many nicknames you have.":"Ponte en fila por cuántos apodos tienes.","Line up by how far your locker is from this room.":"Ponte en fila por lo lejos que está tu taquilla de esta aula.","Line up by how many books, shows, or games you finished this month.":"Ponte en fila por cuántos libros, series o juegos terminaste este mes.","Line up by how long it takes you to get ready in the morning.":"Ponte en fila por cuánto tardas en arreglarte por la mañana.","Find everyone born in the same month as you.":"Busca a todos los que nacieron en el mismo mes que tú.","Find everyone born in the same season as you.":"Busca a todos los que nacieron en la misma estación que tú.","Find everyone whose birthday falls in the same half of the year as yours.":"Busca a todos los que cumplen años en la misma mitad del año que tú.","Find everyone with the same number of siblings as you.":"Busca a todos los que tienen el mismo número de hermanos que tú.","Find everyone with the same number of pets as you.":"Busca a todos los que tienen el mismo número de mascotas que tú.","Find everyone with the same number of people in their house as you.":"Busca a todos los que viven con el mismo número de personas que tú.","Find everyone whose first name has the same number of letters as yours.":"Busca a todos los que tienen el mismo número de letras en su nombre que tú.","Find everyone whose first name starts with a letter in the same third of the alphabet as yours.":"Busca a todos los que tienen la inicial en el mismo tercio del alfabeto que tú.","Find everyone who woke up within an hour of when you did today.":"Busca a todos los que se despertaron a menos de una hora de ti hoy.","Find everyone who gets to school the same way you do.":"Busca a todos los que llegan al colegio de la misma forma que tú.","Find two people who agree with you about pineapple on pizza.":"Busca a dos personas que opinen como tú sobre la piña en la pizza.","Find two people who would rather be too hot than too cold, or too cold than too hot.":"Busca a dos personas que prefieran, como tú, pasar calor o pasar frío.","Find two people who have the same favorite meal of the day as you.":"Busca a dos personas cuya comida favorita del día sea la misma que la tuya.","Find two people who share a hobby with you.":"Busca a dos personas que compartan una afición contigo.","Find two people who like the same kind of music you do.":"Busca a dos personas a las que les guste el mismo tipo de música que a ti.","Find two people who would pick the same superpower as you.":"Busca a dos personas que elegirían el mismo superpoder que tú.","Find two people who agree with you about the best season.":"Busca a dos personas que opinen como tú sobre la mejor estación del año.","Find two people who had the same first chore or first job as you.":"Busca a dos personas que tuvieron la misma primera tarea o primer trabajo que tú.","Find two people whose ideal Saturday sounds like yours.":"Busca a dos personas cuyo sábado ideal se parezca al tuyo.","Find two people who would rather explore the ocean than space, or the other way around.":"Busca a dos personas que prefieran, como tú, el océano o el espacio.","Find two people who are in a class you are in that nobody else here has.":"Busca a dos personas que compartan contigo una clase que nadie más de aquí tiene.","Find two people who would pick the same thing as you: mountains, city, or beach.":"Busca a dos personas que elijan lo mismo que tú: montaña, ciudad o playa."},"fr":{"Line up by birthday, January through December.":"Mettez-vous en file par date d'anniversaire, de janvier à décembre.","Line up by the day of the month you were born.":"Mettez-vous en file par le jour du mois de votre naissance.","Line up by whose birthday is closest to today.":"Mettez-vous en file selon qui a l'anniversaire le plus proche d'aujourd'hui.","Line up by how many letters are in your first name.":"Mettez-vous en file par le nombre de lettres de votre prénom.","Line up by how many letters are in your last name.":"Mettez-vous en file par le nombre de lettres de votre nom de famille.","Line up by how many syllables are in your full name.":"Mettez-vous en file par le nombre de syllabes de votre nom complet.","Line up alphabetically by middle name.":"Mettez-vous en file par ordre alphabétique de votre deuxième prénom.","Line up by how many letters are in your grandparent's name.":"Mettez-vous en file par le nombre de lettres du prénom de votre grand-parent.","Line up by how far you live from school.":"Mettez-vous en file selon la distance entre chez vous et l'école.","Line up by how long your commute was this morning.":"Mettez-vous en file selon la durée de votre trajet ce matin.","Line up by how early you woke up today.":"Mettez-vous en file selon l'heure à laquelle vous vous êtes réveillé aujourd'hui.","Line up by how much sleep you got last night.":"Mettez-vous en file selon le temps que vous avez dormi la nuit dernière.","Line up by how many people live in your house.":"Mettez-vous en file par le nombre de personnes qui vivent chez vous.","Line up by how many pets you have right now.":"Mettez-vous en file par le nombre d'animaux de compagnie que vous avez.","Line up by how many cousins you have.":"Mettez-vous en file par le nombre de cousins que vous avez.","Line up by how many years you have been at Regis Jesuit.":"Mettez-vous en file par le nombre d'années passées à Regis Jesuit.","Line up by how many different schools you have attended.":"Mettez-vous en file par le nombre d'écoles différentes que vous avez fréquentées.","Line up by how many languages you can say hello in.":"Mettez-vous en file par le nombre de langues dans lesquelles vous savez dire bonjour.","Line up by how many nicknames you have.":"Mettez-vous en file par le nombre de surnoms que vous avez.","Line up by how far your locker is from this room.":"Mettez-vous en file selon la distance entre votre casier et cette salle.","Line up by how many books, shows, or games you finished this month.":"Mettez-vous en file par le nombre de livres, séries ou jeux terminés ce mois-ci.","Line up by how long it takes you to get ready in the morning.":"Mettez-vous en file selon le temps que vous mettez à vous préparer le matin.","Find everyone born in the same month as you.":"Trouvez tous ceux qui sont nés le même mois que vous.","Find everyone born in the same season as you.":"Trouvez tous ceux qui sont nés à la même saison que vous.","Find everyone whose birthday falls in the same half of the year as yours.":"Trouvez tous ceux dont l'anniversaire tombe dans la même moitié de l'année que le vôtre.","Find everyone with the same number of siblings as you.":"Trouvez tous ceux qui ont le même nombre de frères et sœurs que vous.","Find everyone with the same number of pets as you.":"Trouvez tous ceux qui ont le même nombre d'animaux de compagnie que vous.","Find everyone with the same number of people in their house as you.":"Trouvez tous ceux qui vivent avec le même nombre de personnes que vous.","Find everyone whose first name has the same number of letters as yours.":"Trouvez tous ceux dont le prénom a le même nombre de lettres que le vôtre.","Find everyone whose first name starts with a letter in the same third of the alphabet as yours.":"Trouvez tous ceux dont l'initiale est dans le même tiers de l'alphabet que la vôtre.","Find everyone who woke up within an hour of when you did today.":"Trouvez tous ceux qui se sont réveillés à moins d'une heure de vous aujourd'hui.","Find everyone who gets to school the same way you do.":"Trouvez tous ceux qui viennent à l'école de la même façon que vous.","Find two people who agree with you about pineapple on pizza.":"Trouvez deux personnes qui pensent comme vous sur l'ananas sur la pizza.","Find two people who would rather be too hot than too cold, or too cold than too hot.":"Trouvez deux personnes qui préfèrent comme vous avoir trop chaud ou trop froid.","Find two people who have the same favorite meal of the day as you.":"Trouvez deux personnes dont le repas préféré de la journée est le même que le vôtre.","Find two people who share a hobby with you.":"Trouvez deux personnes qui partagent un loisir avec vous.","Find two people who like the same kind of music you do.":"Trouvez deux personnes qui aiment le même genre de musique que vous.","Find two people who would pick the same superpower as you.":"Trouvez deux personnes qui choisiraient le même super-pouvoir que vous.","Find two people who agree with you about the best season.":"Trouvez deux personnes qui pensent comme vous sur la meilleure saison.","Find two people who had the same first chore or first job as you.":"Trouvez deux personnes qui ont eu la même première tâche ou le même premier travail que vous.","Find two people whose ideal Saturday sounds like yours.":"Trouvez deux personnes dont le samedi idéal ressemble au vôtre.","Find two people who would rather explore the ocean than space, or the other way around.":"Trouvez deux personnes qui préfèrent comme vous l'océan ou l'espace.","Find two people who are in a class you are in that nobody else here has.":"Trouvez deux personnes qui suivent avec vous un cours que personne d'autre ici n'a.","Find two people who would pick the same thing as you: mountains, city, or beach.":"Trouvez deux personnes qui choisiraient la même chose que vous : montagne, ville ou plage."}};
+var I18N={"es":{"cat":{"now":"Ahora mismo","space":"Dónde estás","cal":"Calendario y reloj","know":"Conocerse","fun":"Solo por diversión","rj":"Regis Jesuit"},"deckChip":{"quick":"⚡ Rápidas","talk":"💬 Conversación","all":"✨ Todas"},"deckSum":{"quick":"cartas rápidas","talk":"cartas de conversación","all":"toda la baraja"},"grp":{"g":"👥 Grupos","p":"👫 Parejas","mk":"🔀 Formar grupos"},"grpSum":{"g":"Grupos","p":"Parejas"},"moveChip":{"ans":"🙋 Responde","share":"🗣️ Informa","explain":"💭 Explica","read":"📖 Lee en voz alta","write":"✍️ Anota","first":"1️⃣ Empieza","last":"🔚 Va el último","not":"🙅 No participa"},"moveSum":{"ans":"responde por el grupo","share":"informa a la clase","explain":"explica lo pensado","read":"lo lee en voz alta","write":"anota la respuesta","first":"empieza","last":"va el último","not":"no participa esta vez"},"dir":{"left":"izquierda","right":"derecha"},"act":{"ans":{"g":["La persona que "," |responde| por el grupo."],"p":["La persona que "," |responde| primero. Después su pareja."]},"share":{"g":["La persona que "," |informa| a toda la clase."],"p":["La persona que "," |informa| por la pareja."]},"explain":{"g":["La persona que "," |explica| lo que ha pensado el grupo."],"p":["La persona que "," |explica| primero. Después su pareja."]},"read":{"g":["La persona que "," |lo lee en voz alta| al grupo."],"p":["La persona que "," |lo lee en voz alta| para la pareja."]},"write":{"g":["La persona que "," |anota| lo que decida el grupo."],"p":["La persona que "," |lo anota| para la pareja."]},"first":{"g":["La persona que "," |empieza|. Después seguid hacia la {D}."],"p":["La persona que "," |empieza|. Después cambiad."]},"last":{"g":["La persona que "," |va la última|. Empezad por quien esté a su {D} y seguid."],"p":["La persona que "," |va la segunda|. Empieza su pareja."]},"not":{"g":["La persona que "," |no participa esta vez|. Responden los demás."],"p":["La persona que "," |no participa esta vez|. Responde su pareja."]}},"ties":["¿Sigue habiendo empate? Una ronda de piedra, papel o tijera.","¿Sigue habiendo empate? Respondéis los dos.","¿Sigue habiendo empate? Gana quien lo diga primero.","¿Sigue habiendo empate? Va quien esté más cerca de la puerta."],"mkl":{"line":"📏 Poneos en fila","match":"🤝 Buscad a vuestra gente"},"mktie":{"line":"Ahora contad desde el principio de la fila para formar los grupos.","match":"¿El grupo es muy grande? Divididlo. ¿Estás solo? Únete al grupo más cercano."},"mkBoth":"✨ Las dos","ui":{"tab":"🙋 Elegir sin nombres","launch":"🙋 Elegir sin nombres — no hace falta lista","lead":"Elige a un estudiante de cada pareja o grupo a la vez, usando algo que es verdad sobre esa persona. Saca una carta, léela en voz alta y quien salga hace lo que diga.","optOpen":"⚙ Ajustes","optDone":"Listo","lblGrp":"Trabajáis en","helpGrp":"<b>Grupos</b> y <b>Parejas</b> eligen a una persona dentro de los grupos que ya tienes; solo cambia la redacción. <b>Formar grupos</b> es distinto: da una sola instrucción a toda la clase para repartir a todo el mundo en grupos nuevos.","lblDeck":"De qué cartas sacar","helpDeck":"Las cartas <b>rápidas</b> se resuelven de un vistazo: úsalas cuando solo necesitas que alguien empiece a hablar de la pregunta de la pizarra. Las de <b>conversación</b> valen un minuto y funcionan bien para empezar la clase. También puedes limitarlo a un solo tema.","lblMove":"Qué hace quien salga","helpMove":"<b>Empieza</b> y <b>Va el último</b> fijan el orden de todo el grupo. <b>No participa</b> le da la vuelta: esa persona es la que no responde.","lblTask":"Tu pregunta (opcional)","helpTask":"Escríbela una vez y aparecerá en todas las cartas que saques, para que los estudiantes vean quién habla y de qué.","taskPh":"p. ej. explica por qué Lincoln esperó hasta septiembre","clear":"Borrar","draw":"Sacar una carta","copy":"📋 Copiar","hintTap":"Toca la carta para sacar una · no hace falta lista de nombres","hintN":"{N} cartas en esta baraja · toca la carta para sacar una","hintDraw":"Carta {D} · {N} cartas en esta baraja · toca para sacar otra","cardReady":"Listo","cardTap":"Toca para sacar una carta","mkSum":"<b>Formar grupos</b> · una instrucción para toda la clase · ","mkBothSum":"filas y coincidencias","drawFrom":" · sacando de <b>","doesSep":"</b> · "}},"fr":{"cat":{"now":"En ce moment","space":"Où vous êtes","cal":"Calendrier et horloge","know":"Faire connaissance","fun":"Juste pour rire","rj":"Regis Jesuit"},"deckChip":{"quick":"⚡ Rapides","talk":"💬 Conversation","all":"✨ Tout"},"deckSum":{"quick":"les cartes rapides","talk":"les cartes de conversation","all":"tout le jeu"},"grp":{"g":"👥 Groupes","p":"👫 Binômes","mk":"🔀 Former des groupes"},"grpSum":{"g":"Groupes","p":"Binômes"},"moveChip":{"ans":"🙋 Répond","share":"🗣️ Rapporte","explain":"💭 Explique","read":"📖 Lit à voix haute","write":"✍️ Note","first":"1️⃣ Commence","last":"🔚 Passe en dernier","not":"🙅 Ne participe pas"},"moveSum":{"ans":"répond pour le groupe","share":"rapporte à la classe","explain":"explique le raisonnement","read":"lit à voix haute","write":"note la réponse","first":"commence","last":"passe en dernier","not":"ne participe pas cette fois"},"dir":{"left":"gauche","right":"droite"},"act":{"ans":{"g":["La personne qui "," |répond| pour le groupe."],"p":["La personne qui "," |répond| en premier. Puis son binôme."]},"share":{"g":["La personne qui "," |rapporte| à toute la classe."],"p":["La personne qui "," |rapporte| pour le binôme."]},"explain":{"g":["La personne qui "," |explique| ce que le groupe a pensé."],"p":["La personne qui "," |explique| en premier. Puis son binôme."]},"read":{"g":["La personne qui "," |lit à voix haute| pour le groupe."],"p":["La personne qui "," |lit à voix haute| pour le binôme."]},"write":{"g":["La personne qui "," |note| ce que le groupe décide."],"p":["La personne qui "," |le note| pour le binôme."]},"first":{"g":["La personne qui "," |commence|. Puis continuez vers la {D}."],"p":["La personne qui "," |commence|. Puis échangez."]},"last":{"g":["La personne qui "," |passe en dernier|. Commencez par sa {D} et faites le tour."],"p":["La personne qui "," |passe en deuxième|. Son binôme commence."]},"not":{"g":["La personne qui "," |ne participe pas cette fois|. Les autres répondent."],"p":["La personne qui "," |ne participe pas cette fois|. Son binôme répond."]}},"ties":["Toujours à égalité ? Une manche de pierre-papier-ciseaux.","Toujours à égalité ? Répondez tous les deux.","Toujours à égalité ? C'est la première personne qui le dit.","Toujours à égalité ? C'est la personne la plus proche de la porte."],"mkl":{"line":"📏 Mettez-vous en file","match":"🤝 Trouvez vos semblables"},"mktie":{"line":"Comptez maintenant depuis le début de la file pour former les groupes.","match":"Groupe trop grand ? Divisez-le. Tout seul ? Rejoignez le groupe le plus proche."},"mkBoth":"✨ Les deux","ui":{"tab":"🙋 Choisir sans les noms","launch":"🙋 Choisir sans les noms — aucune liste requise","lead":"Choisit un élève dans chaque binôme ou groupe à la fois, à partir de quelque chose de vrai sur cette personne. Tirez une carte, lisez-la à voix haute, et la personne désignée fait ce qui est indiqué.","optOpen":"⚙ Réglages","optDone":"Terminé","lblGrp":"Vous travaillez en","helpGrp":"<b>Groupes</b> et <b>Binômes</b> désignent une personne à l'intérieur des groupes que vous avez déjà ; seule la formulation change. <b>Former des groupes</b> est différent : une seule consigne pour toute la classe, qui répartit tout le monde dans de nouveaux groupes.","lblDeck":"Dans quelles cartes piocher","helpDeck":"Les cartes <b>rapides</b> se règlent d'un coup d'œil : prenez-les quand vous voulez simplement que quelqu'un se mette à parler de la question au tableau. Les cartes de <b>conversation</b> valent une minute et font une bonne mise en route. Vous pouvez aussi vous limiter à un seul thème.","lblMove":"Ce que fait la personne désignée","helpMove":"<b>Commence</b> et <b>Passe en dernier</b> fixent l'ordre de tout le groupe. <b>Ne participe pas</b> inverse la consigne : c'est la personne qui ne répond pas.","lblTask":"Votre question (facultatif)","helpTask":"Écrivez-la une fois et elle reste sur toutes les cartes tirées, pour que les élèves voient qui parle et de quoi.","taskPh":"ex. expliquez pourquoi Lincoln a attendu septembre","clear":"Effacer","draw":"Tirer une carte","copy":"📋 Copier","hintTap":"Touchez la carte pour en tirer une · aucune liste de noms requise","hintN":"{N} cartes dans ce jeu · touchez la carte pour en tirer une","hintDraw":"Tirage {D} · {N} cartes dans ce jeu · touchez pour en tirer une autre","cardReady":"Prêt","cardTap":"Touchez pour tirer une carte","mkSum":"<b>Former des groupes</b> · une consigne pour toute la classe · ","mkBothSum":"files et points communs","drawFrom":" · en piochant dans <b>","doesSep":"</b> · "}}};
+var LANG="en";
+function L(){return I18N[LANG]}
+function P(t){return LANG==="en"?t:((TRX[LANG]&&TRX[LANG][t])||t)}
+function PG(t){return LANG==="en"?t:((TRG[LANG]&&TRG[LANG][t])||t)}
+var WMK={
+line:[
+"Line up by birthday, January through December.",
+"Line up by the day of the month you were born.",
+"Line up by whose birthday is closest to today.",
+"Line up by how many letters are in your first name.",
+"Line up by how many letters are in your last name.",
+"Line up by how many syllables are in your full name.",
+"Line up alphabetically by middle name.",
+"Line up by how many letters are in your grandparent's name.",
+"Line up by how far you live from school.",
+"Line up by how long your commute was this morning.",
+"Line up by how early you woke up today.",
+"Line up by how much sleep you got last night.",
+"Line up by how many people live in your house.",
+"Line up by how many pets you have right now.",
+"Line up by how many cousins you have.",
+"Line up by how many years you have been at Regis Jesuit.",
+"Line up by how many different schools you have attended.",
+"Line up by how many languages you can say hello in.",
+"Line up by how many nicknames you have.",
+"Line up by how far your locker is from this room.",
+"Line up by how many books, shows, or games you finished this month.",
+"Line up by how long it takes you to get ready in the morning."
+],
+match:[
+"Find everyone born in the same month as you.",
+"Find everyone born in the same season as you.",
+"Find everyone whose birthday falls in the same half of the year as yours.",
+"Find everyone with the same number of siblings as you.",
+"Find everyone with the same number of pets as you.",
+"Find everyone with the same number of people in their house as you.",
+"Find everyone whose first name has the same number of letters as yours.",
+"Find everyone whose first name starts with a letter in the same third of the alphabet as yours.",
+"Find everyone who woke up within an hour of when you did today.",
+"Find everyone who gets to school the same way you do.",
+"Find two people who agree with you about pineapple on pizza.",
+"Find two people who would rather be too hot than too cold, or too cold than too hot.",
+"Find two people who have the same favorite meal of the day as you.",
+"Find two people who share a hobby with you.",
+"Find two people who like the same kind of music you do.",
+"Find two people who would pick the same superpower as you.",
+"Find two people who agree with you about the best season.",
+"Find two people who had the same first chore or first job as you.",
+"Find two people whose ideal Saturday sounds like yours.",
+"Find two people who would rather explore the ocean than space, or the other way around.",
+"Find two people who are in a class you are in that nobody else here has.",
+"Find two people who would pick the same thing as you: mountains, city, or beach."
+]};
+var WMKL={line:"\uD83D\uDCCF Line up",match:"\uD83E\uDD1D Find your people"};
+var WMKTIE={line:"Now count off from the front into groups.",match:"Group too big? Split it. On your own? Join the nearest group."};
+var whoMkPick="mkall",whoStar={},whoMine=[],whoDecks={};
+function whoLoad(){
+  try{whoStar=JSON.parse(localStorage.getItem("rr_who_star")||"{}")}catch(e){whoStar={}}
+  try{whoMine=JSON.parse(localStorage.getItem("rr_who_mine")||"[]")}catch(e){whoMine=[]}
+  try{whoDecks=JSON.parse(localStorage.getItem("rr_who_decks")||"{}")}catch(e){whoDecks={}}
+}
+function whoSaveStore(){
+  try{localStorage.setItem("rr_who_star",JSON.stringify(whoStar));
+      localStorage.setItem("rr_who_mine",JSON.stringify(whoMine));
+      localStorage.setItem("rr_who_decks",JSON.stringify(whoDecks))}catch(e){}
+}
+var BKKEYS=["rs3_classes","rr_who_star","rr_who_mine","rr_who_decks","rr_lang","rr_theme"];
+function bkExport(){
+  var d={_app:"raider-randomizer",_v:1,_date:new Date().toISOString()};
+  BKKEYS.forEach(function(k){try{var v=localStorage.getItem(k);if(v!==null)d[k]=v}catch(e){}});
+  try{
+    var blob=new Blob([JSON.stringify(d,null,2)],{type:"application/json"});
+    var url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download="raider-randomizer-backup-"+(new Date().toISOString().slice(0,10))+".json";
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url)},1500);
+    toast(U("bkDone"));
+  }catch(e){toast(U("bkFail"))}
+}
+function bkImport(file){
+  if(!file)return;
+  var r=new FileReader();
+  r.onload=function(){
+    var d=null;try{d=JSON.parse(r.result)}catch(e){}
+    if(!d||d._app!=="raider-randomizer"){toast(U("bkBad"));return}
+    if(!confirm(U("bkAsk")))return;
+    BKKEYS.forEach(function(k){if(typeof d[k]==="string"){try{localStorage.setItem(k,d[k])}catch(e){}}});
+    whoLoad();renderSv();renderDeckList();
+    whoBag=[];buildWhoCats();updWhoSum();updWhoN();
+    toast(U("bkOk"));
+  };
+  r.readAsText(file);
+}
+function whoStarCount(){var n=0;for(var k in whoStar)if(whoStar[k])n++;return n}
+
+var WPAIRX={};
+["is closest to another group","is farthest from every other group","is nearest the middle of their own group",
+"the group picks in five seconds, no debate","has the best-sounding full name said out loud, group decides"]
+.forEach(function(t){WPAIRX[t]=1});
+var WSLOWL=[
+"has the most interesting thing in their backpack right now",
+"has the best answer for what they would do with an extra hour today",
+"has the best guess for what is directly above this ceiling",
+"has the best idea for a class pet",
+"has the best idea for a new Regis Jesuit tradition",
+"has the best plan for a snow day",
+"has the best recommendation for something to listen to",
+"has the best recommendation for something to watch",
+"has the best story about how they got their name",
+"has the best story about the last thing that made them laugh",
+"has the best-sounding full name said out loud, group decides",
+"has the longest-running habit or routine",
+"has the most confident answer for the best pizza topping",
+"has the most things memorized that nobody asked them to memorize",
+"has the most unusual skill they are willing to describe",
+"has the oldest thing they still use every day",
+"has the strongest opinion about cilantro",
+"has the strongest opinion about pineapple on pizza",
+"has the strongest opinion about the best board game",
+"has the strongest opinion about the best cereal",
+"has the strongest opinion about the best sandwich",
+"has the strongest opinion about the best season",
+"has the strongest opinion about the right way to eat pizza",
+"has the strongest opinion about whether a hot dog is a sandwich",
+"is most confident they could name every language taught at Regis Jesuit",
+"is most confident they could name the most Grad at Grad characteristics",
+"is most confident they could name the most countries in ten seconds",
+"is most confident they could name the most people who work in this building",
+"is most confident they could name the most saints, any tradition",
+"is most confident they could name the most teachers in this building",
+"knows the most about how this school got started",
+"knows the most about what happens in the room next door",
+"knows the most about what the Raider mascot is supposed to be",
+"knows the most about what their own name means",
+"most recently apologized and meant it",
+"most recently did something that fits cura personalis",
+"most recently fixed something that was broken",
+"most recently gave someone a real compliment",
+"most recently helped someone without being asked",
+"most recently learned something that surprised them",
+"most recently made something with their hands",
+"most recently prayed for somebody else",
+"most recently said thank you and meant it",
+"most recently taught someone how to do something",
+"most recently tried something for the first time",
+"most recently wrote something by hand that was not for school",
+"thinks they could beat a raccoon at a strategy game",
+"thinks they could explain the Examen in one sentence",
+"thinks they could fold the paper airplane that flies farthest",
+"thinks they could name every room on this floor",
+"thinks they could name the most Regis Jesuit traditions",
+"thinks they could name the most animals that start with B",
+"thinks they could name the most buildings on campus",
+"thinks they could name the most clubs at Regis Jesuit",
+"thinks they could name the most colors in ten seconds",
+"thinks they could name the most people in this room without looking",
+"thinks they have the best sense of direction",
+"would be best at reading a map with no phone",
+"would be first to notice if something in this room moved",
+"would be missed most by a pet if they left for a week",
+"would be most useful on a group project about dinosaurs",
+"would be most useful to a lost visitor",
+"would be quickest to name one thing they are good at",
+"would be the best at building a fort in here",
+"would be the best at coming up with a class motto",
+"would be the best at describing this class in three words",
+"would be the best at drawing this room from memory",
+"would be the best at explaining a rule they just made up",
+"would be the best at explaining this class to an alien",
+"would be the best at giving directions using no words",
+"would be the best at guessing the ending of a movie",
+"would be the best at hiding in this room",
+"would be the best at inventing a holiday",
+"would be the best at inventing a new sport",
+"would be the best at keeping a secret about a surprise party",
+"would be the best at naming a band",
+"would be the best at naming a new color",
+"would be the best at packing for a trip in five minutes",
+"would be the best at remembering everyone's order at a restaurant",
+"would be the best at surviving one week locked in a library",
+"would be the best at winning an argument they do not believe in",
+"would be the best tour guide for this hallway",
+"would be the calmest if the fire alarm went off right now",
+"would be the calmest person to have around in a power outage",
+"would be the first to find the exit in a corn maze",
+"would be the first to laugh in a completely silent room",
+"would be the first to volunteer for something without knowing what it is",
+"would be the least likely to read the instructions first",
+"would be the most likely to read the instructions first",
+"would be the most useful in a group stranded on an island",
+"would bet they could count backward from twenty the fastest",
+"would bet they could explain men and women for others in one sentence",
+"would bet they could explain what Ignatian means in one sentence",
+"would bet they could name a club nobody else has heard of",
+"would bet they could name the most Jesuit saints",
+"would bet they could name the most Jesuit schools anywhere",
+"would bet they could name the most Regis Jesuit teams or sports",
+"would bet they could name the most fruits in ten seconds",
+"would bet they could name the most things on campus named after a person",
+"would give the best campus tour to a new student",
+"would invent the best new ice cream flavor",
+"would last the longest in a completely silent room",
+"would make the best superhero name out of their own name",
+"would make the best voice for a cartoon character",
+"would most confidently fight a goose and win",
+"would most likely win a game they had never played before",
+"would most want a dragon as a pet",
+"would name the best mascot for this class",
+"would notice first if something in this room changed overnight",
+"would pick the best walk-up song",
+"would rather be able to fly than turn invisible",
+"would rather be too hot than too cold",
+"would rather explore the ocean than space",
+"would rather face one very angry swan than a swarm of bees",
+"would rather fight one horse-sized duck than a hundred duck-sized horses",
+"would rather have a rewind button than a pause button",
+"would rather have a robot that carries their bag than one that folds laundry",
+"would rather have hands for feet",
+"would rather live in a treehouse than a submarine",
+"would survive longest if this school turned into a maze",
+"would win a staring contest, in their own opinion",
+"would win an argument about the best holiday",
+"would win at hide and seek in this building"
+];
+var WSLOW={};WSLOWL.forEach(function(t){WSLOW[t]=1});
+var whoPick="quick",whoGrp="g",whoSty="ans",whoBag=[],whoCur=null,whoDraws=0;
+var WACT={
+ ans:{g:["The one who "," |answers| for the group."],p:["The one who "," |answers| first. Then the partner."]},
+ share:{g:["The one who "," |reports out| to the class."],p:["The one who "," |reports out| for the pair."]},
+ explain:{g:["The one who "," |explains| the group's thinking."],p:["The one who "," |explains| first. Then the partner."]},
+ read:{g:["The one who "," |reads it aloud| to the group."],p:["The one who "," |reads it aloud| for the pair."]},
+ write:{g:["The one who "," |writes down| what the group decides."],p:["The one who "," |writes it down| for the pair."]},
+ first:{g:["The one who "," |goes first|. Then keep going to the {D}."],p:["The one who "," |goes first|. Then swap."]},
+ last:{g:["The one who "," |goes last|. Start on their {D} and go around."],p:["The one who "," |goes second|. The partner starts."]},
+ not:{g:["The one who "," |sits this one out|. Everyone else shares."],p:["The one who "," |sits this one out|. The partner answers."]}
+};
+
+function whoMatch(k,t){
+  if(whoGrp==="p"&&WPAIRX[t])return false;
+  if(whoPick==="all")return true;
+  if(whoPick==="quick")return !WSLOW[t];
+  if(whoPick==="talk")return !!WSLOW[t];
+  return k===whoPick;
+}
+function whoCountFor(m){return whoPairsFor(m).length}
+function whoMkCount(){return whoMkPick==="mkall"?(WMK.line.length+WMK.match.length):WMK[whoMkPick].length}
+function whoPairsFor(m){
+  var out=[];
+  if(m==="mine"){whoMine.forEach(function(t){out.push(["mine",t])});return out}
+  if(m.indexOf("deck:")===0){
+    var d=whoDecks[m.slice(5)]||[];
+    d.forEach(function(pr){if(!(whoGrp==="p"&&WPAIRX[pr[1]]))out.push([pr[0],pr[1]])});
+    return out;
+  }
+  Object.keys(WP).forEach(function(k){
+    WP[k].forEach(function(t){
+      if(whoGrp==="p"&&WPAIRX[t])return;
+      if(m==="all"){out.push([k,t]);return}
+      if(m==="quick"){if(!WSLOW[t])out.push([k,t]);return}
+      if(m==="talk"){if(WSLOW[t])out.push([k,t]);return}
+      if(m==="star"){if(whoStar[t])out.push([k,t]);return}
+      if(k===m)out.push([k,t]);
+    });
+  });
+  if(m==="star")whoMine.forEach(function(t){if(whoStar[t])out.push(["mine",t])});
+  return out;
+}
+function whoPoolCount(){return whoGrp==="mk"?whoMkCount():whoPairsFor(whoPick).length}
+
+var UIEN={
+ tab:"\uD83D\uDE4B Pick Without Names",
+ launch:"\uD83D\uDE4B Pick Without Names \u2014 no roster required",
+ lead:"Picks one student in every pair or group at once, using something true about them. Draw a card, read it aloud, and whoever it lands on does the move.",
+ optOpen:"\u2699 Settings",optDone:"Done",
+ lblGrp:"Working in",
+ helpGrp:"<b>Groups</b> and <b>Pairs</b> pick one student inside each group you already have \u2014 only the wording changes. <b>Make groups</b> is different: it gives the whole class one instruction that sorts everybody into new groups.",
+ lblDeck:"Which cards to draw from",
+ helpDeck:"<b>Quick</b> cards settle in one glance \u2014 reach for these when you just need somebody talking about the question on the board. <b>Conversation</b> cards are worth a minute and make a good warm-up. Or narrow it to one topic.",
+ lblMove:"What the picked student does",
+ helpMove:"<b>Goes first</b> and <b>Goes last</b> set the order for the whole group. <b>Sits out</b> flips it \u2014 they are the one who doesn't.",
+ lblTask:"Your question (optional)",
+ helpTask:"Type it once and it stays on every card you draw, so students see who is talking and what about.",
+ taskPh:"e.g. explain why Lincoln waited until September",
+ clear:"Clear",draw:"Draw a Card",copy:"\uD83D\uDCCB Copy",
+ hintTap:"Tap the card to draw \u00b7 no student names needed",
+ hintN:"{N} cards in this deck \u00b7 tap the card to draw",
+ hintDraw:"Draw {D} \u00b7 {N} cards in this deck \u00b7 tap to draw again",
+ cardReady:"Ready",cardTap:"Tap to draw a card",
+ starChip:"Starred",mineChip:"Mine",lblOwn:"Your own cards",
+ helpOwn:"Tap \u2606 on any card to star it. Starred cards become their own deck. Write your own above \u2014 finish the sentence \"The one who \u2026\". Save any deck under a name and it comes back next time.",
+ newPh:"has the coolest socks",add:"Add",saveDeck:"Save this deck as\u2026",clrStar:"Clear stars",
+ bkLbl:"Backup",bkSave:"\u2b07 Download backup",bkRest:"\u2b06 Restore from file",
+ bkHelp:"Saved classes, starred cards, your own cards, and saved decks are stored in this browser only. Clearing your browsing data, using a different computer, or switching browsers will lose them. Download a backup file and keep it somewhere safe \u2014 you can restore it here on any device.",
+ bkDone:"Backup downloaded",bkFail:"Could not create the backup file",bkBad:"That is not a Raider Randomizer backup",
+ bkOk:"Backup restored",bkAsk:"Restore this backup? It replaces the saved classes, starred cards and saved decks in this browser.",
+ nameDeck:"Name this deck:",saved:"Deck saved",added:"Card added and starred",
+ emptyDeck:"Nothing in this deck yet",delDeck:"Delete",clrStarAsk:"Remove all stars?"
+};
+I18N.es.ui.starChip="Favoritas";I18N.es.ui.mineChip="M\u00edas";I18N.es.ui.lblOwn="Tus propias cartas";
+I18N.es.ui.helpOwn="Toca \u2606 en cualquier carta para marcarla. Las favoritas forman su propia baraja. Escribe las tuyas arriba: completa la frase \u201cLa persona que \u2026\u201d. Guarda cualquier baraja con un nombre y estar\u00e1 ah\u00ed la pr\u00f3xima vez.";
+I18N.es.ui.newPh="tiene los calcetines m\u00e1s chulos";I18N.es.ui.add="A\u00f1adir";I18N.es.ui.saveDeck="Guardar esta baraja como\u2026";I18N.es.ui.clrStar="Quitar favoritas";
+I18N.es.ui.nameDeck="Nombre de la baraja:";I18N.es.ui.saved="Baraja guardada";I18N.es.ui.added="Carta a\u00f1adida y marcada";
+I18N.es.ui.emptyDeck="Esta baraja est\u00e1 vac\u00eda";I18N.es.ui.delDeck="Eliminar";I18N.es.ui.clrStarAsk="\u00bfQuitar todas las favoritas?";
+I18N.fr.ui.starChip="Favorites";I18N.fr.ui.mineChip="Les miennes";I18N.fr.ui.lblOwn="Vos propres cartes";
+I18N.fr.ui.helpOwn="Touchez \u2606 sur une carte pour la mettre en favori. Les favorites forment leur propre jeu. \u00c9crivez les v\u00f4tres ci-dessus : compl\u00e9tez la phrase \u00ab La personne qui \u2026 \u00bb. Enregistrez un jeu sous un nom et il sera l\u00e0 la prochaine fois.";
+I18N.fr.ui.newPh="a les chaussettes les plus cool";I18N.fr.ui.add="Ajouter";I18N.fr.ui.saveDeck="Enregistrer ce jeu sous\u2026";I18N.fr.ui.clrStar="Retirer les favoris";
+I18N.fr.ui.nameDeck="Nom du jeu :";I18N.fr.ui.saved="Jeu enregistr\u00e9";I18N.fr.ui.added="Carte ajout\u00e9e et mise en favori";
+I18N.es.ui.bkLbl="Copia de seguridad";I18N.es.ui.bkSave="\u2b07 Descargar copia";I18N.es.ui.bkRest="\u2b06 Restaurar desde archivo";
+I18N.es.ui.bkHelp="Las clases guardadas, las cartas favoritas, tus propias cartas y tus barajas se guardan solo en este navegador. Si borras los datos de navegaci\u00f3n, usas otro ordenador o cambias de navegador, se perder\u00e1n. Desc\u00e1rgate una copia de seguridad y gu\u00e1rdala en un lugar seguro: puedes restaurarla aqu\u00ed en cualquier dispositivo.";
+I18N.es.ui.bkDone="Copia descargada";I18N.es.ui.bkFail="No se pudo crear la copia";I18N.es.ui.bkBad="Ese archivo no es una copia del Raider Randomizer";
+I18N.es.ui.bkOk="Copia restaurada";I18N.es.ui.bkAsk="\u00bfRestaurar esta copia? Sustituir\u00e1 las clases guardadas, las cartas favoritas y las barajas de este navegador.";
+I18N.fr.ui.bkLbl="Sauvegarde";I18N.fr.ui.bkSave="\u2b07 T\u00e9l\u00e9charger la sauvegarde";I18N.fr.ui.bkRest="\u2b06 Restaurer depuis un fichier";
+I18N.fr.ui.bkHelp="Les classes enregistr\u00e9es, les cartes favorites, vos propres cartes et vos jeux sont stock\u00e9s uniquement dans ce navigateur. Effacer les donn\u00e9es de navigation, changer d'ordinateur ou de navigateur les fera dispara\u00eetre. T\u00e9l\u00e9chargez une sauvegarde et conservez-la en lieu s\u00fbr : vous pourrez la restaurer ici sur n'importe quel appareil.";
+I18N.fr.ui.bkDone="Sauvegarde t\u00e9l\u00e9charg\u00e9e";I18N.fr.ui.bkFail="Impossible de cr\u00e9er la sauvegarde";I18N.fr.ui.bkBad="Ce fichier n'est pas une sauvegarde du Raider Randomizer";
+I18N.fr.ui.bkOk="Sauvegarde restaur\u00e9e";I18N.fr.ui.bkAsk="Restaurer cette sauvegarde ? Elle remplacera les classes enregistr\u00e9es, les cartes favorites et les jeux de ce navigateur.";
+I18N.fr.ui.emptyDeck="Ce jeu est vide";I18N.fr.ui.delDeck="Supprimer";I18N.fr.ui.clrStarAsk="Retirer tous les favoris ?";
+function applyLang(){
+  var set=function(id,k,html){var e=$(id);if(!e)return;if(html)e.innerHTML=U(k);else e.textContent=U(k)};
+  set("whoLead","lead",1);
+  set("whoLblGrp","lblGrp");set("whoHelpGrp","helpGrp",1);
+  set("whoLblDeck","lblDeck");set("whoHelpDeck","helpDeck",1);
+  set("whoLblMove","lblMove");set("whoHelpMove","helpMove",1);
+  set("whoLblTask","lblTask");set("whoHelpTask","helpTask",1);
+  set("bkLblB","bkLbl");set("bkSaveB","bkSave");set("bkRestB","bkRest");set("bkHelpB","bkHelp",1);
+  set("whoLblOwn","lblOwn");set("whoHelpOwn","helpOwn",1);set("whoNewAdd","add");set("whoSaveDeck","saveDeck");set("whoClrStar","clrStar");
+  var ni=$("whoNew");if(ni)ni.placeholder=U("newPh");
+  renderDeckList();
+  set("whoTaskClr","clear");set("whoNext","draw");set("whoCopy","copy");
+  var tb=document.querySelector('#tabBar .tab[data-t="who"]');if(tb)tb.textContent=U("tab");
+  var lb=$("whoBtn");if(lb)lb.textContent=U("launch");
+  var ti=$("whoTask");if(ti)ti.placeholder=U("taskPh");
+  $("whoOptTgl").textContent=$("whoOpts").classList.contains("show")?U("optDone"):U("optOpen");
+  if(!whoCur){$("whoCat").textContent=U("cardReady");$("whoTxt").textContent=U("cardTap")}
+  whoBag=[];buildWhoCats();if(whoCur)renderWho();updWhoSum();updWhoN();renderTask();
+}
+var WGRPL={g:"Groups",p:"Pairs"};
+var WMOVEL={ans:"they answer for the group",share:"they report out to the class",explain:"they explain the thinking",read:"they read it aloud",write:"they record the answer",first:"they go first",last:"they go last",not:"they sit this one out"};
+var WDECKL={quick:"Quick cards",talk:"Conversation cards",all:"the whole deck"};
+var WMOVEB=[["ans","\uD83D\uDE4B Answers"],["share","\uD83D\uDDE3\uFE0F Reports out"],["explain","\uD83D\uDCAD Explains"],["read","\uD83D\uDCD6 Reads aloud"],["write","\u270D\uFE0F Records"],["first","1\uFE0F\u20E3 Goes first"],["last","\uD83D\uDD1A Goes last"],["not","\uD83D\uDE45 Sits out"]];
+function whoChipRow(boxId,rows,cur,onPick){
+  var box=$(boxId);if(!box)return;box.innerHTML="";
+  var btns=[];
+  rows.forEach(function(t){
+    var b=document.createElement("button");
+    b.className="mode-btn"+(cur===t[0]?" a":"");
+    b.innerHTML=t[1]+(t[2]!==undefined?' <span class="who-n">'+t[2]+'</span>':"");
+    b.addEventListener("click",function(){
+      btns.forEach(function(x){x.classList.toggle("a",x===b)});
+      onPick(t[0]);
+    });
+    btns.push(b);box.appendChild(b);
+  });
+}
+function catL(k){return LANG==="en"?WCAT[k]:L().cat[k]}
+function mklL(k){return LANG==="en"?WMKL[k]:L().mkl[k]}
+function actL(m){return LANG==="en"?WACT[m]:L().act[m]}
+function dirL(d){return LANG==="en"?d:L().dir[d]}
+function U(k){return LANG==="en"?UIEN[k]:L().ui[k]}
+function whoSumText(){
+  if(whoGrp==="mk"){
+    var head=LANG==="en"?"<b>Make groups</b> \u00b7 one instruction for the whole class \u00b7 ":L().ui.mkSum;
+    var both=LANG==="en"?"line-ups and matches":L().ui.mkBothSum;
+    return head+(whoMkPick==="mkall"?both:mklL(whoMkPick).replace(/^\S+\s/,""));
+  }
+  var d;
+  if(whoPick==="star")d=U("starChip");
+  else if(whoPick==="mine")d=U("mineChip");
+  else if(whoPick.indexOf("deck:")===0)d=whoPick.slice(5);
+  else d=LANG==="en"?(WDECKL[whoPick]||(WCAT[whoPick]+" cards")):(L().deckSum[whoPick]||(L().cat[whoPick]+(LANG==="es"?" (tema)":" (thème)")));
+  var gl=LANG==="en"?WGRPL[whoGrp]:L().grpSum[whoGrp];
+  var ml=LANG==="en"?WMOVEL[whoSty]:L().moveSum[whoSty];
+  var mid=LANG==="en"?"</b> \u00b7 drawing from <b>":L().ui.drawFrom;
+  return "<b>"+gl+(LANG==="en"?"</b> \u00b7 drawing from <b>":L().ui.drawFrom)+d+(LANG==="en"?"</b> \u00b7 ":L().ui.doesSep)+ml;
+}
+function updWhoSum(){var e=$("whoSumT");if(e)e.innerHTML=whoSumText()}
+function renderDeckList(){
+  var box=$("whoDeckList");if(!box)return;box.innerHTML="";
+  var keys=Object.keys(whoDecks);
+  if(!keys.length)return;
+  keys.forEach(function(nm){
+    var b=document.createElement("button");b.className="who-dchip";
+    b.innerHTML="\uD83D\uDCC1 "+nm+' <span class="dx">\u2715</span>';
+    b.addEventListener("click",function(e){
+      if(e.target&&e.target.className==="dx"){
+        if(!confirm(U("delDeck")+" \u201c"+nm+"\u201d?"))return;
+        delete whoDecks[nm];if(whoPick==="deck:"+nm)whoPick="quick";
+        whoSaveStore();buildWhoCats();renderDeckList();whoBag=[];updWhoN();updWhoSum();return;
+      }
+      whoPick="deck:"+nm;whoBag=[];buildWhoCats();nextWho();updWhoSum();
+    });
+    box.appendChild(b);
+  });
+}
+function buildWhoCats(){
+  var rows;
+  if(whoGrp==="mk"){
+    rows=[["mkall",LANG==="en"?"\u2728 Both":L().mkBoth,WMK.line.length+WMK.match.length],["line",mklL("line"),WMK.line.length],["match",mklL("match"),WMK.match.length]];
+    whoChipRow("whoCats",rows,whoMkPick,function(v){whoMkPick=v;whoBag=[];nextWho();updWhoN();updWhoSum()});
+  }else{
+  var DC=LANG==="en"?{quick:"\u26A1 Quick",talk:"\uD83D\uDCAC Conversation",all:"\u2728 Everything"}:L().deckChip;
+  rows=[["quick",DC.quick],["talk",DC.talk],["all",DC.all]];
+  Object.keys(WCAT).forEach(function(k){rows.push([k,WICON[k]+" "+catL(k)])});
+  if(whoStarCount())rows.splice(3,0,["star","\u2605 "+U("starChip")]);
+  if(whoMine.length)rows.splice(whoStarCount()?4:3,0,["mine","\u270F\uFE0F "+U("mineChip")]);
+  Object.keys(whoDecks).forEach(function(nm){rows.push(["deck:"+nm,"\uD83D\uDCC1 "+nm])});
+  rows.forEach(function(t){t[2]=whoCountFor(t[0])});
+  if(!whoPairsFor(whoPick).length)whoPick="quick";
+  whoChipRow("whoCats",rows,whoPick,function(v){whoPick=v;whoBag=[];updWhoN();updWhoSum()});
+  }
+  var GC=LANG==="en"?{g:"\uD83D\uDC65 Groups",p:"\uD83D\uDC6B Pairs",mk:"\uD83D\uDD00 Make groups"}:L().grp;
+  whoChipRow("whoGrpBar",[["g",GC.g],["p",GC.p],["mk",GC.mk]],whoGrp,function(v){
+    var was=whoGrp;whoGrp=v;whoBag=[];whoCur=null;
+    $("whoMoveRow").classList.toggle("hid",v==="mk");
+    buildWhoCats();nextWho();updWhoSum();
+  });
+  var MC=LANG==="en"?null:L().moveChip;
+  whoChipRow("whoStyle",WMOVEB.map(function(t){return [t[0],MC?MC[t[0]]:t[1]]}),whoSty,function(v){whoSty=v;renderWho();updWhoSum()});
+  updWhoN();updWhoSum();
+}
+function updWhoN(){
+  var h=$("whoHint");if(!h)return;
+  var n='<span class="who-n">'+whoPoolCount()+'</span>',d='<span class="who-n">'+whoDraws+'</span>';
+  var tpl=whoDraws?U("hintDraw"):U("hintN");
+  h.innerHTML=tpl.split("{N}").join(n).split("{D}").join(d);
+}
+
+function fillWhoBag(){
+  var arr=whoPairsFor(whoPick).map(function(p){return [p[0],p[1]]});
+  if(whoGrp!=="mk"){
+    whoBag=shuffle(arr);
+    if(whoCur&&whoBag.length>1&&whoBag[whoBag.length-1][1]===whoCur[1])whoBag.unshift(whoBag.pop());
+    return;
+  }
+  arr=[];
+  if(whoGrp==="mk"){
+    Object.keys(WMK).forEach(function(k){
+      if(whoMkPick!=="mkall"&&k!==whoMkPick)return;
+      WMK[k].forEach(function(t){arr.push([k,t])});
+    });
+    whoBag=shuffle(arr);
+    if(whoCur&&whoBag.length>1&&whoBag[whoBag.length-1][1]===whoCur[1])whoBag.unshift(whoBag.pop());
+    return;
+  }
+  Object.keys(WP).forEach(function(k){
+    WP[k].forEach(function(t){if(whoMatch(k,t))arr.push([k,t])});
+  });
+  whoBag=shuffle(arr);
+  if(whoCur&&whoBag.length>1&&whoBag[whoBag.length-1][1]===whoCur[1])whoBag.unshift(whoBag.pop());
+}
+function whoSentence(t,plain){
+  if(whoGrp==="mk")return PG(t);
+  var A=actL(whoSty)||actL("ans"),a=A[whoGrp],raw=a[0]+P(t)+a[1];
+  raw=raw.split("{D}").join(dirL((whoCur&&whoCur[3])||"left"));
+  if(plain)return raw.split("|").join("");
+  var parts=raw.split("|"),out="";
+  for(var i=0;i<parts.length;i++)out+=(i%2?'<span class="wk">'+parts[i]+'</span>':parts[i]);
+  return out;
+}
+function whoTaskText(){var e=$("whoTask");return e&&e.value?e.value.trim():""}
+function renderTask(){
+  var t=whoTaskText(),o=$("whoTaskOut");if(!o)return;
+  o.textContent=t?("\u201C"+t+"\u201D"):"";
+  o.classList.toggle("show",!!t);
+}
+function renderWho(deal){
+  if(!whoCur)return;
+  var mk=whoGrp==="mk";
+  var ic=mk?"\uD83D\uDD00":(WICON[whoCur[0]]||"\u270F\uFE0F");
+  $("whoCat").textContent=mk?mklL(whoCur[0]):(ic+" "+(whoCur[0]==="mine"?U("mineChip"):catL(whoCur[0])));
+  var sb=$("whoStarBtn");
+  if(sb){var on=!mk&&!!whoStar[whoCur[1]];sb.textContent=on?"\u2605":"\u2606";sb.classList.toggle("on",on);sb.style.display=mk?"none":"block"}
+  $("whoTxt").innerHTML=whoSentence(whoCur[1],false);
+  $("whoTie").textContent=whoCur[2];
+  $("whoGhost").textContent=ic;$("whoPipA").textContent=ic;$("whoPipB").textContent=ic;
+  renderTask();
+  if(deal){var c=$("whoCard");c.classList.remove("deal");void c.offsetWidth;c.classList.add("deal")}
+}
+function nextWho(){
+  if(!whoBag.length)fillWhoBag();
+  if(!whoBag.length)return;
+  var p=whoBag.pop();
+  var TT=LANG==="en"?WTIES:L().ties, MT=LANG==="en"?WMKTIE:L().mktie;
+  whoCur=[p[0],p[1],whoGrp==="mk"?MT[p[0]]:TT[Math.floor(Math.random()*TT.length)],Math.random()<.5?"left":"right"];
+  whoDraws++;
+  renderWho(true);tick();updWhoN();
+}
+if($("whoCard")){
+  $("whoCard").addEventListener("click",nextWho);
+  $("whoNext").addEventListener("click",function(e){e.stopPropagation();nextWho()});
+  $("whoCopy").addEventListener("click",function(){
+    if(!whoCur){toast("Pick a prompt first");return}
+    var tk=whoTaskText();
+    copyText(whoSentence(whoCur[1],true)+(tk?(" Task: "+tk):"")+" "+whoCur[2]);
+  });
+  $("whoOptTgl").addEventListener("click",function(){
+    var open=$("whoOpts").classList.toggle("show");
+    $("whoOptTgl").textContent=open?"Done":"Change options";
+  });
+  whoLoad();renderDeckList();
+  whoChipRow("whoLangBar",[["en","\uD83C\uDDFA\uD83C\uDDF8 English"],["es","\uD83C\uDDEA\uD83C\uDDF8 Espa\u00f1ol"],["fr","\uD83C\uDDEB\uD83C\uDDF7 Fran\u00e7ais"]],LANG,function(v){
+    LANG=v;try{localStorage.setItem("rr_lang",v)}catch(e){}
+    applyLang();
+  });
+  try{var sl=localStorage.getItem("rr_lang");if(sl&&I18N[sl]!==undefined||sl==="en"){LANG=sl;applyLang()}}catch(e){}
+  buildWhoCats();
+  $("whoStarBtn").addEventListener("click",function(e){
+    e.stopPropagation();if(!whoCur||whoGrp==="mk")return;
+    if(whoStar[whoCur[1]])delete whoStar[whoCur[1]];else whoStar[whoCur[1]]=1;
+    whoSaveStore();renderWho();buildWhoCats();
+  });
+  $("whoNewAdd").addEventListener("click",function(){
+    var v=$("whoNew").value.trim();if(!v)return;
+    if(whoMine.indexOf(v)<0)whoMine.push(v);
+    whoStar[v]=1;$("whoNew").value="";whoSaveStore();buildWhoCats();toast(U("added"));
+  });
+  $("whoSaveDeck").addEventListener("click",function(){
+    var pairs=whoPairsFor(whoPick);
+    if(!pairs.length){toast(U("emptyDeck"));return}
+    var nm=prompt(U("nameDeck"));if(!nm||!nm.trim())return;
+    whoDecks[nm.trim()]=pairs;whoSaveStore();buildWhoCats();renderDeckList();toast(U("saved"));
+  });
+  $("whoClrStar").addEventListener("click",function(){
+    if(!whoStarCount())return;
+    if(!confirm(U("clrStarAsk")))return;
+    whoStar={};whoSaveStore();if(whoPick==="star")whoPick="quick";
+    whoBag=[];buildWhoCats();renderWho();updWhoSum();updWhoN();
+  });
+  ["A","B"].forEach(function(x){
+    var sb=$("bkSave"+x);if(sb)sb.addEventListener("click",bkExport);
+    var f=$("bkFile"+x);
+    if(f)f.addEventListener("change",function(){bkImport(f.files&&f.files[0]);f.value=""});
+  });
+  $("whoTask").addEventListener("input",renderTask);
+  $("whoTask").addEventListener("click",function(e){e.stopPropagation()});
+  $("whoTaskClr").addEventListener("click",function(){$("whoTask").value="";renderTask()});
+}
+
+// Settings panels
+function setToggle(btnId,panId,openLbl,doneLbl){
+  var b=$(btnId),p=$(panId);if(!b||!p)return;
+  b.addEventListener("click",function(){
+    var open=p.classList.toggle("show");
+    b.textContent=open?doneLbl:openLbl;
+  });
+}
+setToggle("namesSetTgl","namesSet","\u2699 Settings","Done");
+setToggle("timerSetTgl","timerSet","\u2699 Settings","Done");
+var TABLBL={spinner:"Spinner",single:"Single Name",lineup:"Lineup",groups:"Groups",teams:"Teams",seat:"Seating"};
+var MODELBL={wheel:"Wheel",slot:"Slots",cards:"Cards",lotto:"Lottery",spot:"Spotlight"};
+function updNamesSum(){
+  var e=$("namesSumT");if(!e)return;
+  if(!allN.length){e.innerHTML="<b>No class loaded</b> \u00b7 add names in Settings to start";return}
+  var t=TABLBL[lastNameTab]||"Spinner";
+  e.innerHTML="<b>"+allN.length+" names</b> \u00b7 "+t+(lastNameTab==="spinner"?(" \u00b7 "+(MODELBL[animMode]||"Wheel")):"");
+}
+function updTimerSum(){
+  var e=$("timerSumT");if(!e)return;
+  var m=Math.floor(tSec/60),sec=tSec%60;
+  e.innerHTML="<b>"+(m?m+" min ":"")+(sec?sec+" sec":(m?"":"0 sec"))+"</b> \u00b7 tap Start when you are ready";
+}
+
+// Three top-level modes
+var topMode="names",lastNameTab="spinner";
+function syncTabs(){}
+function setTop(x){
+  topMode=x;
+  document.querySelectorAll("#topBar .top-btn").forEach(function(b){b.classList.toggle("a",b.getAttribute("data-x")===x)});
+  var names=(x==="names");
+  $("inputCard").classList.toggle("hid",!names||isFs);
+  $("tabBar").classList.toggle("hid",!names);
+  if(names){
+    updNamesSum();
+    $("spinStyleRow").classList.toggle("set-hide",lastNameTab!=="spinner");
+    $("tool").classList.toggle("hid",allN.length===0);
+    if(allN.length)switchTab(lastNameTab);
+  }else{
+    if(x==="timer")updTimerSum();
+    $("tool").classList.remove("hid");
+    switchTab(x==="cards"?"who":"timer");
+    if(x==="cards"&&!whoCur)nextWho();
+  }
+}
+document.querySelectorAll("#topBar .top-btn").forEach(function(b){
+  b.addEventListener("click",function(){setTop(b.getAttribute("data-x"))});
+});
+document.querySelectorAll("#tabBar .tab").forEach(function(b){
+  b.addEventListener("click",function(){
+    lastNameTab=b.getAttribute("data-t");
+    $("spinStyleRow").classList.toggle("set-hide",lastNameTab!=="spinner");
+    updNamesSum();
+  });
+});
+setTop("names");
 
 })();
 </script>
