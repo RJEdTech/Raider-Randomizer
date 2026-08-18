@@ -194,6 +194,8 @@ body.fs .who-pip{font-size:34px}
 
 /* Guided roster steps */
 .rs-hd{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.rs-lnk{color:#C11430;text-decoration:none;border-bottom:1px solid rgba(193,20,48,.35);font-weight:600}
+.rs-lnk:hover{border-bottom-color:#C11430}
 .rs-blk{padding-left:33px}
 .rs-blk>.rs-hd{margin-left:-33px}
 @media(max-width:560px){.rs-blk{padding-left:0}.rs-blk>.rs-hd{margin-left:0}}
@@ -394,6 +396,7 @@ body.light .ptr{border-top-color:#C11430}
       <span class="who-sum-t" id="namesSumT"></span>
       <button class="bo" id="namesSetTgl" style="margin-left:auto">⚙ Settings</button>
     </div>
+    <div class="who-help hid" id="namesSetHint" style="margin:-6px 0 12px"><b>⚙ Settings</b> is where your class lists live — paste a new roster, load a saved class, back them up, and choose which picker you want (spinner, groups, teams, or a seating shuffle).</div>
     <div class="rs-nudge hid" id="saveNudge">
       <button class="rs-nudge-x" id="nudgeX" type="button" aria-label="Dismiss">✕</button>
       <div class="rs-nudge-t" id="nudgeT"></div>
@@ -406,7 +409,8 @@ body.light .ptr{border-top-color:#C11430}
           <span class="rs-num">1</span>
           <div>
             <div class="rs-t">Paste your class list</div>
-            <div class="rs-s">One name per line, or separated by commas. Copy straight out of My&nbsp;RJ, a Canvas roster, or a spreadsheet column — extra blank lines and spaces are ignored.</div>
+            <div class="rs-s">One name per line, or separated by commas — extra blank lines and stray spaces are ignored.</div>
+            <div class="rs-s" style="margin-top:5px"><b>Need to get your roster?</b> Follow <a class="rs-lnk" href="https://rjhs.instructure.com/courses/5414/pages/printing-attendance-roster-for-your-records-to-print-for-subs" target="_blank" rel="noopener">this guide in the Canvas Professional Development course</a> — it pulls an attendance roster for any section in Excel or Word, so the names are easy to copy and paste. Any list works, though: a spreadsheet column, or names you type yourself.</div>
           </div>
         </div>
         <textarea id="inp" placeholder="Paste names — one per line or comma-separated"></textarea>
@@ -558,6 +562,7 @@ body.light .ptr{border-top-color:#C11430}
         <span class="who-sum-t" id="whoSumT"></span>
         <button class="bo" id="whoOptTgl" style="margin-left:auto">⚙ Settings</button>
       </div>
+      <div class="who-help" id="whoSetHint" style="margin:-6px 0 12px"></div>
       <div class="who-opts" id="whoOpts">
         <div class="who-orow">
           <div class="who-olbl">Language · Idioma · Langue</div>
@@ -1790,6 +1795,7 @@ var UIEN={
  launch:"\uD83D\uDE4B Pick Without Names \u2014 no roster required",
  lead:"Picks one student in every pair or group at once, using something true about them. Draw a card, read it aloud, and whoever it lands on does the move.",
  optOpen:"\u2699 Settings",optDone:"Done",
+ setHint:"<b>\u2699 Settings</b> changes what the cards do \u2014 pairs or groups, which deck you draw from, what the picked student has to do, and a question of your own that rides along on every card.",
  lblGrp:"Working in",
  helpGrp:"<b>Groups</b> and <b>Pairs</b> pick one student inside each group you already have \u2014 only the wording changes. <b>Make groups</b> is different: it gives the whole class one instruction that sorts everybody into new groups.",
  lblDeck:"Which cards to draw from",
@@ -1814,6 +1820,7 @@ var UIEN={
  nameDeck:"Name this deck:",saved:"Deck saved",added:"Card added and starred",
  emptyDeck:"Nothing in this deck yet",delDeck:"Delete",clrStarAsk:"Remove all stars?"
 };
+I18N.es.ui.setHint="<b>\u2699 Ajustes</b> cambia lo que hacen las cartas: parejas o grupos, de qu\u00e9 baraja se saca, qu\u00e9 debe hacer el estudiante elegido y una pregunta tuya que aparece en cada carta.";
 I18N.es.ui.starChip="Favoritas";I18N.es.ui.mineChip="M\u00edas";I18N.es.ui.lblOwn="Tus propias cartas";
 I18N.es.ui.helpOwn="Toca \u2606 en cualquier carta para marcarla. Las favoritas forman su propia baraja. Escribe las tuyas arriba: completa la frase \u201cLa persona que \u2026\u201d. Guarda cualquier baraja con un nombre y estar\u00e1 ah\u00ed la pr\u00f3xima vez.";
 I18N.es.ui.newPh="tiene los calcetines m\u00e1s chulos";I18N.es.ui.add="A\u00f1adir";I18N.es.ui.saveDeck="Guardar esta baraja como\u2026";I18N.es.ui.clrStar="Quitar favoritas";
@@ -1828,6 +1835,7 @@ I18N.es.ui.bkHelp="Las clases guardadas, las cartas favoritas, tus propias carta
 I18N.es.ui.bkDone="Copia descargada";I18N.es.ui.bkFail="No se pudo crear la copia";I18N.es.ui.bkBad="Ese archivo no es una copia del Raider Randomizer";
 I18N.es.ui.bkOk="Copia restaurada";I18N.es.ui.bkAsk="\u00bfRestaurar esta copia? Sustituir\u00e1 las clases guardadas, las cartas favoritas y las barajas de este navegador.";
 I18N.fr.ui.bkLbl="Sauvegarde";I18N.fr.ui.bkSave="\u2b07 T\u00e9l\u00e9charger la sauvegarde";I18N.fr.ui.bkRest="\u2b06 Restaurer depuis un fichier";
+I18N.fr.ui.setHint="<b>\u2699 R\u00e9glages</b> change ce que font les cartes\u00a0: bin\u00f4mes ou groupes, le jeu utilis\u00e9, ce que doit faire l'\u00e9l\u00e8ve d\u00e9sign\u00e9, et votre propre question qui accompagne chaque carte.";
 I18N.fr.ui.bkHelp="Les classes enregistr\u00e9es, les cartes favorites, vos propres cartes et vos jeux sont stock\u00e9s uniquement dans ce navigateur. Effacer les donn\u00e9es de navigation, changer d'ordinateur ou de navigateur les fera dispara\u00eetre. T\u00e9l\u00e9chargez une sauvegarde et conservez-la en lieu s\u00fbr : vous pourrez la restaurer ici sur n'importe quel appareil.";
 I18N.fr.ui.bkDone="Sauvegarde t\u00e9l\u00e9charg\u00e9e";I18N.fr.ui.bkFail="Impossible de cr\u00e9er la sauvegarde";I18N.fr.ui.bkBad="Ce fichier n'est pas une sauvegarde du Raider Randomizer";
 I18N.fr.ui.bkOk="Sauvegarde restaur\u00e9e";I18N.fr.ui.bkAsk="Restaurer cette sauvegarde ? Elle remplacera les classes enregistr\u00e9es, les cartes favorites et les jeux de ce navigateur.";
@@ -1848,6 +1856,7 @@ function applyLang(){
   var lb=$("whoBtn");if(lb)lb.textContent=U("launch");
   var ti=$("whoTask");if(ti)ti.placeholder=U("taskPh");
   $("whoOptTgl").textContent=$("whoOpts").classList.contains("show")?U("optDone"):U("optOpen");
+  updWhoSetHint();
   if(!whoCur){$("whoCat").textContent=U("cardReady");$("whoTxt").textContent=U("cardTap")}
   whoBag=[];buildWhoCats();if(whoCur)renderWho();updWhoSum();updWhoN();renderTask();
 }
@@ -2012,7 +2021,8 @@ if($("whoCard")){
   });
   $("whoOptTgl").addEventListener("click",function(){
     var open=$("whoOpts").classList.toggle("show");
-    $("whoOptTgl").textContent=open?"Done":"Change options";
+    $("whoOptTgl").textContent=open?U("optDone"):U("optOpen");
+    updWhoSetHint();
   });
   whoLoad();renderDeckList();
   whoChipRow("whoLangBar",[["en","\uD83C\uDDFA\uD83C\uDDF8 English"],["es","\uD83C\uDDEA\uD83C\uDDF8 Espa\u00f1ol"],["fr","\uD83C\uDDEB\uD83C\uDDF7 Fran\u00e7ais"]],LANG,function(v){
@@ -2059,15 +2069,32 @@ function setToggle(btnId,panId,openLbl,doneLbl){
   b.addEventListener("click",function(){
     var open=p.classList.toggle("show");
     b.textContent=open?doneLbl:openLbl;
+    if(panId==="namesSet"){updNamesSum();updNamesSetHint()}
   });
 }
 setToggle("namesSetTgl","namesSet","\u2699 Settings","Done");
+if($("namesSet").classList.contains("show"))$("namesSetTgl").textContent="Done";
+updNamesSetHint();updWhoSetHint();
 setToggle("timerSetTgl","timerSet","\u2699 Settings","Done");
 var TABLBL={spinner:"Spinner",single:"Single Name",lineup:"Lineup",groups:"Groups",teams:"Teams",seat:"Seating"};
 var MODELBL={wheel:"Wheel",slot:"Slots",cards:"Cards",lotto:"Lottery",spot:"Spotlight"};
+function updWhoSetHint(){
+  var e=$("whoSetHint");if(!e)return;
+  var open=$("whoOpts")&&$("whoOpts").classList.contains("show");
+  e.innerHTML=U("setHint");
+  e.classList.toggle("hid",!!open);
+}
+function updNamesSetHint(){
+  var e=$("namesSetHint");if(!e)return;
+  var open=$("namesSet")&&$("namesSet").classList.contains("show");
+  e.classList.toggle("hid",!!open);
+}
 function updNamesSum(){
   var e=$("namesSumT");if(!e)return;
-  if(!allN.length){e.innerHTML="<b>No class loaded</b> \u00b7 open Settings to paste and save a class list";return}
+  if(!allN.length){
+    var op=$("namesSet")&&$("namesSet").classList.contains("show");
+    e.innerHTML="<b>No class loaded</b> \u00b7 "+(op?"start with step 1 below \u2014 paste a class list, load it, then save it":"open Settings to paste and save a class list");
+    return}
   var t=TABLBL[lastNameTab]||"Spinner";
   e.innerHTML="<b>"+allN.length+" names</b> \u00b7 "+t+(lastNameTab==="spinner"?(" \u00b7 "+(MODELBL[animMode]||"Wheel")):"");
 }
