@@ -30,19 +30,19 @@ body.fs .res-ban .nm{display:inline-block;white-space:nowrap;line-height:1.04;fo
 body.fs .rj-tools,body.fs .ftr{display:none!important}
 body.fs #tool{padding-bottom:1vh}
 /* grids scale off --pf, which JS fits to the viewport */
-body.fs .gg{grid-template-columns:repeat(auto-fill,minmax(calc(var(--pf)*8),1fr));gap:calc(var(--pf)*.42)}
-body.fs .gc{padding:calc(var(--pf)*.55) calc(var(--pf)*.72);border-radius:calc(var(--pf)*.5)}
+body.fs .gg{grid-template-columns:repeat(auto-fill,minmax(calc(var(--pf)*var(--gtw,8)),1fr));gap:calc(var(--pf)*.42)}
+body.fs .gc{padding:calc(var(--pf)*.55) calc(var(--pf)*.72);padding-left:calc(var(--pf)*.85);border-radius:calc(var(--pf)*.5);border-left-width:calc(var(--pf)*.22)}
 body.fs .gc .gt{font-size:calc(var(--pf)*.6);letter-spacing:1.8px;margin-bottom:calc(var(--pf)*.32)}
-body.fs .gc .gm{font-size:var(--pf);padding:calc(var(--pf)*.09) 0;line-height:1.24}
+body.fs .gc .gm{font-size:var(--pf);padding:calc(var(--pf)*.09) 0;line-height:1.24;white-space:nowrap}
 body.fs .gc[data-big="1"] .gml{column-count:2;column-gap:calc(var(--pf)*.9)}
 body.fs .gc[data-big="2"] .gml{column-count:3;column-gap:calc(var(--pf)*.8)}
 body.fs .gc .gm{break-inside:avoid}
 body.fs .seat-grid{gap:calc(var(--pf)*.42)}
-body.fs .seat{font-size:calc(var(--pf)*.92);padding:calc(var(--pf)*.5) calc(var(--pf)*.35);border-radius:calc(var(--pf)*.42)}
-body.fs .lineup-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(calc(var(--pf)*12),1fr));gap:calc(var(--pf)*.26) calc(var(--pf)*.7)}
+body.fs .seat{font-size:calc(var(--pf)*.92);padding:calc(var(--pf)*.5) calc(var(--pf)*.35);border-radius:calc(var(--pf)*.42);white-space:nowrap}
+body.fs .lineup-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(calc(var(--pf)*var(--ltw,12)),1fr));gap:calc(var(--pf)*.26) calc(var(--pf)*.7)}
 body.fs .lineup-item{padding:calc(var(--pf)*.33) calc(var(--pf)*.6);margin-bottom:0;border-radius:calc(var(--pf)*.4)}
 body.fs .lineup-item::before{font-size:calc(var(--pf)*1.05);min-width:calc(var(--pf)*1.7)}
-body.fs .lineup-item .li-name{font-size:var(--pf)}
+body.fs .lineup-item .li-name{font-size:var(--pf);white-space:nowrap}
 body.fs .obar{font-size:min(calc(var(--pf)*.5),15px);margin-bottom:calc(var(--pf)*.5)}
 body.fs #p-single{padding:0!important;display:flex;flex-direction:column;justify-content:center;min-height:calc(100vh - 200px)}
 body.fs .pk-list{margin-top:1.2vh}
@@ -195,8 +195,8 @@ body.fs .who-pip{font-size:34px}
 
 /* Groups/Teams grid */
 .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
-.gc{padding:12px;border-radius:10px}
-.gc .gt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.gc{--ac:var(--acd,#888);padding:12px 12px 12px 14px;border-radius:10px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-left:4px solid var(--ac)}
+.gc .gt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;color:var(--ac)}
 .gc .gm{font-size:13px;color:#ddd;padding:2px 0;font-weight:500}
 .gs{text-align:center;margin-top:12px;font-size:11px;color:#666}
 
@@ -236,6 +236,7 @@ body.fs .who-pip{font-size:34px}
 .rs-safe{margin-top:9px;padding:9px 12px;border-left:2px solid rgba(193,20,48,.45);background:rgba(193,20,48,.05);border-radius:0 6px 6px 0;font-size:11.5px;color:#9a9a9a;line-height:1.6;max-width:660px}
 .rs-safe b{color:#ddd}
 .rs-svlbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#888;margin-bottom:6px}
+.rs-xblk{margin-top:12px;padding-top:11px;border-top:1px dashed rgba(128,128,128,.28)}
 .rs-nudge{position:relative;margin-bottom:12px;padding:12px 34px 12px 14px;border-radius:10px;border:1px solid rgba(193,20,48,.30);background:linear-gradient(135deg,rgba(193,20,48,.11),rgba(193,20,48,.04))}
 .rs-nudge.ok{border-color:rgba(128,128,128,.28);background:rgba(128,128,128,.06)}
 .rs-nudge-t{font-size:12.5px;color:#ddd;line-height:1.45}
@@ -375,6 +376,8 @@ body.light .lotto-chute{background:rgba(193,20,48,.08);border-color:#C11430;colo
 body.light .gc{border-color:rgba(0,0,0,.08)}
 body.light .gc .gm{color:#333}
 body.light .gs{color:#999}
+body.light .gc{--ac:var(--acl,#666);background:rgba(0,0,0,.022);border-color:rgba(0,0,0,.10);border-left-color:var(--ac)}
+body.light .gc .gm{color:#1a1a1a}
 body.light .lineup-item{background:rgba(0,0,0,.03)}
 body.light .lineup-item .li-name{color:#1a1a1a}
 body.light .seat{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.08);color:#333}
@@ -476,6 +479,11 @@ body.light .ptr{border-top-color:#C11430}
         <div class="rs-svlbl hid" id="svLbl">Your saved classes — click to load, ✕ to delete</div>
         <div class="r" id="svList" style="gap:5px;margin-bottom:5px"></div>
         <div class="who-help" id="noSv">No saved classes yet. Paste a list above, press <b>Load Names</b>, then <b>Save as Class</b> — it will be waiting for you tomorrow.</div>
+        <div class="rs-xblk hid" id="xBlk">
+          <div class="rs-svlbl">Saved in the Pod Generator — click to bring that class here</div>
+          <div class="r" id="xList" style="gap:5px"></div>
+          <div class="who-help" style="margin-top:6px">The Randomizer and the <a class="rs-lnk" href="https://rjedtech.github.io/Raider-Pods/" target="_blank" rel="noopener">Pod Generator</a> keep their classes in the same browser, so a roster you built in one is available in the other. Nothing is uploaded — this still never leaves your computer.</div>
+        </div>
       </div>
 
       <div class="who-orow rs-blk">
@@ -709,6 +717,11 @@ body.light .ptr{border-top-color:#C11430}
 
 <script>
 (function(){
+// Card accents: one hue per group, legible on white and on near-black.
+// Colour here identifies a group; it is not decoration, so it lives on a rule
+// and the label only, never as a wash across the whole card.
+var CARD_L=["#C11430","#1d4ed8","#0f766e","#b45309","#6d28d9","#0e7490","#be123c","#4d7c0f","#4338ca","#c2410c","#0369a1","#86198f"];
+var CARD_D=["#ff6b81","#7aa2ff","#5eead4","#fbbf24","#c4b5fd","#67e8f9","#fda4af","#bef264","#a5b4fc","#fdba74","#7dd3fc","#f0abfc"];
 var C=["#e74c3c","#3498db","#C11430","#f39c12","#9b59b6","#1abc9c","#e67e22","#2980b9","#a01028","#c0392b","#8e44ad","#16a085","#d35400","#2c3e50","#f1c40f","#7f8c8d","#e84393","#00b894","#6c5ce7","#fdcb6e"];
 var allN=[],pool=[],picked=[],spinning=false,curRot=0,sndOn=true,animMode="wheel";
 var grpSize=2,tmCount=2,seatCols=5,tSec=30,tRem=30,tInt=null,tRun=false;
@@ -758,9 +771,10 @@ function renderSv(){
   var cl=getSv(),keys=Object.keys(cl),list=$("svList");
   list.innerHTML="";
   var lbl=$("svLbl");
-  if(!keys.length){$("noSv").classList.remove("hid");if(lbl)lbl.classList.add("hid");updSaveNudge();return}
+  if(!keys.length){$("noSv").classList.remove("hid");if(lbl)lbl.classList.add("hid");renderX();updSaveNudge();return}
   $("noSv").classList.add("hid");
   if(lbl)lbl.classList.remove("hid");
+  renderX();
   keys.forEach(function(k){
     var b=document.createElement("button");b.className="sv-btn";
     b.title='Load "'+k+'" \u00b7 '+(cl[k]||[]).length+' names';
@@ -771,6 +785,40 @@ function renderSv(){
     });list.appendChild(b);
   });
   updSaveNudge();
+}
+// Classes saved in the Pod Generator. Same origin (rjedtech.github.io), so the two
+// tools already share localStorage — no export file, nothing leaves the machine.
+function getPodClasses(){
+  var out={};
+  try{
+    var raw=JSON.parse(localStorage.getItem("rr_pods_v3")||"{}");
+    Object.keys(raw).forEach(function(k){
+      var c=raw[k]||{},names=(c.unsorted||[]).slice();
+      var q=c.quartiles||{};
+      [1,2,3,4].forEach(function(i){names=names.concat(q[i]||[])});
+      names=names.filter(function(n){return typeof n==="string"&&n.trim()});
+      if(names.length)out[k]=names;
+    });
+  }catch(e){}
+  return out;
+}
+function renderX(){
+  var blk=$("xBlk"),list=$("xList");if(!blk||!list)return;
+  var cl=getPodClasses(),keys=Object.keys(cl),mine=getSv();
+  keys=keys.filter(function(k){return !(mine[k]&&mine[k].join("\u0001").toLowerCase()===cl[k].join("\u0001").toLowerCase())});
+  list.innerHTML="";
+  if(!keys.length){blk.classList.add("hid");return}
+  blk.classList.remove("hid");
+  keys.forEach(function(k){
+    var b=document.createElement("button");b.className="sv-btn";
+    b.textContent=k+" \u00b7 "+cl[k].length;
+    b.title='Load "'+k+'" ('+cl[k].length+" names) from the Pod Generator";
+    b.addEventListener("click",function(){
+      $("inp").value=cl[k].join("\n");loadNames();
+      toast('Brought "'+k+'" over from the Pod Generator');
+    });
+    list.appendChild(b);
+  });
 }
 function doSaveClass(){
   var names=parseInput();
@@ -868,7 +916,7 @@ function fitGrid(){
   for(var i=0;i<10;i++){
     var mid=(lo+hi)/2;
     b.style.setProperty("--pf",mid+"px");
-    if(panel.scrollHeight<=avail){best=mid;lo=mid}else hi=mid;
+    if(panel.scrollHeight<=avail&&panel.scrollWidth<=panel.clientWidth+1){best=mid;lo=mid}else hi=mid;
   }
   b.style.setProperty("--pf",best+"px");
 }
@@ -1157,6 +1205,7 @@ $("singleBtn").addEventListener("click",function(){
 // ============ LINEUP ============
 $("lineupBtn").addEventListener("click",function(){
   if(!allN.length)return;var s=shuffle(allN),list=$("lineupList");list.innerHTML="";
+  list.style.setProperty("--ltw",Math.max(9,longest(s)*0.58+3.2).toFixed(2));
   s.forEach(function(nm){var d=document.createElement("div");d.className="lineup-item";
     var sp=document.createElement("span");sp.className="li-name";sp.textContent=nm;d.appendChild(sp);list.appendChild(d)});
   $("cpLineup").classList.remove("hid");
@@ -1176,12 +1225,16 @@ function doGroups(){buildNumBtns($("grpBtns"),2,6,grpSize,function(v){grpSize=v}
 function doTeams(){buildNumBtns($("tmBtns"),2,6,tmCount,function(v){tmCount=v})}
 doGroups();doTeams();
 
+function longest(list){var m=0;list.forEach(function(n){if(n&&n.length>m)m=n.length});return m}
 function renderGroupGrid(groups,gridEl,sumEl,cpEl,label){
   gridEl.innerHTML="";
+  var mx=0;groups.forEach(function(g){mx=Math.max(mx,longest(g))});
+  gridEl.style.setProperty("--gtw",Math.max(8,mx*0.60+2.0).toFixed(2));
   groups.forEach(function(g,i){
     var card=document.createElement("div");card.className="gc";
-    card.style.background=C[i%C.length]+"11";card.style.border="1px solid "+C[i%C.length]+"33";
-    var t=document.createElement("div");t.className="gt";t.style.color=C[i%C.length];t.textContent=label+" "+(i+1);card.appendChild(t);
+    card.style.setProperty("--acl",CARD_L[i%CARD_L.length]);
+    card.style.setProperty("--acd",CARD_D[i%CARD_D.length]);
+    var t=document.createElement("div");t.className="gt";t.textContent=label+" "+(i+1);card.appendChild(t);
     var wrap=document.createElement("div");wrap.className="gml";
     g.forEach(function(nm){var d=document.createElement("div");d.className="gm";d.textContent=nm;wrap.appendChild(d)});
     if(g.length>=12)card.setAttribute("data-big","2");else if(g.length>=6)card.setAttribute("data-big","1");
@@ -2291,7 +2344,7 @@ try{
     <a class="rj-tool" href="https://rjedtech.github.io/Raider-Quiz-Builder/"><div class="rj-t">Raider Quiz Builder <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Build, expand, and convert Canvas quizzes from plain text.</div></a>
     <div class="rj-tool is-here"><div class="rj-t">Raider Randomizer<span class="rj-here">You&rsquo;re here</span></div><div class="rj-d">Fair student picking, grouping, and seating shuffles.</div></div>
     <a class="rj-tool" href="https://rjedtech.github.io/Raider-Timer/"><div class="rj-t">Raider Timer <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Countdown, stopwatch, and station rotation for class.</div></a>
-    <a class="rj-tool" href="https://rjedtech.github.io/Raider-Pods/"><div class="rj-t">Raider Pod Generator <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Heterogeneous Kagan cooperative-learning pods.</div></a>
+    <a class="rj-tool" href="https://rjedtech.github.io/Raider-Pods/"><div class="rj-t">Raider Pod Generator <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Mixed teams of four, seated so partners can actually help each other.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/MyRJScheduleCleaner/"><div class="rj-t">MyRJ Schedule Cleaner <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Import your MyRJ schedule into Outlook without looking busy all day.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/cooperative-learning-toolkit/"><div class="rj-t">Cooperative Learning Toolkit <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Every Kagan structure, method, and source in one place.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/EdTech-Status/"><div class="rj-t">EdTech Status <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Live status of Regis Jesuit's ed-tech systems.</div></a>
