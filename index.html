@@ -23,7 +23,29 @@ body.fs .slot-window{height:min(10vh,80px)}
 body.fs .lotto-area{width:min(70vh,90vw);max-width:min(70vh,90vw);height:min(60vh,500px)}
 body.fs .cards-area .crd{width:min(12vw,120px);height:min(8vw,70px);font-size:min(2vw,14px)}
 body.fs .spot-name{padding:12px 18px;font-size:min(2.5vw,16px)}
-body.fs .res-ban .nm{font-size:min(5vh,42px)}
+body.fs{--pf:22px}
+body.fs .res-ban{padding:2.2vh 3vw;margin-bottom:2vh;border-radius:14px}
+body.fs .res-ban .lb{font-size:min(1.9vh,18px);letter-spacing:2.5px;margin-bottom:.6vh}
+body.fs .res-ban .nm{display:inline-block;white-space:nowrap;line-height:1.04;font-size:min(15vh,11vw)}
+body.fs .rj-tools,body.fs .ftr{display:none!important}
+body.fs #tool{padding-bottom:1vh}
+/* grids scale off --pf, which JS fits to the viewport */
+body.fs .gg{grid-template-columns:repeat(auto-fill,minmax(calc(var(--pf)*8),1fr));gap:calc(var(--pf)*.42)}
+body.fs .gc{padding:calc(var(--pf)*.55) calc(var(--pf)*.72);border-radius:calc(var(--pf)*.5)}
+body.fs .gc .gt{font-size:calc(var(--pf)*.6);letter-spacing:1.8px;margin-bottom:calc(var(--pf)*.32)}
+body.fs .gc .gm{font-size:var(--pf);padding:calc(var(--pf)*.09) 0;line-height:1.24}
+body.fs .gc[data-big="1"] .gml{column-count:2;column-gap:calc(var(--pf)*.9)}
+body.fs .gc[data-big="2"] .gml{column-count:3;column-gap:calc(var(--pf)*.8)}
+body.fs .gc .gm{break-inside:avoid}
+body.fs .seat-grid{gap:calc(var(--pf)*.42)}
+body.fs .seat{font-size:calc(var(--pf)*.92);padding:calc(var(--pf)*.5) calc(var(--pf)*.35);border-radius:calc(var(--pf)*.42)}
+body.fs .lineup-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(calc(var(--pf)*12),1fr));gap:calc(var(--pf)*.26) calc(var(--pf)*.7)}
+body.fs .lineup-item{padding:calc(var(--pf)*.33) calc(var(--pf)*.6);margin-bottom:0;border-radius:calc(var(--pf)*.4)}
+body.fs .lineup-item::before{font-size:calc(var(--pf)*1.05);min-width:calc(var(--pf)*1.7)}
+body.fs .lineup-item .li-name{font-size:var(--pf)}
+body.fs .obar{font-size:min(calc(var(--pf)*.5),15px);margin-bottom:calc(var(--pf)*.5)}
+body.fs #p-single{padding:0!important;display:flex;flex-direction:column;justify-content:center;min-height:calc(100vh - 200px)}
+body.fs .pk-list{margin-top:1.2vh}
 body.fs .tabs .tab{padding:8px 16px;font-size:13px}
 body.fs .t-display{font-size:min(20vh,120px)}
 .hdr{text-align:center;margin-bottom:18px}
@@ -111,6 +133,14 @@ label.bo{display:inline-block;line-height:1.4}
 .who-orow:last-child{margin-bottom:0}
 .who-olbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#aaa;margin-bottom:6px}
 .who-orow .modes{margin-bottom:6px;justify-content:flex-start}
+.pickbar{margin:0 0 12px}
+.pickbar-hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:7px}
+.pickbar-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#aaa}
+.pickbar-sub{font-size:11px;color:#888}
+.pickbar-help{font-size:11px;color:#888;margin-top:-4px}
+body.light .pickbar-lbl{color:#666}
+body.fs .pickbar-help,body.fs .pickbar-sub{display:none}
+body.fs .pickbar{margin-bottom:8px}
 .who-help{font-size:11.5px;color:#8b8b8b;line-height:1.55;max-width:640px}
 .mode-btn .who-n{opacity:.55;font-size:10px;margin-left:2px}
 .who-tsk-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
@@ -377,7 +407,7 @@ body.light .ptr{border-top-color:#C11430}
     </div>
     <div class="hdr-tools">
       <button class="hdr-pill" id="sndTgl" type="button">🔊 Sound</button>
-      <button class="hdr-pill" id="fsTgl" type="button">⛶ Fullscreen</button>
+      <button class="hdr-pill" id="fsTgl" type="button" title="Present mode — fills the screen and blows the names up for the projector">⛶ Fullscreen</button>
       <button class="icon-btn theme-toggle" id="themeTgl" type="button" aria-label="Toggle dark mode">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -396,7 +426,7 @@ body.light .ptr{border-top-color:#C11430}
       <span class="who-sum-t" id="namesSumT"></span>
       <button class="bo" id="namesSetTgl" style="margin-left:auto">⚙ Settings</button>
     </div>
-    <div class="who-help hid" id="namesSetHint" style="margin:-6px 0 12px"><b>⚙ Settings</b> is where your class lists live — paste a new roster, load a saved class, back them up, and choose which picker you want (spinner, groups, teams, or a seating shuffle).</div>
+    <div class="who-help hid" id="namesSetHint" style="margin:-6px 0 12px"><b>⚙ Settings</b> is where your class lists live — paste a new roster, load a saved class, or back them up. You only do this once: the <b>Which picker</b> row below stays on screen, and the spinner, groups, teams and seating all run off that same list.</div>
     <div class="rs-nudge hid" id="saveNudge">
       <button class="rs-nudge-x" id="nudgeX" type="button" aria-label="Dismiss">✕</button>
       <div class="rs-nudge-t" id="nudgeT"></div>
@@ -423,7 +453,7 @@ body.light .ptr{border-top-color:#C11430}
           <span class="rs-num">2</span>
           <div>
             <div class="rs-t">Load the names</div>
-            <div class="rs-s">Puts the class into the picker so you can spin, group, team, or seat them.</div>
+            <div class="rs-s">Puts the class into the picker so you can spin, group, team, or seat them. <b>You only load a class once.</b> A <b>Which picker</b> row appears below with all six — Spinner, Single Name, Lineup, Groups, Teams, Seating — and every one of them uses the class you just loaded. Nothing to set up again.</div>
           </div>
         </div>
         <div class="r" style="margin:0 0 2px">
@@ -463,18 +493,6 @@ body.light .ptr{border-top-color:#C11430}
         </div>
         <div class="who-help" id="bkHelpA" style="margin-top:7px">Saved classes, starred cards, your own cards, and saved decks are stored in this browser only. Clearing your browsing data, using a different computer, or switching browsers will lose them. Download a backup file and keep it somewhere safe — you can restore it here on any device.</div>
         </div>
-      <div class="who-orow">
-        <div class="who-olbl">Which picker</div>
-        <div class="tabs" id="tabBar">
-          <button class="tab a" data-t="spinner">🎡 Spinner</button>
-          <button class="tab" data-t="single">⚡ Single Name</button>
-          <button class="tab" data-t="lineup">🔢 Lineup</button>
-          <button class="tab" data-t="groups">👥 Groups</button>
-          <button class="tab" data-t="teams">🏆 Teams</button>
-          <button class="tab" data-t="seat">🪑 Seating</button>
-        </div>
-        <div class="who-help">Spinner animates the pick on screen. Single Name is instant. The rest split the whole class at once.</div>
-      </div>
       <div class="who-orow" id="spinStyleRow">
         <div class="who-olbl">Spinner style</div>
         <div class="modes" id="modeBar">
@@ -487,6 +505,22 @@ body.light .ptr{border-top-color:#C11430}
         <div class="who-help">How the pick is animated. All five land on the same random result.</div>
       </div>
     </div>
+  </div>
+
+  <div id="pickerBar" class="pickbar hid">
+    <div class="pickbar-hd">
+      <span class="pickbar-lbl">Which picker</span>
+      <span class="pickbar-sub">One class list — all six use it</span>
+    </div>
+    <div class="tabs" id="tabBar">
+      <button class="tab a" data-t="spinner">🎡 Spinner</button>
+      <button class="tab" data-t="single">⚡ Single Name</button>
+      <button class="tab" data-t="lineup">🔢 Lineup</button>
+      <button class="tab" data-t="groups">👥 Groups</button>
+      <button class="tab" data-t="teams">🏆 Teams</button>
+      <button class="tab" data-t="seat">🪑 Seating</button>
+    </div>
+    <div class="pickbar-help">Switch any time — the class you loaded stays loaded. Spinner animates the pick on screen, Single Name is instant, and Lineup, Groups, Teams and Seating split the whole class at once. Projecting for the room? <b>⛶ Fullscreen</b> blows the names up to fill the screen.</div>
   </div>
 
   <div id="tool" class="hid">
@@ -761,7 +795,7 @@ function loadNames(){
   allN=parseInput();if(!allN.length)return;
   pool=allN.slice();picked=[];curRot=0;
   $("cnt").textContent=allN.length+" name"+(allN.length!==1?"s":"")+" loaded";
-  if(topMode==="names"){$("tool").classList.remove("hid");switchTab(lastNameTab)}
+  if(topMode==="names"){$("tool").classList.remove("hid");$("pickerBar").classList.remove("hid");switchTab(lastNameTab)}
   $("namesSet").classList.remove("show");$("namesSetTgl").textContent="\u2699 Settings";
   updNamesSum();
   $("resBan").classList.remove("show");
@@ -774,10 +808,12 @@ $("loadBtn").addEventListener("click",loadNames);
 // Tabs
 var panels=["spinner","single","lineup","groups","teams","seat","timer","who"];
 function switchTab(t){
+  if(TABLBL&&TABLBL[t])lastNameTab=t;
   panels.forEach(function(p){
     var el=$("p-"+p);if(el)el.classList.toggle("hid",p!==t);
   });
   document.querySelectorAll("#tabBar .tab").forEach(function(b){b.classList.toggle("a",b.getAttribute("data-t")===t)});
+  refitSoon();
 }
 document.querySelectorAll("#tabBar .tab").forEach(function(b){
   b.addEventListener("click",function(){switchTab(b.getAttribute("data-t"))});
@@ -803,12 +839,94 @@ $("themeTgl").addEventListener("click",function(){
 
 // Sound & Fullscreen
 $("sndTgl").addEventListener("click",function(){sndOn=!sndOn;$("sndTgl").textContent=sndOn?"🔊 Sound":"🔇 Muted";$("sndTgl").classList.toggle("a",!sndOn)});
-var isFs=false;
+var isFs=false,fitting=false,fitReq=0;
+// ---- Present mode: scale the picked name and the grids to fill the screen ----
+function fitName(el){
+  if(!el)return;
+  if(!isFs){el.style.fontSize="";return}
+  var box=el.parentElement?el.parentElement.clientWidth-14:0;
+  if(box<40||!el.textContent)return;
+  var hi=Math.min(window.innerHeight*0.15,window.innerWidth*0.11),lo=18,best=lo;
+  el.style.fontSize=hi+"px";
+  if(el.scrollWidth<=box){el.style.fontSize=hi+"px";return}
+  for(var i=0;i<11;i++){
+    var mid=(lo+hi)/2;el.style.fontSize=mid+"px";
+    if(el.scrollWidth<=box){best=mid;lo=mid}else hi=mid;
+  }
+  el.style.fontSize=best+"px";
+}
+function fitGrid(){
+  var b=document.body;
+  if(!isFs||topMode!=="names"){b.style.removeProperty("--pf");return}
+  var panel=$("p-"+lastNameTab);
+  if(!panel||panel.classList.contains("hid"))return;
+  if(!panel.querySelector(".gc,.seat,.lineup-item")){b.style.setProperty("--pf","24px");return}
+  var top=panel.getBoundingClientRect().top;
+  var avail=window.innerHeight-top-12;
+  if(avail<60)return;
+  var lo=11,hi=76,best=11;
+  for(var i=0;i<10;i++){
+    var mid=(lo+hi)/2;
+    b.style.setProperty("--pf",mid+"px");
+    if(panel.scrollHeight<=avail){best=mid;lo=mid}else hi=mid;
+  }
+  b.style.setProperty("--pf",best+"px");
+}
+function fitWheel(){
+  var a=document.querySelector(".wh-area");if(!a)return;
+  if(!isFs){
+    a.style.width="";a.style.maxWidth="";
+  }else{
+    var top=a.getBoundingClientRect().top;
+    var free=window.innerHeight-top-46;
+    var size=Math.max(220,Math.min(free,window.innerWidth*0.82));
+    a.style.width=size+"px";a.style.maxWidth=size+"px";
+  }
+  var w=a.clientWidth||320,k=w/320,R=w/2;
+  var lbls=a.querySelectorAll(".whlbl"),n=lbls.length||1;
+  var r=R*0.57;                                   // where the middle of each name sits
+  lbls.forEach(function(el){
+    var b=parseFloat(el.getAttribute("data-fs"))||10;
+    var mid=parseFloat(el.getAttribute("data-mid"))||0,onL=el.getAttribute("data-onl")==="1";
+    var f=Math.max(7,b*k*1.3);
+    el.style.fontSize=f+"px";
+    for(var pass=0;pass<4;pass++){
+      var tw=el.scrollWidth||el.offsetWidth||1;
+      var maxW=R*0.82;                            // never run past the rim
+      if(tw>maxW){f=Math.max(7,f*maxW/tw);el.style.fontSize=f+"px";tw=el.scrollWidth||1}
+      var inner=Math.max(r-tw/2,10);              // the crowded, inner end of the name
+      var angular=(2*Math.PI*inner/n)*0.80;       // room between neighbouring names there
+      if(f<=angular+0.3)break;
+      f=Math.max(7,angular);el.style.fontSize=f+"px";
+    }
+    el.style.transform="translate(-50%,-50%) rotate("+mid+"deg) translateY("+(-r)+"px) rotate("+(onL?90:-90)+"deg)";
+  });
+  var cd=a.querySelector(".cdot");
+  if(cd){var d=Math.max(36,36*k);cd.style.width=d+"px";cd.style.height=d+"px";cd.style.fontSize=Math.max(7,7*k)+"px"}
+}
+function refit(){
+  if(fitting)return;
+  fitting=true;
+  try{
+    fitName($("resNm"));fitName($("singleNm"));
+    fitWheel();
+    fitGrid();
+  }finally{
+    fitting=false;
+  }
+}
+function refitSoon(){
+  if(fitReq)return;
+  fitReq=requestAnimationFrame(function(){fitReq=0;refit()});
+}
+window.addEventListener("resize",refitSoon);
 $("fsTgl").addEventListener("click",function(){
   isFs=!isFs;document.body.classList.toggle("fs",isFs);
   $("hdr").classList.toggle("hid",isFs);$("ftr").classList.toggle("hid",isFs);
   $("inputCard").classList.toggle("hid",isFs||topMode!=="names");
   $("fsTgl").textContent=isFs?"⛶ Exit":"⛶ Fullscreen";$("fsTgl").classList.toggle("a",isFs);
+  if(!isFs){document.body.style.removeProperty("--pf");var _n=$("resNm"),_s=$("singleNm");if(_n)_n.style.fontSize="";if(_s)_s.style.fontSize=""}
+  setTimeout(refit,60);setTimeout(refit,340);
   if(isFs&&document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(function(){});
   else if(!isFs&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
 });
@@ -862,12 +980,13 @@ function buildWheel(area){
   var stops=[];for(var i=0;i<n;i++)stops.push(C[i%C.length]+" "+(i*sa).toFixed(2)+"deg "+((i+1)*sa).toFixed(2)+"deg");
   whl.style.background="conic-gradient(from 0deg,"+stops.join(",")+")";whl.style.borderRadius="50%";
   for(var i=0;i<n;i++){
-    var mid=sa*i+sa/2,onL=(mid%360)>90&&(mid%360)<270,lr=onL?.32:.38;
-    var rad=(mid-90)*Math.PI/180,x=50+lr*100*Math.cos(rad),y=50+lr*100*Math.sin(rad),tr=onL?mid+180:mid;
-    var el=document.createElement("div");
-    el.style.cssText="position:absolute;left:"+x+"%;top:"+y+"%;transform:translate(-50%,-50%) rotate("+tr+"deg);color:#fff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.5);white-space:nowrap;pointer-events:none;z-index:2;font-size:"+(n>20?8:n>14?9:n>8?11:n>4?13:15)+"px";
-    var d=pool[i];el.textContent=d.length>12?d.slice(0,10)+"\u2026":d;whl.appendChild(el);
+    var mid=sa*i+sa/2,onL=(mid%360)>180;
+    var el=document.createElement("div"),bfs=(n>20?9:n>14?10:n>8?12:n>4?14:16);
+    el.className="whlbl";el.setAttribute("data-fs",bfs);el.setAttribute("data-mid",mid);el.setAttribute("data-onl",onL?"1":"0");
+    el.style.cssText="position:absolute;left:50%;top:50%;color:#fff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.55);white-space:nowrap;pointer-events:none;z-index:2;font-size:"+bfs+"px";
+    var d=pool[i];el.textContent=d.length>18?d.slice(0,17)+"\u2026":d;whl.appendChild(el);
   }
+  requestAnimationFrame(function(){fitWheel()});
   $("ww").addEventListener("click",function(){
     if(spinning||pool.length<2)return;spinning=true;ac();
     var ti=Math.floor(Math.random()*n),tr=360-(ti+.5)*sa;
@@ -1063,7 +1182,10 @@ function renderGroupGrid(groups,gridEl,sumEl,cpEl,label){
     var card=document.createElement("div");card.className="gc";
     card.style.background=C[i%C.length]+"11";card.style.border="1px solid "+C[i%C.length]+"33";
     var t=document.createElement("div");t.className="gt";t.style.color=C[i%C.length];t.textContent=label+" "+(i+1);card.appendChild(t);
-    g.forEach(function(nm){var d=document.createElement("div");d.className="gm";d.textContent=nm;card.appendChild(d)});
+    var wrap=document.createElement("div");wrap.className="gml";
+    g.forEach(function(nm){var d=document.createElement("div");d.className="gm";d.textContent=nm;wrap.appendChild(d)});
+    if(g.length>=12)card.setAttribute("data-big","2");else if(g.length>=6)card.setAttribute("data-big","1");
+    card.appendChild(wrap);
     gridEl.appendChild(card);
   });
   sumEl.classList.remove("hid");sumEl.textContent=allN.length+" students in "+groups.length+" "+label.toLowerCase()+(groups.length!==1?"s":"");
@@ -2112,11 +2234,12 @@ function setTop(x){
   document.querySelectorAll("#topBar .top-btn").forEach(function(b){b.classList.toggle("a",b.getAttribute("data-x")===x)});
   var names=(x==="names");
   $("inputCard").classList.toggle("hid",!names||isFs);
-  $("tabBar").classList.toggle("hid",!names);
+  $("pickerBar").classList.toggle("hid",!names||!allN.length);
   if(names){
     updNamesSum();
     $("spinStyleRow").classList.toggle("set-hide",lastNameTab!=="spinner");
     $("tool").classList.toggle("hid",allN.length===0);
+    $("pickerBar").classList.toggle("hid",allN.length===0);
     if(allN.length)switchTab(lastNameTab);
   }else{
     if(x==="timer")updTimerSum();
@@ -2136,6 +2259,12 @@ document.querySelectorAll("#tabBar .tab").forEach(function(b){
   });
 });
 setTop("names");
+
+// Any time a picker re-renders its result, re-fit it to the screen.
+try{
+  var _mo=new MutationObserver(function(){if(!fitting)refitSoon()});
+  _mo.observe($("tool"),{childList:true,subtree:true,characterData:true});
+}catch(e){}
 
 })();
 </script>
