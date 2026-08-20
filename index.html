@@ -236,6 +236,13 @@ body.fs .who-pip{font-size:34px}
 .gc .gt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;color:var(--ac)}
 .gc .gm{font-size:13px;color:#ddd;padding:2px 0;font-weight:500}
 .gs{text-align:center;margin-top:12px;font-size:11px;color:#666}
+.gprev-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 2px 10px}
+.gprev{flex:1;min-width:200px;font-size:12.5px;color:#ddd;font-weight:600}
+.gprev b{color:#ff6b81}
+.gprev-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:#777;font-weight:700;margin-right:2px}
+body.light .gprev{color:#333}
+body.light .gprev b{color:#C11430}
+body.fs .gprev-row{display:none}
 
 /* Lineup */
 .lineup-list{counter-reset:lineup}
@@ -298,7 +305,20 @@ body.light .rs-nudge-t b{color:#111}
 .sv-btn:hover{background:rgba(255,255,255,.08)}
 .sv-btn .dx{margin-left:5px;color:#666}
 .sv-btn .dx:hover{color:#C11430}
+.sv-btn .ed,.cls-btn .ed{margin-left:6px;color:#7f7f7f;font-weight:400}
+.sv-btn .ed:hover,.cls-btn .ed:hover{color:#C11430}
+.cls-btn.a .ed{color:#C11430}
+.ed-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;border-radius:8px;background:rgba(193,20,48,.10);border:1px solid rgba(193,20,48,.35);margin:0 0 9px}
+.ed-bar.show{display:flex}
+.ed-bar .ed-t{font-size:12px;line-height:1.5;color:#ddd;flex:1;min-width:210px}
+.ed-bar .ed-t b{color:#ff6b81}
+body.light .ed-bar{background:rgba(193,20,48,.06);border-color:rgba(193,20,48,.28)}
+body.light .ed-bar .ed-t{color:#444}
+body.light .ed-bar .ed-t b{color:#C11430}
 
+.hdr-sel{appearance:none;-webkit-appearance:none;padding-right:10px;cursor:pointer;max-width:132px}
+@media(max-width:640px){.hdr-tools{gap:6px}.hdr-pill{padding:0 9px;font-size:11px}.hdr-sel{max-width:104px}}
+.hdr-sel option{color:#222;background:#fff}
 /* Toolbar */
 .tbar{display:flex;gap:6px;justify-content:flex-end;margin-bottom:10px;flex-wrap:wrap}
 .tb{padding:5px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:#888;cursor:pointer;font-size:11px;font-family:inherit;display:flex;align-items:center;gap:3px}
@@ -310,7 +330,7 @@ body.light .rs-nudge-t b{color:#111}
 .ftr{text-align:center;margin-top:24px;padding-top:12px;font-size:9px;color:#444;border-top:1px solid rgba(255,255,255,.04)}
 .rj-mark{height:40px;width:auto;display:block;flex-shrink:0}
 .header-text{display:flex;flex-direction:column;gap:.1rem}
-.site-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
  padding:1.1rem 0 .9rem;border-bottom:1px solid rgba(255,255,255,.10);margin-bottom:18px}
 body.light .site-header{border-bottom-color:rgba(0,0,0,.10)}
 .site-header .hl{display:flex;align-items:center;gap:.85rem;min-width:0;flex-wrap:wrap}
@@ -319,7 +339,7 @@ body.light .brand{color:#1a1a1a}
 .brand .accent{color:#C11430}
 .tagline{color:#888;font-size:.9rem}
 body.light .tagline{color:#777}
-.hdr-tools{display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.hdr-tools{display:flex;align-items:center;gap:8px;flex-shrink:1;min-width:0;max-width:100%;flex-wrap:wrap;justify-content:flex-end}
 .hdr-pill{padding:0 12px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,.20);
  background:transparent;color:#aaa;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;
  display:inline-flex;align-items:center;gap:6px;transition:all .15s}
@@ -450,6 +470,11 @@ body.light .ptr{border-top-color:#C11430}
       </div>
     </div>
     <div class="hdr-tools">
+      <select class="hdr-pill hdr-sel" id="langSel" aria-label="Language · Idioma · Langue">
+        <option value="en">🌐 English</option>
+        <option value="es">🌐 Español</option>
+        <option value="fr">🌐 Français</option>
+      </select>
       <button class="hdr-pill" id="sndTgl" type="button">🔊 Sound</button>
       <button class="hdr-pill" id="fsTgl" type="button" title="Present mode — fills the screen and blows the names up for the projector">⛶ Fullscreen</button>
       <button class="icon-btn theme-toggle" id="themeTgl" type="button" aria-label="Toggle dark mode">
@@ -499,6 +524,11 @@ body.light .ptr{border-top-color:#C11430}
             <div class="rs-s" style="margin-top:5px"><b>Need to get your roster?</b> Follow <a class="rs-lnk" href="https://rjhs.instructure.com/courses/5414/pages/printing-attendance-roster-for-your-records-to-print-for-subs" target="_blank" rel="noopener">this guide in the Canvas Professional Development course</a> — it pulls an attendance roster for any section in Excel or Word, so the names are easy to copy and paste. Any list works, though: a spreadsheet column, or names you type yourself.</div>
           </div>
         </div>
+        <div class="ed-bar" id="edBar">
+          <div class="ed-t" id="edT"></div>
+          <button class="btn" id="edSave">✓ Save changes</button>
+          <button class="bo" id="edCancel">Cancel</button>
+        </div>
         <textarea id="inp" placeholder="Paste names — one per line or comma-separated"></textarea>
         <div class="nmfmt" id="nmFmt">
           <div class="pickbar-lbl" style="display:block;margin-bottom:6px">Pasted from a roster? It gets cleaned for you</div>
@@ -518,7 +548,7 @@ body.light .ptr{border-top-color:#C11430}
           <span class="rs-num">2</span>
           <div>
             <div class="rs-t">Load the names</div>
-            <div class="rs-s">Puts the class into the picker so you can spin, group, team, or seat them. <b>You only load a class once.</b> A <b>Which picker</b> row appears below with all six — Spinner, Single Name, Lineup, Groups, Teams, Seating — and every one of them uses the class you just loaded. Nothing to set up again.</div>
+            <div class="rs-s">Puts the class into the picker so you can spin, group, team, or seat them. <b>You only load a class once.</b> A <b>Which picker</b> row appears below with all five — Spinner, Single Name, Lineup, Groups &amp; Teams, Seating — and every one of them uses the class you just loaded. Nothing to set up again.</div>
           </div>
         </div>
         <div class="r" style="margin:0 0 2px">
@@ -564,14 +594,13 @@ body.light .ptr{border-top-color:#C11430}
   <div id="pickerBar" class="pickbar hid">
     <div class="pickbar-hd">
       <span class="pickbar-lbl">Which picker</span>
-      <span class="pickbar-sub">One class list — all six use it</span>
+      <span class="pickbar-sub">One class list — all five use it</span>
     </div>
     <div class="tabs" id="tabBar">
       <button class="tab a" data-t="spinner">🎡 Spinner</button>
       <button class="tab" data-t="single">⚡ Single Name</button>
       <button class="tab" data-t="lineup">🔢 Lineup</button>
-      <button class="tab" data-t="groups">👥 Groups</button>
-      <button class="tab" data-t="teams">🏆 Teams</button>
+      <button class="tab" data-t="groups">👥 Groups &amp; Teams</button>
       <button class="tab" data-t="seat">🪑 Seating</button>
     </div>
 
@@ -621,10 +650,10 @@ body.light .ptr{border-top-color:#C11430}
           <span class="trk-lbl" style="display:block;margin-bottom:6px">Who you have not called on</span>
           <div id="trkList" class="trk-list"></div>
         </div>
-        <div class="who-help" style="margin-top:9px">The class works toward one shared total — nobody is ranked against anybody. The list on the right is just for you: it is the question the random picker cannot answer on its own, <b>who have I not gotten to</b>. Stored in this browser with the class, and never shown to students unless you show it.</div>
+        <div class="who-help" id="trkHelp" style="margin-top:9px">The class works toward one shared total — nobody is ranked against anybody. The list on the right is just for you: it is the question the random picker cannot answer on its own, <b>who have I not gotten to</b>. Stored in this browser with the class, and never shown to students unless you show it.</div>
       </div>
     </div>
-    <div class="pickbar-help">Switch any time — the class you loaded stays loaded. Spinner animates the pick on screen, Single Name is instant, and Lineup, Groups, Teams and Seating split the whole class at once. Projecting for the room? <b>⛶ Fullscreen</b> blows the names up to fill the screen.</div>
+    <div class="pickbar-help">Switch any time — the class you loaded stays loaded. Spinner animates the pick on screen, Single Name is instant, and Lineup, Groups &amp; Teams and Seating split the whole class at once. Projecting for the room? <b>⛶ Fullscreen</b> blows the names up to fill the screen.</div>
   </div>
 
   <div id="tool" class="hid">
@@ -632,7 +661,7 @@ body.light .ptr{border-top-color:#C11430}
     <!-- SPINNER -->
     <div id="p-spinner">
       <div class="obar" id="obar-spinner">
-        <label><input type="checkbox" id="rmCb"> Remove after picked</label>
+        <label><input type="checkbox" id="rmCb"> <span id="rmLbl">Remove after picked</span></label>
         <button class="bo pb-fs" id="fsTgl2" type="button" title="Present mode — fills the screen and blows the names up for the projector">⛶ Fullscreen</button>
         <button class="bg hid" id="rstBtn">Reset</button>
       </div>
@@ -648,7 +677,7 @@ body.light .ptr{border-top-color:#C11430}
       <div class="obar" id="obar-single" style="text-align:left"></div>
       <div class="res-ban" id="singleBan" style="display:none"><div class="lb">Selected</div><div class="nm" id="singleNm"></div><button class="bo got-btn hid" id="gotBtn2" type="button">✓ Got it — +1 for the class</button></div>
       <button class="btn" id="singleBtn" style="font-size:16px;padding:14px 40px;border-radius:12px">Pick a Name</button>
-      <div style="margin-top:8px;font-size:12px;color:#666">Quick random pick — no animation</div>
+      <div id="singleHint" style="margin-top:8px;font-size:12px;color:#666">Quick random pick — no animation</div>
     </div>
 
     <!-- LINEUP -->
@@ -660,28 +689,31 @@ body.light .ptr{border-top-color:#C11430}
       <div id="lineupList" class="lineup-list"></div>
     </div>
 
-    <!-- GROUPS -->
+    <!-- GROUPS & TEAMS -->
     <div id="p-groups" class="hid">
       <div class="obar" id="obar-groups">
-        <label>Students per group:</label>
-        <div class="r" id="grpBtns" style="gap:3px"></div>
+        <label>Split the class by:</label>
+        <div class="r" id="gmBtns" style="gap:3px">
+          <button class="mode-btn a" data-gm="size">How many in each</button>
+          <button class="mode-btn" data-gm="count">How many groups</button>
+        </div>
+        <div class="r" style="gap:8px;margin-left:4px">
+          <label id="grpNumLbl">Students in each:</label>
+          <div class="r" id="grpBtns" style="gap:3px"></div>
+        </div>
         <button class="btn" style="margin-left:auto" id="genGrp">Generate</button>
+      </div>
+      <div class="gprev-row">
+        <div class="gprev" id="grpPrev"></div>
+        <div class="r" style="gap:3px">
+          <span class="gprev-lbl">Cards say</span>
+          <button class="mode-btn a" data-gl="Group">Group 1</button>
+          <button class="mode-btn" data-gl="Team">Team 1</button>
+        </div>
       </div>
       <div class="gg" id="grpGrid"></div>
       <div class="gs hid" id="grpSum"></div>
-      <div style="text-align:center;margin-top:8px"><button class="bo hid" id="cpGrp">📋 Copy Groups</button></div>
-    </div>
-
-    <!-- TEAMS -->
-    <div id="p-teams" class="hid">
-      <div class="obar" id="obar-teams">
-        <label>Number of teams:</label>
-        <div class="r" id="tmBtns" style="gap:3px"></div>
-        <button class="btn" style="margin-left:auto" id="genTm">Generate</button>
-      </div>
-      <div class="gg" id="tmGrid"></div>
-      <div class="gs hid" id="tmSum"></div>
-      <div style="text-align:center;margin-top:8px"><button class="bo hid" id="cpTm">📋 Copy Teams</button></div>
+      <div style="text-align:center;margin-top:8px"><button class="bo hid" id="cpGrp">📋 Copy</button></div>
     </div>
 
     <!-- SEATING -->
@@ -707,7 +739,7 @@ body.light .ptr{border-top-color:#C11430}
         <div class="who-orow">
           <div class="who-olbl">Language · Idioma · Langue</div>
           <div class="modes" id="whoLangBar"></div>
-          <div class="who-help">Switches the cards and this panel into Spanish or French. The rest of the Randomizer stays in English.</div>
+          <div class="who-help" id="whoLangHelp">Switches the whole Randomizer into Spanish or French — the cards, the setup steps, the pickers, all of it. Student names are never translated.</div>
         </div>
         <div class="who-orow">
           <div class="who-olbl" id="whoLblGrp">Working in</div>
@@ -782,16 +814,16 @@ body.light .ptr{border-top-color:#C11430}
       </div>
       <div class="who-opts" id="timerSet">
         <div class="who-orow">
-          <div class="who-olbl">Preset lengths</div>
+          <div class="who-olbl" id="tPresetLbl">Preset lengths</div>
           <div class="t-pre" id="tPre"></div>
-          <div class="who-help">Tap a preset to load it. The timer beeps for the last five seconds and buzzes at zero.</div>
+          <div class="who-help" id="tPresetHelp">Tap a preset to load it. The timer beeps for the last five seconds and buzzes at zero.</div>
         </div>
         <div class="who-orow">
-          <div class="who-olbl">Custom length</div>
+          <div class="who-olbl" id="tCustLbl">Custom length</div>
           <div class="r" style="gap:6px">
             <input type="number" id="tCust" min="5" max="600" placeholder="45" style="width:80px;padding:7px 9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#eee;font-size:13px;font-family:inherit;outline:none">
             <button class="bo" id="tCustBtn">Set</button>
-            <span style="font-size:11px;color:#888">seconds</span>
+            <span id="tCustUnit" style="font-size:11px;color:#888">seconds</span>
           </div>
         </div>
       </div>
@@ -806,9 +838,9 @@ body.light .ptr{border-top-color:#C11430}
   </div>
 
   <footer class="site-footer" id="ftr">
-  Built for Regis Jesuit High School &middot; No data leaves your browser &middot;
-  <a href="https://github.com/RJEdTech/Raider-Randomizer" target="_blank" rel="noopener">View on GitHub</a> &middot;
-  <a href="https://forms.microsoft.com/r/sKU9sHY45r" target="_blank" rel="noopener">Report a bug or request a tool</a>
+  <span id="ftrTxt">Built for Regis Jesuit High School &middot; No data leaves your browser</span> &middot;
+  <a href="https://github.com/RJEdTech/Raider-Randomizer" target="_blank" rel="noopener" id="ftrGh">View on GitHub</a> &middot;
+  <a href="https://forms.microsoft.com/r/sKU9sHY45r" target="_blank" rel="noopener" id="ftrBug">Report a bug or request a tool</a>
 </footer>
 </div>
 <div class="toast" id="toast"></div>
@@ -818,11 +850,28 @@ body.light .ptr{border-top-color:#C11430}
 // Card accents: one hue per group, legible on white and on near-black.
 // Colour here identifies a group; it is not decoration, so it lives on a rule
 // and the label only, never as a wash across the whole card.
+// ===== Whole-page translation =====
+// The card tool has always had es/fr through I18N/UIEN. The roster side of the tool
+// never did. PAGE is keyed by the English string itself, so English stays the source
+// of truth in the markup and anything missing simply falls back to English.
+var LANG="en",PAGE={es:{"Pick with names · Pick without names · Timer": "Elegir con nombres · Elegir sin nombres · Temporizador", "🔊 Sound": "🔊 Sonido", "⛶ Fullscreen": "⛶ Pantalla completa", "🎯 Pick With Names<span class=\"sub\">Wheel · groups · teams · seating</span>": "🎯 Elegir con nombres<span class=\"sub\">Ruleta · grupos · equipos · asientos</span>", "🙋 Pick Without Names<span class=\"sub\">Question cards · no roster</span>": "🙋 Elegir sin nombres<span class=\"sub\">Tarjetas de preguntas · sin lista</span>", "⏱️ Timer<span class=\"sub\">Countdown for any activity</span>": "⏱️ Temporizador<span class=\"sub\">Cuenta atrás para cualquier actividad</span>", "⚙ Change these options": "⚙ Cambiar estas opciones", "Tap that line — or <b>⚙ Change these options</b> — to paste a new roster, load a saved class, or back them up. You only do this once: the <b>Which picker</b> row below stays on screen, and the spinner, groups, teams and seating all run off that same list.": "Toca esa línea — o <b>⚙ Cambiar estas opciones</b> — para pegar una lista nueva, cargar una clase guardada o hacer una copia. Solo lo haces una vez: la fila <b>Qué selector</b> de abajo queda en pantalla, y la ruleta, los grupos, los equipos y los asientos usan esa misma lista.", "💾 Save this class": "💾 Guardar esta clase", "↔ Move this class between the Randomizer and the <b>Pod Generator</b>": "↔ Mueve esta clase entre el Randomizer y el <b>Pod Generator</b>", "→ Send this class to the Pod Generator": "→ Enviar esta clase al Pod Generator", "Both tools keep their classes in this browser, so a roster you build in one is available in the other. Nothing is uploaded and nothing leaves your computer.": "Las dos herramientas guardan sus clases en este navegador, así que una lista que creas en una está disponible en la otra. No se sube nada y nada sale de tu computadora.", "Paste your class list": "Pega tu lista de clase", "One name per line, or separated by commas — extra blank lines and stray spaces are ignored.": "Un nombre por línea, o separados por comas — las líneas en blanco y los espacios de sobra se ignoran.", "<b>Need to get your roster?</b> Follow <a class=\"rs-lnk\" href=\"https://rjhs.instructure.com/courses/5414/pages/printing-attendance-roster-for-your-records-to-print-for-subs\" target=\"_blank\" rel=\"noopener\">this guide in the Canvas Professional Development course</a> — it pulls an attendance roster for any section in Excel or Word, so the names are easy to copy and paste. Any list works, though: a spreadsheet column, or names you type yourself.": "<b>¿Necesitas tu lista de clase?</b> Sigue <a class=\"rs-lnk\" href=\"https://rjhs.instructure.com/courses/5414/pages/printing-attendance-roster-for-your-records-to-print-for-subs\" target=\"_blank\" rel=\"noopener\">esta guía del curso Canvas Professional Development</a> — saca una lista de asistencia de cualquier sección en Excel o Word, así los nombres son fáciles de copiar y pegar. Cualquier lista sirve: una columna de hoja de cálculo, o nombres que escribas tú.", "Pasted from a roster? It gets cleaned for you": "¿Pegado desde una lista oficial? Se limpia solo", "Preferred + last name": "Nombre preferido + apellido", "Legal first + last name": "Nombre legal + apellido", "Exactly as pasted": "Tal como se pegó", "<b>This protects student privacy.</b> Your roster <b>never leaves your computer</b>. There is no account, no upload, and no server to send it to — the names stay in this browser, on your machine. RJ Ed&nbsp;Tech never receives them, never stores them, and cannot see them. Because nothing is transmitted anywhere, pasting your class list here does not share student PII with anyone. If you would still rather not use full names, first name plus last initial works just as well.": "<b>Esto protege la privacidad de los estudiantes.</b> Tu lista <b>nunca sale de tu computadora</b>. No hay cuenta, no hay subida y no hay servidor al que enviarla — los nombres se quedan en este navegador, en tu máquina. RJ Ed&nbsp;Tech nunca los recibe, nunca los guarda y no puede verlos. Como no se transmite nada a ningún lado, pegar aquí tu lista de clase no comparte datos personales de los estudiantes con nadie. Si aun así prefieres no usar nombres completos, el nombre más la inicial del apellido funciona igual de bien.", "Load the names": "Cargar los nombres", "Puts the class into the picker so you can spin, group, team, or seat them. <b>You only load a class once.</b> A <b>Which picker</b> row appears below with all five — Spinner, Single Name, Lineup, Groups &amp; Teams, Seating — and every one of them uses the class you just loaded. Nothing to set up again.": "Pone la clase en el selector para que puedas girar, agrupar, hacer equipos o sentar. <b>Solo cargas una clase una vez.</b> Abajo aparece una fila <b>Qué selector</b> con las cinco — Ruleta, Un nombre, Orden, Grupos y equipos, Asientos — y todas usan la clase que acabas de cargar. No hay que configurar nada más.", "Load Names": "Cargar nombres", "Save it so you never paste it again": "Guárdala y no la vuelves a pegar", "Give the list a name like <b>Period 1</b>. It turns into a button below — one click loads the whole class, every time you open the Randomizer on this computer.": "Ponle un nombre a la lista, como <b>Período 1</b>. Se convierte en un botón abajo — un clic carga la clase entera, cada vez que abres el Randomizer en esta computadora.", "💾 Save as Class": "💾 Guardar como clase", "Your saved classes — click to load, ✕ to delete": "Tus clases guardadas — clic para cargar, ✕ para borrar", "No saved classes yet. Paste a list above, press <b>Load Names</b>, then <b>Save as Class</b> — it will be waiting for you tomorrow.": "Aún no hay clases guardadas. Pega una lista arriba, pulsa <b>Cargar nombres</b> y luego <b>Guardar como clase</b> — mañana te estará esperando.", "Back it up — or move it to another computer": "Haz una copia — o pásala a otra computadora", "Download one small file that holds every saved class. Keep it in OneDrive, or restore it on your laptop, your classroom computer, or a new browser to get all your rosters back in one step.": "Descarga un archivo pequeño con todas tus clases guardadas. Guárdalo en OneDrive, o restáuralo en tu portátil, en la computadora del salón o en un navegador nuevo para recuperar todas tus listas de una vez.", "⬇ Download backup": "⬇ Descargar copia", "⬆ Restore from file": "⬆ Restaurar desde archivo", "Saved classes, starred cards, your own cards, and saved decks are stored in this browser only. Clearing your browsing data, using a different computer, or switching browsers will lose them. Download a backup file and keep it somewhere safe — you can restore it here on any device.": "Las clases guardadas, las tarjetas destacadas, tus propias tarjetas y los mazos guardados se guardan solo en este navegador. Si borras los datos de navegación, usas otra computadora o cambias de navegador, se pierden. Descarga una copia de seguridad y guárdala en un lugar seguro — puedes restaurarla aquí en cualquier dispositivo.", "Which picker": "Qué selector", "One class list — all five use it": "Una lista de clase — las cinco la usan", "🎡 Spinner": "🎡 Ruleta", "⚡ Single Name": "⚡ Un nombre", "🔢 Lineup": "🔢 Orden", "👥 Groups &amp; Teams": "👥 Grupos y equipos", "🪑 Seating": "🪑 Asientos", "Spinner style": "Estilo de ruleta", "🎡 Wheel": "🎡 Rueda", "🎰 Slots": "🎰 Tragamonedas", "🃏 Cards": "🃏 Cartas", "🎱 Lottery": "🎱 Lotería", "💡 Spotlight": "💡 Foco", "Your class": "Tu clase", "Class points": "Puntos de la clase", "Details": "Detalles", "Counting since": "Contando desde", "This unit": "Esta unidad", "Six weeks": "Seis semanas", "Semester": "Semestre", "Year": "Año", "Start fresh": "Empezar de cero", "Class target": "Meta de la clase", "Who you have not called on": "A quién no has llamado", "The class works toward one shared total — nobody is ranked against anybody. The list on the right is just for you: it is the question the random picker cannot answer on its own, <b>who have I not gotten to</b>. Stored in this browser with the class, and never shown to students unless you show it.": "La clase trabaja hacia un total compartido — nadie se compara con nadie. La lista de la derecha es solo para ti: responde lo que el selector aleatorio no puede saber por sí solo, <b>a quién no he llamado</b>. Se guarda en este navegador con la clase y nunca se les muestra a los estudiantes a menos que tú la muestres.", "Switch any time — the class you loaded stays loaded. Spinner animates the pick on screen, Single Name is instant, and Lineup, Groups &amp; Teams and Seating split the whole class at once. Projecting for the room? <b>⛶ Fullscreen</b> blows the names up to fill the screen.": "Cambia cuando quieras — la clase que cargaste sigue cargada. Ruleta anima la elección en pantalla, Un nombre es instantáneo, y Orden, Grupos y equipos y Asientos reparten la clase entera de una vez. ¿Lo proyectas para el salón? <b>⛶ Pantalla completa</b> agranda los nombres hasta llenar la pantalla.", "Reset": "Reiniciar", "Selected": "Seleccionado", "✓ Got it — +1 for the class": "✓ Bien — +1 para la clase", "Tap to spin": "Toca para girar", "Already Called": "Ya llamados", "Pick a Name": "Elegir nombre", "Quick random pick — no animation": "Elección rápida al azar — sin animación", "Shuffle Lineup": "Mezclar orden", "📋 Copy": "📋 Copiar", "Split the class by:": "Dividir la clase por:", "How many in each": "Cuántos en cada uno", "How many groups": "Cuántos grupos", "Students in each:": "Estudiantes en cada uno:", "Generate": "Generar", "Cards say": "Las tarjetas dicen", "Group 1": "Grupo 1", "Team 1": "Equipo 1", "Columns:": "Columnas:", "Shuffle Seats": "Mezclar asientos", "Switches the whole Randomizer into Spanish or French — the cards, the setup steps, the pickers, all of it. Student names are never translated.": "Cambia todo el Randomizer a español o francés — las tarjetas, los pasos de configuración, los selectores, todo. Los nombres de los estudiantes nunca se traducen.", "Preset lengths": "Tiempos predefinidos", "Tap a preset to load it. The timer beeps for the last five seconds and buzzes at zero.": "Toca una duración para cargarla. El temporizador pita los últimos cinco segundos y suena al llegar a cero.", "Custom length": "Tiempo personalizado", "Set": "Fijar", "seconds": "segundos", "Start": "Iniciar", "Paste names — one per line or comma-separated": "Pega los nombres — uno por línea o separados por comas", "Copied!": "¡Copiado!", "Copy failed": "No se pudo copiar", "✓ <b>{N} names</b> loaded from your saved class <b>{C}</b>.": "✓ <b>{N} nombres</b> cargados de tu clase guardada <b>{C}</b>.", "It is stored in this browser and will be here next time. Use Settings → Download backup to keep a copy or move it to another computer.": "Se guarda en este navegador y estará aquí la próxima vez. Usa Opciones → Descargar copia para conservarla o pasarla a otra computadora.", "<b>{N} names</b> loaded — this class is not saved yet.": "<b>{N} nombres</b> cargados — esta clase aún no está guardada.", "Save it once and it comes back as a one-click button every time you open the Randomizer. The list stays on this computer.": "Guárdala una vez y vuelve como un botón de un clic cada vez que abres el Randomizer. La lista se queda en esta computadora.", "Load \"{C}\" · {N} names": "Cargar \"{C}\" · {N} nombres", "Edit this class — add or remove students": "Editar esta clase — añadir o quitar estudiantes", "Delete": "Borrar", "Delete \"{C}\"?": "¿Borrar \"{C}\"?", " — opens the Pod Generator with them ready to sort": " — abre el Pod Generator con ellos listos para ordenar", "Load \"{C}\" ({N} names) from the Pod Generator": "Cargar \"{C}\" ({N} nombres) desde el Pod Generator", "Brought \"{C}\" over from the Pod Generator": "Se trajo \"{C}\" desde el Pod Generator", "Opening the Pod Generator with these {N} names…": "Abriendo el Pod Generator con estos {N} nombres…", "Load \"{C}\" — or press the pencil to add or remove students": "Cargar \"{C}\" — o pulsa el lápiz para añadir o quitar estudiantes", "+ Add a new class": "+ Añadir una clase nueva", "+ Add your first class": "+ Añade tu primera clase", "Open the class list panel and paste a new roster": "Abre el panel de lista de clase y pega una lista nueva", "Done": "Listo", "✎ Editing <b>{C}</b> — {N} students. Add a name on its own line, or delete a line you do not need, then press <b>Save changes</b>.": "✎ Editando <b>{C}</b> — {N} estudiantes. Añade un nombre en su propia línea, o borra una línea que no necesites, y pulsa <b>Guardar cambios</b>.", "Add at least one name, or press Cancel": "Añade al menos un nombre, o pulsa Cancelar", "\"{C}\" updated — {N} students": "\"{C}\" actualizada — {N} estudiantes", "Edit cancelled — nothing changed": "Edición cancelada — no cambió nada", "Paste some names first": "Pega algunos nombres primero", "Name this class (e.g. \"Period 1\"):": "Ponle nombre a esta clase (p. ej. \"Período 1\"):", "\"{C}\" already exists. Replace it with these {N} names?": "\"{C}\" ya existe. ¿Reemplazarla con estos {N} nombres?", "Saved \"{C}\" — it is on the list now": "\"{C}\" guardada — ya está en la lista", "Paste straight from the Excel or Word roster — table lines, blank rows, extra spaces, <b>Last, First (Preferred) &#96;27</b> and the graduation year are all handled.": "Pega directo desde la lista de Excel o Word — las líneas de tabla, las filas vacías, los espacios de sobra, <b>Apellido, Nombre (Preferido) &#96;27</b> y el año de graduación se manejan solos.", " · “{A}” becomes “<b>{B}</b>”": " · “{A}” pasa a ser “<b>{B}</b>”", " · nothing needed cleaning": " · no hubo nada que limpiar", "The class hit {N} — nice.": "La clase llegó a {N} — genial.", "Called on {W}: {A} of {B}": "Llamados {W}: {A} de {B}", "Everyone has come up {W}.": "Todos han salido {W}.", "Hide": "Ocultar", "Start fresh for {W}? Points go back to zero and everybody counts as not-yet-called.": "¿Empezar de cero para {W}? Los puntos vuelven a cero y todos cuentan como no llamados.", "Fresh start": "Empezar de cero", "✓ Added": "✓ Añadido", "⛶ Exit full screen": "⛶ Salir de pantalla completa", "Only <strong style=\"color:#C11430\">{N}</strong> remains!": "¡Solo queda <strong style=\"color:#C11430\">{N}</strong>!", "<b>{N}</b> students → <b>{K}</b> {G}": "<b>{N}</b> estudiantes → <b>{K}</b> {G}", " of <b>{S}</b>": " de <b>{S}</b>", ": {A} of {B} and {C} of {D}": ": {A} de {B} y {C} de {D}", "Load a class and this will show exactly how it splits.": "Carga una clase y aquí verás exactamente cómo se divide.", "How many groups:": "Cuántos grupos:", "{N} students in {K} {G}": "{N} estudiantes en {K} {G}", "Copy": "Copiar", "<b>No class loaded</b>": "<b>Ninguna clase cargada</b>", "start with step 1 below — paste a class list, load it, then save it": "empieza con el paso 1 de abajo — pega una lista de clase, cárgala y guárdala", "tap here to paste and save a class list": "toca aquí para pegar y guardar una lista de clase", "<b>{N} names</b>": "<b>{N} nombres</b>", "min": "min", "sec": "seg", "tap Start when you are ready": "toca Iniciar cuando estés listo", "Brought {N} names over from the Pod Generator": "Se trajeron {N} nombres desde el Pod Generator", "{N} name": "{N} nombre", "{N} names": "{N} nombres", "<b>{N} name</b> ready": "<b>{N} nombre</b> listo", "<b>{N} names</b> ready": "<b>{N} nombres</b> listos", "{N} name loaded": "{N} nombre cargado", "{N} names loaded": "{N} nombres cargados", "zero": "cero", "one": "uno", "two": "dos", "three": "tres", "four": "cuatro", "five": "cinco", "six": "seis", "seven": "siete", "eight": "ocho", "nine": "nueve", "ten": "diez", "eleven": "once", "twelve": "doce", "group": "grupo", "groups": "grupos", "team": "equipo", "teams": "equipos", "this unit": "esta unidad", "these six weeks": "estas seis semanas", "this semester": "este semestre", "this year": "este año", "Spinner": "Ruleta", "Single Name": "Un nombre", "Lineup": "Orden", "Groups & Teams": "Grupos y equipos", "Seating": "Asientos", "Wheel": "Rueda", "Slots": "Tragamonedas", "Cards": "Cartas", "Lottery": "Lotería", "Spotlight": "Foco", "Remove after picked": "Quitar tras elegir", "Group": "Grupo", "Team": "Equipo", "📋 Copy {G}": "📋 Copiar {G}", "View on GitHub": "Ver en GitHub", "Report a bug or request a tool": "Informar de un error o pedir una herramienta", "Built for Regis Jesuit High School · No data leaves your browser": "Hecho para Regis Jesuit High School · Ningún dato sale de tu navegador"},fr:{"Pick with names · Pick without names · Timer": "Tirage avec noms · Tirage sans noms · Minuteur", "🔊 Sound": "🔊 Son", "⛶ Fullscreen": "⛶ Plein écran", "🎯 Pick With Names<span class=\"sub\">Wheel · groups · teams · seating</span>": "🎯 Tirage avec noms<span class=\"sub\">Roue · groupes · équipes · places</span>", "🙋 Pick Without Names<span class=\"sub\">Question cards · no roster</span>": "🙋 Tirage sans noms<span class=\"sub\">Cartes questions · sans liste</span>", "⏱️ Timer<span class=\"sub\">Countdown for any activity</span>": "⏱️ Minuteur<span class=\"sub\">Compte à rebours pour toute activité</span>", "⚙ Change these options": "⚙ Modifier ces options", "Tap that line — or <b>⚙ Change these options</b> — to paste a new roster, load a saved class, or back them up. You only do this once: the <b>Which picker</b> row below stays on screen, and the spinner, groups, teams and seating all run off that same list.": "Touchez cette ligne — ou <b>⚙ Modifier ces options</b> — pour coller une nouvelle liste, charger une classe enregistrée ou les sauvegarder. Vous ne le faites qu’une fois : la ligne <b>Quel tirage</b> ci-dessous reste à l’écran, et la roulette, les groupes, les équipes et les places utilisent tous cette même liste.", "💾 Save this class": "💾 Enregistrer cette classe", "↔ Move this class between the Randomizer and the <b>Pod Generator</b>": "↔ Déplacer cette classe entre le Randomizer et le <b>Pod Generator</b>", "→ Send this class to the Pod Generator": "→ Envoyer cette classe vers le Pod Generator", "Both tools keep their classes in this browser, so a roster you build in one is available in the other. Nothing is uploaded and nothing leaves your computer.": "Les deux outils conservent leurs classes dans ce navigateur : une liste créée dans l’un est disponible dans l’autre. Rien n’est envoyé en ligne et rien ne quitte votre ordinateur.", "Paste your class list": "Collez votre liste de classe", "One name per line, or separated by commas — extra blank lines and stray spaces are ignored.": "Un nom par ligne, ou séparés par des virgules — les lignes vides et les espaces en trop sont ignorés.", "<b>Need to get your roster?</b> Follow <a class=\"rs-lnk\" href=\"https://rjhs.instructure.com/courses/5414/pages/printing-attendance-roster-for-your-records-to-print-for-subs\" target=\"_blank\" rel=\"noopener\">this guide in the Canvas Professional Development course</a> — it pulls an attendance roster for any section in Excel or Word, so the names are easy to copy and paste. Any list works, though: a spreadsheet column, or names you type yourself.": "<b>Besoin de récupérer votre liste ?</b> Suivez <a class=\"rs-lnk\" href=\"https://rjhs.instructure.com/courses/5414/pages/printing-attendance-roster-for-your-records-to-print-for-subs\" target=\"_blank\" rel=\"noopener\">ce guide dans le cours Canvas Professional Development</a> — il génère une liste de présence pour n’importe quelle section dans Excel ou Word, donc les noms se copient-collent facilement. N’importe quelle liste convient : une colonne de tableur, ou des noms que vous tapez vous-même.", "Pasted from a roster? It gets cleaned for you": "Collé depuis une liste ? Le nettoyage est automatique", "Preferred + last name": "Prénom d’usage + nom", "Legal first + last name": "Prénom légal + nom", "Exactly as pasted": "Exactement comme collé", "<b>This protects student privacy.</b> Your roster <b>never leaves your computer</b>. There is no account, no upload, and no server to send it to — the names stay in this browser, on your machine. RJ Ed&nbsp;Tech never receives them, never stores them, and cannot see them. Because nothing is transmitted anywhere, pasting your class list here does not share student PII with anyone. If you would still rather not use full names, first name plus last initial works just as well.": "<b>Cela protège la vie privée des élèves.</b> Votre liste <b>ne quitte jamais votre ordinateur</b>. Il n’y a ni compte, ni envoi, ni serveur destinataire — les noms restent dans ce navigateur, sur votre machine. RJ Ed&nbsp;Tech ne les reçoit jamais, ne les stocke jamais et ne peut pas les voir. Comme rien n’est transmis nulle part, coller votre liste de classe ici ne partage aucune donnée personnelle d’élève avec qui que ce soit. Si vous préférez tout de même éviter les noms complets, le prénom suivi de l’initiale du nom fonctionne aussi bien.", "Load the names": "Charger les noms", "Puts the class into the picker so you can spin, group, team, or seat them. <b>You only load a class once.</b> A <b>Which picker</b> row appears below with all five — Spinner, Single Name, Lineup, Groups &amp; Teams, Seating — and every one of them uses the class you just loaded. Nothing to set up again.": "Place la classe dans le tirage pour lancer la roulette, former des groupes ou des équipes, ou attribuer les places. <b>Vous ne chargez une classe qu’une fois.</b> Une ligne <b>Quel tirage</b> apparaît ci-dessous avec les cinq modes — Roulette, Nom unique, Ordre de passage, Groupes et équipes, Places — et chacun utilise la classe que vous venez de charger. Rien à reconfigurer.", "Load Names": "Charger les noms", "Save it so you never paste it again": "Enregistrez-la pour ne plus jamais la coller", "Give the list a name like <b>Period 1</b>. It turns into a button below — one click loads the whole class, every time you open the Randomizer on this computer.": "Donnez un nom à la liste, par exemple <b>Période 1</b>. Elle devient un bouton ci-dessous — un clic charge toute la classe, à chaque ouverture du Randomizer sur cet ordinateur.", "💾 Save as Class": "💾 Enregistrer comme classe", "Your saved classes — click to load, ✕ to delete": "Vos classes enregistrées — cliquez pour charger, ✕ pour supprimer", "No saved classes yet. Paste a list above, press <b>Load Names</b>, then <b>Save as Class</b> — it will be waiting for you tomorrow.": "Aucune classe enregistrée pour l’instant. Collez une liste ci-dessus, appuyez sur <b>Charger les noms</b>, puis sur <b>Enregistrer comme classe</b> — elle vous attendra demain.", "Back it up — or move it to another computer": "Sauvegardez-la — ou transférez-la sur un autre ordinateur", "Download one small file that holds every saved class. Keep it in OneDrive, or restore it on your laptop, your classroom computer, or a new browser to get all your rosters back in one step.": "Téléchargez un seul petit fichier contenant toutes vos classes enregistrées. Gardez-le dans OneDrive, ou restaurez-le sur votre portable, l’ordinateur de la salle ou un nouveau navigateur pour récupérer toutes vos listes en une étape.", "⬇ Download backup": "⬇ Télécharger la sauvegarde", "⬆ Restore from file": "⬆ Restaurer depuis un fichier", "Saved classes, starred cards, your own cards, and saved decks are stored in this browser only. Clearing your browsing data, using a different computer, or switching browsers will lose them. Download a backup file and keep it somewhere safe — you can restore it here on any device.": "Les classes enregistrées, les cartes favorites, vos propres cartes et vos jeux enregistrés ne sont stockés que dans ce navigateur. Effacer vos données de navigation, changer d’ordinateur ou changer de navigateur les fera disparaître. Téléchargez un fichier de sauvegarde et gardez-le en lieu sûr — vous pourrez le restaurer ici sur n’importe quel appareil.", "Which picker": "Quel tirage", "One class list — all five use it": "Une seule liste de classe — les cinq l’utilisent", "🎡 Spinner": "🎡 Roulette", "⚡ Single Name": "⚡ Nom unique", "🔢 Lineup": "🔢 Ordre de passage", "👥 Groups &amp; Teams": "👥 Groupes et équipes", "🪑 Seating": "🪑 Places", "Spinner style": "Style de roulette", "🎡 Wheel": "🎡 Roue", "🎰 Slots": "🎰 Jackpot", "🃏 Cards": "🃏 Cartes", "🎱 Lottery": "🎱 Loterie", "💡 Spotlight": "💡 Projecteur", "Your class": "Votre classe", "Class points": "Points de classe", "Details": "Détails", "Counting since": "Décompte depuis", "This unit": "Cette séquence", "Six weeks": "Six semaines", "Semester": "Semestre", "Year": "Année", "Start fresh": "Repartir à zéro", "Class target": "Objectif de classe", "Who you have not called on": "Ceux que vous n’avez pas interrogés", "The class works toward one shared total — nobody is ranked against anybody. The list on the right is just for you: it is the question the random picker cannot answer on its own, <b>who have I not gotten to</b>. Stored in this browser with the class, and never shown to students unless you show it.": "La classe vise un total commun — personne n’est classé contre personne. La liste de droite n’est que pour vous : c’est la question à laquelle le tirage au sort ne peut pas répondre seul, <b>qui n’ai-je pas encore interrogé</b>. Stockée dans ce navigateur avec la classe, et jamais montrée aux élèves sauf si vous la montrez.", "Switch any time — the class you loaded stays loaded. Spinner animates the pick on screen, Single Name is instant, and Lineup, Groups &amp; Teams and Seating split the whole class at once. Projecting for the room? <b>⛶ Fullscreen</b> blows the names up to fill the screen.": "Changez à tout moment — la classe chargée le reste. La Roulette anime le tirage à l’écran, Nom unique est instantané, et Ordre de passage, Groupes et équipes et Places répartissent toute la classe d’un coup. Vous projetez pour la salle ? <b>⛶ Plein écran</b> agrandit les noms sur tout l’écran.", "Reset": "Réinitialiser", "Selected": "Sélectionné", "✓ Got it — +1 for the class": "✓ Réussi — +1 pour la classe", "Tap to spin": "Touchez pour lancer", "Already Called": "Déjà interrogés", "Pick a Name": "Tirer un nom", "Quick random pick — no animation": "Tirage rapide — sans animation", "Shuffle Lineup": "Mélanger l’ordre", "📋 Copy": "📋 Copier", "Split the class by:": "Répartir la classe par :", "How many in each": "Combien dans chaque", "How many groups": "Combien de groupes", "Students in each:": "Élèves par groupe :", "Generate": "Générer", "Cards say": "Sur les cartes", "Group 1": "Groupe 1", "Team 1": "Équipe 1", "Columns:": "Colonnes :", "Shuffle Seats": "Mélanger les places", "Switches the whole Randomizer into Spanish or French — the cards, the setup steps, the pickers, all of it. Student names are never translated.": "Bascule tout le Randomizer en espagnol ou en français — les cartes, les étapes de configuration, les tirages, tout. Les noms des élèves ne sont jamais traduits.", "Preset lengths": "Durées prédéfinies", "Tap a preset to load it. The timer beeps for the last five seconds and buzzes at zero.": "Touchez une durée pour la charger. Le minuteur bipe les cinq dernières secondes et sonne à zéro.", "Custom length": "Durée personnalisée", "Set": "Régler", "seconds": "secondes", "Start": "Démarrer", "Paste names — one per line or comma-separated": "Collez les noms — un par ligne ou séparés par des virgules", "Copied!": "Copié !", "Copy failed": "Échec de la copie", "✓ <b>{N} names</b> loaded from your saved class <b>{C}</b>.": "✓ <b>{N} noms</b> chargés depuis votre classe enregistrée <b>{C}</b>.", "It is stored in this browser and will be here next time. Use Settings → Download backup to keep a copy or move it to another computer.": "Elle est stockée dans ce navigateur et sera là la prochaine fois. Utilisez Options → Télécharger la sauvegarde pour en garder une copie ou la transférer sur un autre ordinateur.", "<b>{N} names</b> loaded — this class is not saved yet.": "<b>{N} noms</b> chargés — cette classe n’est pas encore enregistrée.", "Save it once and it comes back as a one-click button every time you open the Randomizer. The list stays on this computer.": "Enregistrez-la une fois et elle revient sous forme de bouton à chaque ouverture du Randomizer. La liste reste sur cet ordinateur.", "Load \"{C}\" · {N} names": "Charger « {C} » · {N} noms", "Edit this class — add or remove students": "Modifier cette classe — ajouter ou retirer des élèves", "Delete": "Supprimer", "Delete \"{C}\"?": "Supprimer « {C} » ?", " — opens the Pod Generator with them ready to sort": " — ouvre le Pod Generator avec eux prêts à répartir", "Load \"{C}\" ({N} names) from the Pod Generator": "Charger « {C} » ({N} noms) depuis le Pod Generator", "Brought \"{C}\" over from the Pod Generator": "« {C} » importée depuis le Pod Generator", "Opening the Pod Generator with these {N} names…": "Ouverture du Pod Generator avec ces {N} noms…", "Load \"{C}\" — or press the pencil to add or remove students": "Charger « {C} » — ou appuyez sur le crayon pour ajouter ou retirer des élèves", "+ Add a new class": "+ Ajouter une classe", "+ Add your first class": "+ Ajoutez votre première classe", "Open the class list panel and paste a new roster": "Ouvrir le panneau de liste de classe et coller une nouvelle liste", "Done": "Terminé", "✎ Editing <b>{C}</b> — {N} students. Add a name on its own line, or delete a line you do not need, then press <b>Save changes</b>.": "✎ Modification de <b>{C}</b> — {N} élèves. Ajoutez un nom sur sa propre ligne, ou supprimez une ligne inutile, puis appuyez sur <b>Enregistrer les modifications</b>.", "Add at least one name, or press Cancel": "Ajoutez au moins un nom, ou appuyez sur Annuler", "\"{C}\" updated — {N} students": "« {C} » mise à jour — {N} élèves", "Edit cancelled — nothing changed": "Modification annulée — rien n’a changé", "Paste some names first": "Collez d’abord des noms", "Name this class (e.g. \"Period 1\"):": "Nommez cette classe (ex. « Période 1 ») :", "\"{C}\" already exists. Replace it with these {N} names?": "« {C} » existe déjà. La remplacer par ces {N} noms ?", "Saved \"{C}\" — it is on the list now": "« {C} » enregistrée — elle est dans la liste", "Paste straight from the Excel or Word roster — table lines, blank rows, extra spaces, <b>Last, First (Preferred) &#96;27</b> and the graduation year are all handled.": "Collez directement depuis la liste Excel ou Word — lignes de tableau, lignes vides, espaces en trop, <b>Nom, Prénom (Prénom d’usage) &#96;27</b> et l’année de promotion sont tous gérés.", " · “{A}” becomes “<b>{B}</b>”": " · « {A} » devient « <b>{B}</b> »", " · nothing needed cleaning": " · rien à nettoyer", "The class hit {N} — nice.": "La classe a atteint {N} — bravo.", "Called on {W}: {A} of {B}": "Interrogés ({W}) : {A} sur {B}", "Everyone has come up {W}.": "Tout le monde est passé ({W}).", "Hide": "Masquer", "Start fresh for {W}? Points go back to zero and everybody counts as not-yet-called.": "Repartir à zéro pour {W} ? Les points reviennent à zéro et personne n’est compté comme interrogé.", "Fresh start": "Recommencer", "✓ Added": "✓ Ajouté", "⛶ Exit full screen": "⛶ Quitter le plein écran", "Only <strong style=\"color:#C11430\">{N}</strong> remains!": "Il n’en reste que <strong style=\"color:#C11430\">{N}</strong> !", "<b>{N}</b> students → <b>{K}</b> {G}": "<b>{N}</b> élèves → <b>{K}</b> {G}", " of <b>{S}</b>": " de <b>{S}</b>", ": {A} of {B} and {C} of {D}": " : {A} de {B} et {C} de {D}", "Load a class and this will show exactly how it splits.": "Chargez une classe et vous verrez exactement comment elle se répartit.", "How many groups:": "Combien de groupes :", "{N} students in {K} {G}": "{N} élèves en {K} {G}", "Copy": "Copier", "<b>No class loaded</b>": "<b>Aucune classe chargée</b>", "start with step 1 below — paste a class list, load it, then save it": "commencez par l’étape 1 ci-dessous — collez une liste de classe, chargez-la, puis enregistrez-la", "tap here to paste and save a class list": "touchez ici pour coller et enregistrer une liste de classe", "<b>{N} names</b>": "<b>{N} noms</b>", "min": "min", "sec": "sec", "tap Start when you are ready": "touchez Démarrer quand vous êtes prêt", "Brought {N} names over from the Pod Generator": "{N} noms importés depuis le Pod Generator", "{N} name": "{N} nom", "{N} names": "{N} noms", "<b>{N} name</b> ready": "<b>{N} nom</b> prêt", "<b>{N} names</b> ready": "<b>{N} noms</b> prêts", "{N} name loaded": "{N} nom chargé", "{N} names loaded": "{N} noms chargés", "zero": "zéro", "one": "un", "two": "deux", "three": "trois", "four": "quatre", "five": "cinq", "six": "six", "seven": "sept", "eight": "huit", "nine": "neuf", "ten": "dix", "eleven": "onze", "twelve": "douze", "group": "groupe", "groups": "groupes", "team": "équipe", "teams": "équipes", "this unit": "cette séquence", "these six weeks": "ces six semaines", "this semester": "ce semestre", "this year": "cette année", "Spinner": "Roulette", "Single Name": "Nom unique", "Lineup": "Ordre de passage", "Groups & Teams": "Groupes et équipes", "Seating": "Places", "Wheel": "Roue", "Slots": "Jackpot", "Cards": "Cartes", "Lottery": "Loterie", "Spotlight": "Projecteur", "Remove after picked": "Retirer après tirage", "Group": "Groupe", "Team": "Équipe", "📋 Copy {G}": "📋 Copier les {G}", "View on GitHub": "Voir sur GitHub", "Report a bug or request a tool": "Signaler un bug ou demander un outil", "Built for Regis Jesuit High School · No data leaves your browser": "Conçu pour Regis Jesuit High School · Aucune donnée ne quitte votre navigateur"}};
+function TR(t){if(LANG==="en")return t;var d=PAGE[LANG],v=d&&d[t];return v===undefined?t:v}
+function TRF(t,v){var s=TR(t);for(var k in v)s=s.split("{"+k+"}").join(v[k]);return s}
+// Static markup: snapshot the English once, then swap the whole element on language change.
+var TRSEL="#ftrTxt,#ftrGh,#ftrBug,#topBar .top-btn,#namesSetHint,.xfer-hd,.xfer-s,#xSend,.rs-t,.rs-s,.rs-safe,.rs-svlbl,#noSv,#bkHelpA,#bkLblA,#bkSaveA,#bkRestA,#loadBtn,#saveBtn,#nudgeSave,#namesSetTgl,#nmFmt .pickbar-lbl,#nmBar .mode-btn,#tabBar .tab,#spinStyleRow .pickbar-lbl,#modeBar .mode-btn,#clsRowWrap .pickbar-lbl,.pickbar-hd .pickbar-lbl,.pickbar-sub,.pickbar-help,#p-groups label,#gmBtns .mode-btn,#p-groups [data-gl],.gprev-lbl,#genGrp,#rmLbl,#lineupBtn,#cpLineup,#p-seat label,#genSeat,#cpSeat,#singleBtn,#singleHint,#rstBtn,#sndTgl,#fsTgl,#fsTgl2,#resBan .lb,#singleBan .lb,#pkList .title,#hint,#gotBtn,#gotBtn2,.trk-lbl,#trkWinBar .mode-btn,#trkReset,#trkTgl,#trkHelp,#tPresetLbl,#tCustLbl,#tCustBtn,#tCustUnit,#tStart,#tReset,#tPresetHelp,#timerSetTgl,.tagline,#whoLangHelp";
+function trStatic(){
+  document.querySelectorAll(TRSEL).forEach(function(e){
+    if(e._en===undefined)e._en=e.innerHTML;
+    var k=e._en.trim(),v=LANG==="en"?null:(PAGE[LANG]||{})[k];
+    e.innerHTML=v===undefined||v===null?e._en:v;
+  });
+  var ta=$("inp");if(ta)ta.placeholder=TR("Paste names \u2014 one per line or comma-separated");
+}
 var CARD_L=["#C11430","#1d4ed8","#0f766e","#b45309","#6d28d9","#0e7490","#be123c","#4d7c0f","#4338ca","#c2410c","#0369a1","#86198f"];
 var CARD_D=["#ff6b81","#7aa2ff","#5eead4","#fbbf24","#c4b5fd","#67e8f9","#fda4af","#bef264","#a5b4fc","#fdba74","#7dd3fc","#f0abfc"];
 var C=["#e74c3c","#3498db","#C11430","#f39c12","#9b59b6","#1abc9c","#e67e22","#2980b9","#a01028","#c0392b","#8e44ad","#16a085","#d35400","#2c3e50","#f1c40f","#7f8c8d","#e84393","#00b894","#6c5ce7","#fdcb6e"];
 var allN=[],pool=[],picked=[],spinning=false,curRot=0,sndOn=true,animMode="wheel";
-var grpSize=2,tmCount=2,seatCols=5,tSec=30,tRem=30,tInt=null,tRun=false;
+var seatCols=5,tSec=30,tRem=30,tInt=null,tRun=false;
 
 // Audio
 var actx=null;
@@ -834,7 +883,7 @@ function buzz(){if(!sndOn)return;var c=ac();if(!c)return;var o=c.createOscillato
 function $(id){return document.getElementById(id)}
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},2000)}
-function copyText(t){navigator.clipboard.writeText(t).then(function(){toast("Copied!")}).catch(function(){toast("Copy failed")})}
+function copyText(t){navigator.clipboard.writeText(t).then(function(){toast(TR("Copied!"))}).catch(function(){toast(TR("Copy failed"))})}
 
 // Saved classes
 function getSv(){try{return JSON.parse(localStorage.getItem("rs3_classes")||"{}")}catch(e){return{}}}
@@ -855,13 +904,13 @@ function updSaveNudge(){
   el.classList.remove("hid");
   if(m){
     el.classList.add("ok");
-    $("nudgeT").innerHTML="\u2713 <b>"+allN.length+" names</b> loaded from your saved class <b>"+esc(m)+"</b>.";
-    $("nudgeS").textContent="It is stored in this browser and will be here next time. Use Settings \u2192 Download backup to keep a copy or move it to another computer.";
+    $("nudgeT").innerHTML=TRF("\u2713 <b>{N} names</b> loaded from your saved class <b>{C}</b>.",{N:allN.length,C:esc(m)});
+    $("nudgeS").textContent=TR("It is stored in this browser and will be here next time. Use Settings \u2192 Download backup to keep a copy or move it to another computer.");
     $("nudgeSave").classList.add("hid");
   }else{
     el.classList.remove("ok");
-    $("nudgeT").innerHTML="<b>"+allN.length+" names</b> loaded \u2014 this class is not saved yet.";
-    $("nudgeS").textContent="Save it once and it comes back as a one-click button every time you open the Randomizer. The list stays on this computer.";
+    $("nudgeT").innerHTML=TRF("<b>{N} names</b> loaded \u2014 this class is not saved yet.",{N:allN.length});
+    $("nudgeS").textContent=TR("Save it once and it comes back as a one-click button every time you open the Randomizer. The list stays on this computer.");
     $("nudgeSave").classList.remove("hid");
   }
 }
@@ -875,11 +924,12 @@ function renderSv(){
   renderX();renderClsRow();
   keys.forEach(function(k){
     var b=document.createElement("button");b.className="sv-btn";
-    b.title='Load "'+k+'" \u00b7 '+(cl[k]||[]).length+' names';
-    b.innerHTML=esc(k)+' <span class="dx" title="Delete">\u2715</span>';
+    b.title=TRF('Load "{C}" \u00b7 {N} names',{C:k,N:(cl[k]||[]).length});
+    b.innerHTML=esc(k)+' <span class="ed" title="'+TR("Edit this class \u2014 add or remove students")+'">\u270e</span> <span class="dx" title="'+TR("Delete")+'">\u2715</span>';
     b.addEventListener("click",function(e){
-      if(e.target.classList.contains("dx")){if(confirm('Delete "'+k+'"?')){var c=getSv();delete c[k];setSv(c);renderSv()}return}
-      $("inp").value=cl[k].join("\n");loadNames();
+      if(e.target.classList.contains("ed")){startEdit(k);return}
+      if(e.target.classList.contains("dx")){if(confirm(TRF('Delete "{C}"?',{C:k}))){var c=getSv();delete c[k];setSv(c);if(editCls===k)endEdit();renderSv()}return}
+      endEdit();$("inp").value=cl[k].join("\n");loadNames();
     });list.appendChild(b);
   });
   updSaveNudge();
@@ -907,7 +957,7 @@ function renderX(){
   $("xSendRow").classList.toggle("hid",!canSend);
   if(canSend){
     var nm=savedNameFor(allN);
-    $("xSendNote").textContent=allN.length+" name"+(allN.length!==1?"s":"")+(nm?(' \u00b7 "'+nm+'"'):"")+" \u2014 opens the Pod Generator with them ready to sort";
+    $("xSendNote").textContent=TRF(allN.length===1?"{N} name":"{N} names",{N:allN.length})+(nm?(' \u00b7 "'+nm+'"'):"")+TR(" \u2014 opens the Pod Generator with them ready to sort");
   }
   // half two: pull a class back from Pods
   var cl=getPodClasses(),keys=Object.keys(cl),mine=getSv();
@@ -918,10 +968,10 @@ function renderX(){
   keys.forEach(function(k){
     var b=document.createElement("button");b.className="sv-btn";
     b.textContent=k+" \u00b7 "+cl[k].length;
-    b.title='Load "'+k+'" ('+cl[k].length+" names) from the Pod Generator";
+    b.title=TRF('Load "{C}" ({N} names) from the Pod Generator',{C:k,N:cl[k].length});
     b.addEventListener("click",function(){
       $("inp").value=cl[k].join("\n");loadNames();
-      toast('Brought "'+k+'" over from the Pod Generator');
+      toast(TRF('Brought "{C}" over from the Pod Generator',{C:k}));
     });
     list.appendChild(b);
   });
@@ -930,7 +980,7 @@ $("xSend").addEventListener("click",function(e){
   e.stopPropagation();
   if(!allN.length)return;
   try{localStorage.setItem("rr_handoff_pods",JSON.stringify({names:allN,name:savedNameFor(allN)||"",t:Date.now()}))}catch(err){}
-  toast("Opening the Pod Generator with these "+allN.length+" names\u2026");
+  toast(TRF("Opening the Pod Generator with these {N} names\u2026",{N:allN.length}));
   window.open("../Raider-Pods/#handoff","_blank","noopener");
 });
 // The class chips are the first thing worth seeing, so the bar appears as soon as
@@ -954,34 +1004,75 @@ function renderClsRow(){
   keys.forEach(function(k){
     var b=document.createElement("button");
     b.className="cls-btn"+(k===cur?" a":"");
-    b.textContent=k+" \u00b7 "+(cl[k]||[]).length;
-    b.title='Load "'+k+'"';
-    b.addEventListener("click",function(){$("inp").value=cl[k].join("\n");loadNames()});
+    b.innerHTML=esc(k)+" \u00b7 "+(cl[k]||[]).length+' <span class="ed" title="'+TR("Edit this class \u2014 add or remove students")+'">\u270e</span>';
+    b.title=TRF('Load "{C}" \u2014 or press the pencil to add or remove students',{C:k});
+    b.addEventListener("click",function(e){
+      if(e.target.classList.contains("ed")){startEdit(k);return}
+      endEdit();$("inp").value=cl[k].join("\n");loadNames();
+    });
     row.appendChild(b);
   });
   var add=document.createElement("button");
   add.className="cls-btn add";
-  add.textContent=keys.length?"+ Add a new class":"+ Add your first class";
-  add.title="Open the class list panel and paste a new roster";
+  add.textContent=keys.length?TR("+ Add a new class"):TR("+ Add your first class");
+  add.title=TR("Open the class list panel and paste a new roster");
   add.addEventListener("click",function(){
-    var pan=$("namesSet");
-    if(!pan.classList.contains("show")){pan.classList.add("show");$("namesSetTgl").textContent="Done";updNamesSum();updNamesSetHint()}
-    $("inp").value="";$("inp").focus();
+    endEdit();
+    openNamesPanel();
+    $("inp").value="";updNmPrev();$("inp").focus();
     $("inp").scrollIntoView({behavior:"smooth",block:"center"});
   });
   row.appendChild(add);
 }
+// ===== Edit a saved class =====
+// A teacher who needs to add a transfer student or drop a name should not have to
+// re-paste the roster and re-save it under the same name. The pencil on any class
+// chip opens that class in the paste box with one obvious Save changes button.
+var editCls=null,editOrig="";
+function openNamesPanel(){
+  var pan=$("namesSet");
+  if(!pan.classList.contains("show")){pan.classList.add("show");$("namesSetTgl").textContent=TR("Done");updNamesSum();updNamesSetHint()}
+}
+function startEdit(k){
+  var c=getSv();if(!c[k])return;
+  editCls=k;editOrig=$("inp").value;
+  openNamesPanel();
+  $("inp").value=c[k].join("\n");
+  if(typeof updNmPrev==="function")updNmPrev();
+  $("edT").innerHTML=TRF('\u270e Editing <b>{C}</b> \u2014 {N} students. Add a name on its own line, or delete a line you do not need, then press <b>Save changes</b>.',{C:esc(k),N:c[k].length});
+  $("edBar").classList.add("show");
+  $("edBar").scrollIntoView({behavior:"smooth",block:"center"});
+  setTimeout(function(){var el=$("inp");el.focus();try{el.setSelectionRange(el.value.length,el.value.length)}catch(e){}},380);
+}
+function endEdit(){editCls=null;$("edBar").classList.remove("show")}
+function saveEdit(){
+  if(!editCls)return;
+  var names=parseInput();
+  if(!names.length){toast(TR("Add at least one name, or press Cancel"));return}
+  var c=getSv(),was=(c[editCls]||[]).length,k=editCls;
+  c[k]=names;setSv(c);
+  endEdit();
+  loadNames();renderSv();
+  var d=names.length-was;
+  toast(TRF('"{C}" updated \u2014 {N} students',{C:k,N:names.length})+(d?" ("+(d>0?"+"+d:d)+")":""));
+}
+$("edSave").addEventListener("click",saveEdit);
+$("edCancel").addEventListener("click",function(){
+  $("inp").value=editOrig;
+  if(typeof updNmPrev==="function")updNmPrev();
+  endEdit();toast(TR("Edit cancelled \u2014 nothing changed"));
+});
 function doSaveClass(){
   var names=parseInput();
   if(!names.length)names=allN.slice();
-  if(!names.length){toast("Paste some names first");return}
-  var n=prompt('Name this class (e.g. "Period 1"):',savedNameFor(names)||"");
+  if(!names.length){toast(TR("Paste some names first"));return}
+  var n=prompt(TR('Name this class (e.g. "Period 1"):'),savedNameFor(names)||editCls||"");
   if(!n||!n.trim())return;
   n=n.trim();
   var c=getSv();
-  if(c[n]&&!confirm('"'+n+'" already exists. Replace it with these '+names.length+' names?'))return;
+  if(c[n]&&!confirm(TRF('"{C}" already exists. Replace it with these {N} names?',{C:n,N:names.length})))return;
   c[n]=names;setSv(c);renderSv();
-  toast('Saved "'+n+'" \u2014 it is on the list now');
+  toast(TRF('Saved "{C}" \u2014 it is on the list now',{C:n}));
 }
 $("saveBtn").addEventListener("click",doSaveClass);
 $("nudgeSave").addEventListener("click",doSaveClass);
@@ -1055,13 +1146,13 @@ function updNmPrev(){
   var e=$("nmPrev");if(!e)return;
   var raw=$("inp")?$("inp").value:"";
   if(!raw.trim()){
-    e.innerHTML="Paste straight from the Excel or Word roster \u2014 table lines, blank rows, extra spaces, <b>Last, First (Preferred) &#96;27</b> and the graduation year are all handled.";
+    e.innerHTML=TR("Paste straight from the Excel or Word roster \u2014 table lines, blank rows, extra spaces, <b>Last, First (Preferred) &#96;27</b> and the graduation year are all handled.");
     return;
   }
   var r=cleanRoster(raw,nameMode);
-  var txt="<b>"+r.names.length+" name"+(r.names.length!==1?"s":"")+"</b> ready";
-  if(r.sample)txt+=" \u00b7 \u201c"+esc(r.sample[0])+"\u201d becomes \u201c<b>"+esc(r.sample[1])+"</b>\u201d";
-  else if(!r.changed)txt+=" \u00b7 nothing needed cleaning";
+  var txt=TRF(r.names.length===1?"<b>{N} name</b> ready":"<b>{N} names</b> ready",{N:r.names.length});
+  if(r.sample)txt+=TRF(" \u00b7 \u201c{A}\u201d becomes \u201c<b>{B}</b>\u201d",{A:esc(r.sample[0]),B:esc(r.sample[1])});
+  else if(!r.changed)txt+=TR(" \u00b7 nothing needed cleaning");
   e.innerHTML=txt;
 }
 
@@ -1069,6 +1160,7 @@ function updNmPrev(){
 // One shared class total, never a per-student ranking, and a private record of who
 // has come up so the picker can answer "who have I not gotten to this unit".
 var TRK_WIN={unit:"this unit",six:"these six weeks",sem:"this semester",year:"this year"};
+function trkWin(k){return TR(TRK_WIN[k||"unit"])}
 var TRK_TGT=[10,20,30,50];
 function trkAll(){try{return JSON.parse(localStorage.getItem("rr_track_v1")||"{}")}catch(e){return{}}}
 function trkSave(d){try{localStorage.setItem("rr_track_v1",JSON.stringify(d))}catch(e){}}
@@ -1089,7 +1181,7 @@ function trkRecord(name){
 }
 function trkAdd(n){
   var r=trkGet();r.pts=Math.max(0,(r.pts||0)+n);trkPut(r);renderTrk();
-  if(n>0&&r.pts>=r.target)toast("The class hit "+r.target+" \u2014 nice.");
+  if(n>0&&r.pts>=r.target)toast(TRF("The class hit {N} \u2014 nice.",{N:r.target}));
 }
 function daysAgo(ts){return Math.floor((Date.now()-ts)/86400000)}
 function renderTrk(){
@@ -1105,11 +1197,11 @@ function renderTrk(){
     if(h&&h.length){called++;var d=daysAgo(h[h.length-1]);if(d>=7)stale.push([nm,d])}
     else never.push(nm);
   });
-  $("trkCalled").textContent="Called on "+TRK_WIN[r.win||"unit"]+": "+called+" of "+allN.length;
+  $("trkCalled").textContent=TRF("Called on {W}: {A} of {B}",{W:trkWin(r.win),A:called,B:allN.length});
   var list=$("trkList");list.innerHTML="";
   if(!never.length&&!stale.length){
     var d=document.createElement("span");d.className="trk-none";
-    d.textContent="Everyone has come up "+TRK_WIN[r.win||"unit"]+".";list.appendChild(d);
+    d.textContent=TRF("Everyone has come up {W}.",{W:trkWin(r.win)});list.appendChild(d);
   }else{
     never.forEach(function(nm){var e=document.createElement("span");e.className="trk-name";e.textContent=nm;list.appendChild(e)});
     stale.sort(function(a,b){return b[1]-a[1]}).forEach(function(x){
@@ -1132,35 +1224,36 @@ $("trkPlus").addEventListener("click",function(){trkAdd(1)});
 $("trkMinus").addEventListener("click",function(){trkAdd(-1)});
 $("trkTgl").addEventListener("click",function(){
   var op=$("trkPanel").classList.toggle("hid");
-  $("trkTgl").textContent=op?"Details":"Hide";
+  $("trkTgl").textContent=op?TR("Details"):TR("Hide");
 });
 document.querySelectorAll("#trkWinBar .mode-btn").forEach(function(b){
   b.addEventListener("click",function(){var r=trkGet();r.win=b.getAttribute("data-w");trkPut(r);renderTrk()});
 });
 $("trkReset").addEventListener("click",function(){
   var r=trkGet();
-  if(!confirm("Start fresh for "+TRK_WIN[r.win||"unit"]+"? Points go back to zero and everybody counts as not-yet-called."))return;
-  r.pts=0;r.picks={};r.start=Date.now();trkPut(r);renderTrk();toast("Fresh start");
+  if(!confirm(TRF("Start fresh for {W}? Points go back to zero and everybody counts as not-yet-called.",{W:trkWin(r.win)})))return;
+  r.pts=0;r.picks={};r.start=Date.now();trkPut(r);renderTrk();toast(TR("Fresh start"));
 });
 function showGot(id){
   var b=$(id);if(!b)return;
-  b.classList.remove("hid");b.textContent="✓ Got it — +1 for the class";b.disabled=false;
+  b.classList.remove("hid");b.textContent=TR("✓ Got it — +1 for the class");b.disabled=false;
 }
-$("gotBtn").addEventListener("click",function(){trkAdd(1);this.textContent="✓ Added";this.disabled=true});
-$("gotBtn2").addEventListener("click",function(){trkAdd(1);this.textContent="✓ Added";this.disabled=true});
+$("gotBtn").addEventListener("click",function(){trkAdd(1);this.textContent=TR("✓ Added");this.disabled=true});
+$("gotBtn2").addEventListener("click",function(){trkAdd(1);this.textContent=TR("✓ Added");this.disabled=true});
 
 // Parse & Load
 function parseInput(){return cleanRoster($("inp").value,nameMode).names}
 function loadNames(){
   allN=parseInput();if(!allN.length)return;
   pool=allN.slice();picked=[];curRot=0;
-  $("cnt").textContent=allN.length+" name"+(allN.length!==1?"s":"")+" loaded";
+  $("cnt").textContent=TRF(allN.length===1?"{N} name loaded":"{N} names loaded",{N:allN.length});
   if(topMode==="names"){$("tool").classList.remove("hid");switchTab(lastNameTab)}
-  $("namesSet").classList.remove("show");$("namesSetTgl").textContent="\u2699 Change these options";
+  $("namesSet").classList.remove("show");$("namesSetTgl").textContent=TR("\u2699 Change these options");
   updNamesSum();
   $("resBan").classList.remove("show");
   $("pkList").classList.add("hid");$("pkTags").innerHTML="";
   nudgeOff=false;updSaveNudge();renderX();renderClsRow();renderTrk();updBarVis();
+  if(typeof updGrpPrev==="function")updGrpPrev();
   buildAnim();updateUI();
 }
 $("loadBtn").addEventListener("click",loadNames);
@@ -1178,7 +1271,7 @@ document.querySelectorAll("#nmBar .mode-btn").forEach(function(b){b.classList.to
 updNmPrev();
 
 // Tabs
-var panels=["spinner","single","lineup","groups","teams","seat","timer","who"];
+var panels=["spinner","single","lineup","groups","seat","timer","who"];
 function switchTab(t){
   if(TABLBL&&TABLBL[t])lastNameTab=t;
   panels.forEach(function(p){
@@ -1321,13 +1414,16 @@ function refitSoon(){
   fitReq=requestAnimationFrame(function(){fitReq=0;refit()});
 }
 window.addEventListener("resize",refitSoon);
+function updFsLbl(){
+  var lbl=isFs?TR("\u26f6 Exit full screen"):TR("\u26f6 Fullscreen");
+  if($("fsTgl")){$("fsTgl").textContent=lbl;$("fsTgl").classList.toggle("a",isFs)}
+  if($("fsTgl2")){$("fsTgl2").textContent=lbl;$("fsTgl2").classList.toggle("a",isFs)}
+}
 function toggleFs(){
   isFs=!isFs;document.body.classList.toggle("fs",isFs);
   $("hdr").classList.toggle("hid",isFs);$("ftr").classList.toggle("hid",isFs);
   $("inputCard").classList.toggle("hid",isFs||topMode!=="names");
-  var lbl=isFs?"⛶ Exit full screen":"⛶ Fullscreen";
-  $("fsTgl").textContent=lbl;$("fsTgl").classList.toggle("a",isFs);
-  if($("fsTgl2")){$("fsTgl2").textContent=lbl;$("fsTgl2").classList.toggle("a",isFs)}
+  updFsLbl();
   if(!isFs){document.body.style.removeProperty("--pf");var _n=$("resNm"),_s=$("singleNm");if(_n)_n.style.fontSize="";if(_s)_s.style.fontSize=""}
   setTimeout(refit,60);setTimeout(refit,340);
   if(isFs&&document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(function(){});
@@ -1345,7 +1441,7 @@ function updateUI(){
   var rm=$("rmCb").checked;
   if(rm&&pool.length<allN.length){$("rstBtn").classList.remove("hid");$("rstBtn").textContent="Reset ("+pool.length+"/"+allN.length+" left)"}else $("rstBtn").classList.add("hid");
   if(pool.length>=2){$("animArea").classList.remove("hid");$("emptyMsg").classList.add("hid");$("hint").classList.remove("hid");$("hint").textContent="Tap to pick"}
-  else if(pool.length===1){$("animArea").classList.add("hid");$("hint").classList.add("hid");$("emptyMsg").classList.remove("hid");$("emptyMsg").innerHTML='Only <strong style="color:#C11430">'+pool[0]+'</strong> remains!';addRstBtn($("emptyMsg"))}
+  else if(pool.length===1){$("animArea").classList.add("hid");$("hint").classList.add("hid");$("emptyMsg").classList.remove("hid");$("emptyMsg").innerHTML=TRF('Only <strong style="color:#C11430">{N}</strong> remains!',{N:pool[0]});addRstBtn($("emptyMsg"))}
   else{$("animArea").classList.add("hid");$("hint").classList.add("hid");$("emptyMsg").classList.remove("hid");$("emptyMsg").innerHTML="All names picked!";addRstBtn($("emptyMsg"))}
   renderPicked();
 }
@@ -1571,7 +1667,10 @@ $("lineupBtn").addEventListener("click",function(){
   $("cpLineup").onclick=function(){copyText(s.map(function(n,i){return(i+1)+". "+n}).join("\n"))};
 });
 
-// ============ GROUPS ============
+// ============ GROUPS & TEAMS ============
+// One picker, two questions. A teacher either knows how big she wants each group
+// ("threes") or how many groups she needs ("four stations") \u2014 asking which question
+// she is answering is clearer than two tabs that never said what they differed on.
 function buildNumBtns(container,min,max,active,setter){
   container.innerHTML="";
   for(var n=min;n<=max;n++){(function(n){
@@ -1580,9 +1679,70 @@ function buildNumBtns(container,min,max,active,setter){
     container.appendChild(b);
   })(n)}
 }
-function doGroups(){buildNumBtns($("grpBtns"),2,6,grpSize,function(v){grpSize=v})}
-function doTeams(){buildNumBtns($("tmBtns"),2,6,tmCount,function(v){tmCount=v})}
-doGroups();doTeams();
+var grpMode="size",grpSizeV=3,grpCountV=4,grpLabel="Group";
+try{
+  var _gm=localStorage.getItem("rr_grpmode");if(_gm==="size"||_gm==="count")grpMode=_gm;
+  var _gl=localStorage.getItem("rr_grplabel");if(_gl==="Group"||_gl==="Team")grpLabel=_gl;
+}catch(e){}
+var NUMW=["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve"];
+function numw(n){return NUMW[n]?TR(NUMW[n]):String(n)}
+// Never strand a student in a group of one: pick the group count, then spread the
+// class as evenly as it will go.
+function planSizes(n,mode,v){
+  if(!n)return[];
+  var k;
+  if(mode==="count"){k=Math.min(v,n)}
+  else{
+    // Round to the nearest whole number of groups, but never so many that one
+    // student ends up on their own \u2014 an odd class asked for pairs gets one three.
+    k=Math.max(1,Math.round(n/v));
+    if(n>=2)k=Math.min(k,Math.floor(n/2));
+    k=Math.max(1,Math.min(k,n));
+  }
+  var base=Math.floor(n/k),rem=n%k,out=[];
+  for(var i=0;i<k;i++)out.push(base+(i<rem?1:0));
+  return out;
+}
+function grpPlural(k){return TR(k===1?(grpLabel==="Team"?"team":"group"):(grpLabel==="Team"?"teams":"groups"))}
+function planText(n,sizes){
+  if(!n||!sizes.length)return"";
+  var k=sizes.length,big=sizes[0],small=sizes[k-1],nBig=sizes.filter(function(x){return x===big}).length;
+  var head=TRF("<b>{N}</b> students \u2192 <b>{K}</b> {G}",{N:n,K:k,G:grpPlural(k)});
+  if(big===small)return head+TRF(" of <b>{S}</b>",{S:big});
+  return head+TRF(": {A} of {B} and {C} of {D}",{A:numw(nBig),B:big,C:numw(k-nBig),D:small});
+}
+function updGrpPrev(){
+  var el=$("grpPrev");if(!el)return;
+  var n=allN.length;
+  if(!n){el.textContent=TR("Load a class and this will show exactly how it splits.");return}
+  el.innerHTML=planText(n,planSizes(n,grpMode,grpMode==="count"?grpCountV:grpSizeV));
+}
+function buildGrpNums(){
+  $("grpNumLbl").textContent=grpMode==="count"?TR("How many groups:"):TR("Students in each:");
+  if(grpMode==="count")buildNumBtns($("grpBtns"),2,10,grpCountV,function(v){grpCountV=v;updGrpPrev()});
+  else buildNumBtns($("grpBtns"),2,8,grpSizeV,function(v){grpSizeV=v;updGrpPrev()});
+  updGrpPrev();
+}
+document.querySelectorAll("#gmBtns .mode-btn").forEach(function(b){
+  b.addEventListener("click",function(){
+    grpMode=b.getAttribute("data-gm");
+    try{localStorage.setItem("rr_grpmode",grpMode)}catch(e){}
+    document.querySelectorAll("#gmBtns .mode-btn").forEach(function(x){x.classList.toggle("a",x===b)});
+    buildGrpNums();
+  });
+});
+document.querySelectorAll("[data-gl]").forEach(function(b){
+  b.addEventListener("click",function(){
+    grpLabel=b.getAttribute("data-gl");
+    try{localStorage.setItem("rr_grplabel",grpLabel)}catch(e){}
+    document.querySelectorAll("[data-gl]").forEach(function(x){x.classList.toggle("a",x===b)});
+    updGrpPrev();
+    if($("grpGrid").children.length)$("genGrp").click();
+  });
+});
+document.querySelectorAll("#gmBtns .mode-btn").forEach(function(b){b.classList.toggle("a",b.getAttribute("data-gm")===grpMode)});
+document.querySelectorAll("[data-gl]").forEach(function(b){b.classList.toggle("a",b.getAttribute("data-gl")===grpLabel)});
+buildGrpNums();
 
 function longest(list){var m=0;list.forEach(function(n){if(n&&n.length>m)m=n.length});return m}
 function renderGroupGrid(groups,gridEl,sumEl,cpEl,label){
@@ -1593,29 +1753,24 @@ function renderGroupGrid(groups,gridEl,sumEl,cpEl,label){
     var card=document.createElement("div");card.className="gc";
     card.style.setProperty("--acl",CARD_L[i%CARD_L.length]);
     card.style.setProperty("--acd",CARD_D[i%CARD_D.length]);
-    var t=document.createElement("div");t.className="gt";t.textContent=label+" "+(i+1);card.appendChild(t);
+    var t=document.createElement("div");t.className="gt";t.textContent=TR(label)+" "+(i+1);card.appendChild(t);
     var wrap=document.createElement("div");wrap.className="gml";
     g.forEach(function(nm){var d=document.createElement("div");d.className="gm";d.textContent=nm;wrap.appendChild(d)});
     if(g.length>=12)card.setAttribute("data-big","2");else if(g.length>=6)card.setAttribute("data-big","1");
     card.appendChild(wrap);
     gridEl.appendChild(card);
   });
-  sumEl.classList.remove("hid");sumEl.textContent=allN.length+" students in "+groups.length+" "+label.toLowerCase()+(groups.length!==1?"s":"");
+  sumEl.classList.remove("hid");sumEl.textContent=TRF("{N} students in {K} {G}",{N:allN.length,K:groups.length,G:grpPlural(groups.length)});
   cpEl.classList.remove("hid");
   cpEl.onclick=function(){copyText(groups.map(function(g,i){return label+" "+(i+1)+": "+g.join(", ")}).join("\n"))};
 }
 
 $("genGrp").addEventListener("click",function(){
-  if(!allN.length)return;var s=shuffle(allN),groups=[];
-  for(var i=0;i<s.length;i+=grpSize)groups.push(s.slice(i,i+grpSize));
-  renderGroupGrid(groups,$("grpGrid"),$("grpSum"),$("cpGrp"),"Group");
-});
-
-$("genTm").addEventListener("click",function(){
-  if(!allN.length)return;var s=shuffle(allN),teams=[];
-  for(var i=0;i<tmCount;i++)teams.push([]);
-  s.forEach(function(nm,i){teams[i%tmCount].push(nm)});
-  renderGroupGrid(teams,$("tmGrid"),$("tmSum"),$("cpTm"),"Team");
+  if(!allN.length)return;
+  var s=shuffle(allN),sizes=planSizes(s.length,grpMode,grpMode==="count"?grpCountV:grpSizeV),groups=[],i=0;
+  sizes.forEach(function(sz){groups.push(s.slice(i,i+sz));i+=sz});
+  renderGroupGrid(groups,$("grpGrid"),$("grpSum"),$("cpGrp"),grpLabel);
+  $("cpGrp").textContent=TRF("\uD83D\uDCCB Copy {G}",{G:grpPlural(groups.length)});
 });
 
 // ============ SEATING ============
@@ -2374,8 +2529,34 @@ I18N.fr.ui.bkHelp="Les classes enregistr\u00e9es, les cartes favorites, vos prop
 I18N.fr.ui.bkDone="Sauvegarde t\u00e9l\u00e9charg\u00e9e";I18N.fr.ui.bkFail="Impossible de cr\u00e9er la sauvegarde";I18N.fr.ui.bkBad="Ce fichier n'est pas une sauvegarde du Raider Randomizer";
 I18N.fr.ui.bkOk="Sauvegarde restaur\u00e9e";I18N.fr.ui.bkAsk="Restaurer cette sauvegarde ? Elle remplacera les classes enregistr\u00e9es, les cartes favorites et les jeux de ce navigateur.";
 I18N.fr.ui.emptyDeck="Ce jeu est vide";I18N.fr.ui.delDeck="Supprimer";I18N.fr.ui.clrStarAsk="Retirer tous les favoris ?";
+function buildLangChips(){
+  whoChipRow("whoLangBar",[["en","\uD83C\uDDFA\uD83C\uDDF8 English"],["es","\uD83C\uDDEA\uD83C\uDDF8 Espa\u00f1ol"],["fr","\uD83C\uDDEB\uD83C\uDDF7 Fran\u00e7ais"]],LANG,setLang);
+}
+function setLang(v){
+  LANG=v;try{localStorage.setItem("rr_lang",v)}catch(e){}
+  applyLang();
+}
 function applyLang(){
   var set=function(id,k,html){var e=$(id);if(!e)return;if(html)e.innerHTML=U(k);else e.textContent=U(k)};
+  trStatic();
+  buildLangChips();
+  var ls=$("langSel");if(ls&&ls.value!==LANG)ls.value=LANG;
+  if(typeof updNamesSum==="function")updNamesSum();
+  if(typeof updNamesSetHint==="function")updNamesSetHint();
+  if(typeof updSaveNudge==="function")updSaveNudge();
+  if(typeof updNmPrev==="function")updNmPrev();
+  if(typeof renderSv==="function")renderSv();
+  if(typeof renderTrk==="function")renderTrk();
+  if(typeof buildGrpNums==="function")buildGrpNums();
+  if(typeof updTimerSum==="function")updTimerSum();
+  if(typeof updFsLbl==="function")updFsLbl();
+  if(allN.length){$("cnt").textContent=TRF(allN.length===1?"{N} name loaded":"{N} names loaded",{N:allN.length});}
+  var st=$("namesSetTgl");
+  if(st)st.textContent=$("namesSet").classList.contains("show")?TR("Done"):TR("\u2699 Change these options");
+  var tt=$("timerSetTgl");
+  if(tt)tt.textContent=$("timerSet")&&$("timerSet").classList.contains("show")?TR("Done"):TR("\u2699 Change these options");
+  var tg=$("trkTgl");
+  if(tg)tg.textContent=$("trkPanel")&&$("trkPanel").classList.contains("hid")?TR("Details"):TR("Hide");
   set("whoLead","lead",1);
   set("whoLblGrp","lblGrp");set("whoHelpGrp","helpGrp",1);
   set("whoLblDeck","lblDeck");set("whoHelpDeck","helpDeck",1);
@@ -2563,11 +2744,16 @@ if($("whoCard")){
     if(e.key==="Enter"||e.key===" "){e.preventDefault();whoFlip()}
   });
   whoLoad();renderDeckList();
-  whoChipRow("whoLangBar",[["en","\uD83C\uDDFA\uD83C\uDDF8 English"],["es","\uD83C\uDDEA\uD83C\uDDF8 Espa\u00f1ol"],["fr","\uD83C\uDDEB\uD83C\uDDF7 Fran\u00e7ais"]],LANG,function(v){
-    LANG=v;try{localStorage.setItem("rr_lang",v)}catch(e){}
-    applyLang();
-  });
-  try{var sl=localStorage.getItem("rr_lang");if(sl&&I18N[sl]!==undefined||sl==="en"){LANG=sl;applyLang()}}catch(e){}
+  buildLangChips();
+  try{var sl=localStorage.getItem("rr_lang");if(sl&&I18N[sl]!==undefined||sl==="en"){LANG=sl}}catch(e){}
+  var ls=$("langSel");
+  if(ls){
+    ls.value=LANG;
+    ls.addEventListener("change",function(){
+      setLang(ls.value);
+    });
+  }
+  applyLang();
   buildWhoCats();
   $("whoStarBtn").addEventListener("click",function(e){
     e.stopPropagation();if(!whoCur||whoGrp==="mk")return;
@@ -2614,11 +2800,11 @@ function setToggle(barId,btnId,panId,openLbl,doneLbl){
     if(e.key==="Enter"||e.key===" "){e.preventDefault();flip()}
   });
 }
-setToggle("namesSumBar","namesSetTgl","namesSet","\u2699 Change these options","Done");
-if($("namesSet").classList.contains("show"))$("namesSetTgl").textContent="Done";
+setToggle("namesSumBar","namesSetTgl","namesSet",TR("\u2699 Change these options"),TR("Done"));
+if($("namesSet").classList.contains("show"))$("namesSetTgl").textContent=TR("Done");
 updNamesSetHint();updWhoSetHint();
-setToggle("timerSumBar","timerSetTgl","timerSet","\u2699 Change these options","Done");
-var TABLBL={spinner:"Spinner",single:"Single Name",lineup:"Lineup",groups:"Groups",teams:"Teams",seat:"Seating"};
+setToggle("timerSumBar","timerSetTgl","timerSet",TR("\u2699 Change these options"),TR("Done"));
+var TABLBL={spinner:"Spinner",single:"Single Name",lineup:"Lineup",groups:"Groups & Teams",seat:"Seating"};
 var MODELBL={wheel:"Wheel",slot:"Slots",cards:"Cards",lotto:"Lottery",spot:"Spotlight"};
 function updWhoSetHint(){
   var e=$("whoSetHint");if(!e)return;
@@ -2635,15 +2821,15 @@ function updNamesSum(){
   var e=$("namesSumT");if(!e)return;
   if(!allN.length){
     var op=$("namesSet")&&$("namesSet").classList.contains("show");
-    e.innerHTML="<b>No class loaded</b> \u00b7 "+(op?"start with step 1 below \u2014 paste a class list, load it, then save it":"tap here to paste and save a class list");
+    e.innerHTML=TR("<b>No class loaded</b>")+" \u00b7 "+(op?TR("start with step 1 below \u2014 paste a class list, load it, then save it"):TR("tap here to paste and save a class list"));
     return}
-  var t=TABLBL[lastNameTab]||"Spinner";
-  e.innerHTML="<b>"+allN.length+" names</b> \u00b7 "+t+(lastNameTab==="spinner"?(" \u00b7 "+(MODELBL[animMode]||"Wheel")):"");
+  var t=TR(TABLBL[lastNameTab]||"Spinner");
+  e.innerHTML=TRF("<b>{N} names</b>",{N:allN.length})+" \u00b7 "+t+(lastNameTab==="spinner"?(" \u00b7 "+TR(MODELBL[animMode]||"Wheel")):"");
 }
 function updTimerSum(){
   var e=$("timerSumT");if(!e)return;
   var m=Math.floor(tSec/60),sec=tSec%60;
-  e.innerHTML="<b>"+(m?m+" min ":"")+(sec?sec+" sec":(m?"":"0 sec"))+"</b> \u00b7 tap Start when you are ready";
+  e.innerHTML="<b>"+(m?m+" "+TR("min")+" ":"")+(sec?sec+" "+TR("sec"):(m?"":"0 "+TR("sec")))+"</b> \u00b7 "+TR("tap Start when you are ready");
 }
 
 // Three top-level modes
@@ -2688,7 +2874,7 @@ document.querySelectorAll("#tabBar .tab").forEach(function(b){
     localStorage.removeItem("rr_handoff_rand");
     $("inp").value=h.names.join("\n");
     loadNames();
-    toast("Brought "+h.names.length+" names over from the Pod Generator"+(h.name?(' \u2014 "'+h.name+'"'):""));
+    toast(TRF("Brought {N} names over from the Pod Generator",{N:h.names.length})+(h.name?(' \u2014 "'+h.name+'"'):""));
     if(location.hash)history.replaceState(null,"",location.pathname+location.search);
   }catch(e){}
 })();
