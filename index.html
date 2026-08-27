@@ -1126,7 +1126,7 @@ renderSv();
 
 // ===== Roster cleaner =====
 // Teachers paste straight out of the Canvas/Excel attendance roster, which arrives as
-// "Bates, Alina   (Alina) `27" inside a table, padded with blank rows. Clean it here so
+// "Rivera, Marisol   (Sol) `27" inside a table, padded with blank rows. Clean it here so
 // nobody has to tidy a class list by hand.
 var NM_SUFFIX={jr:1,"jr.":1,sr:1,"sr.":1,ii:1,iii:1,iv:1,v:1};
 var NM_HEADERS={"name":1,"names":1,"student":1,"students":1,"student name":1,"last, first":1,"full name":1,"legal name":1};
@@ -1406,7 +1406,7 @@ function fitWheel(){
     var parts=str.split(" ");
     if(parts.length<2)return str;
     var last=parts[parts.length-1];
-    if(!/[A-Za-z]/.test(last))return str;          // "Bates, `27" — nothing sensible to shorten to
+    if(!/[A-Za-z]/.test(last))return str;          // "Rivera, `27" — nothing sensible to shorten to
     return parts[0]+" "+last.charAt(0).toUpperCase()+".";
   }
   // Largest size every label can take at once — one wheel, one type size.
@@ -1428,7 +1428,7 @@ function fitWheel(){
   }
   lbls.forEach(function(el){el.textContent=el.getAttribute("data-full")||el.textContent});
   var size=fitAll();
-  // If long names have squeezed everyone down, drop to "Josslyn R." rather than "Josslyn Ross-Maho…"
+  // If long names have squeezed everyone down, drop to "Marisol R." rather than "Marisol Rivera-Quinta…"
   if(size<Math.max(11,target*0.55)){
     var full=[];
     lbls.forEach(function(el){full.push(el.textContent);el.textContent=shortName(el.getAttribute("data-full")||el.textContent)});
