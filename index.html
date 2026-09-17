@@ -516,6 +516,16 @@ body.light .ptr{border-top-color:#C11430}
 </style>
 </head>
 <body>
+<script>
+/* Light/dark follows the operating system setting. No in-page toggle by design. */
+(function(){
+  var mq = window.matchMedia("(prefers-color-scheme: light)");
+  function apply(){ document.body.classList.toggle("light", mq.matches); }
+  apply();
+  if (mq.addEventListener) mq.addEventListener("change", apply);
+  else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
 <div class="watermark" aria-hidden="true"></div>
 <div class="ctr">
   <header class="site-header">
@@ -534,10 +544,6 @@ body.light .ptr{border-top-color:#C11430}
       </select>
       <button class="hdr-pill" id="sndTgl" type="button">🔊 Sound</button>
       <button class="hdr-pill" id="fsTgl" type="button" title="Present mode — fills the screen and blows the names up for the projector">⛶ Fullscreen</button>
-      <button class="icon-btn theme-toggle" id="themeTgl" type="button" aria-label="Toggle dark mode">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      </button>
     </div>
   </header>
 
@@ -1632,14 +1638,6 @@ document.querySelectorAll("#modeBar .mode-btn").forEach(function(b){
   });
 });
 
-// Theme toggle
-var stored=null;try{stored=localStorage.getItem("rr_theme")}catch(e){}
-var isLight = stored ? (stored==="light") : true;            // light is the default
-document.body.classList.toggle("light",isLight);
-$("themeTgl").addEventListener("click",function(){
-  isLight=!isLight;document.body.classList.toggle("light",isLight);
-  try{localStorage.setItem("rr_theme",isLight?"light":"dark")}catch(e){}
-});
 
 // Sound & Fullscreen
 $("sndTgl").addEventListener("click",function(){sndOn=!sndOn;$("sndTgl").textContent=sndOn?"🔊 Sound":"🔇 Muted";$("sndTgl").classList.toggle("a",!sndOn)});
@@ -2820,7 +2818,7 @@ function whoSaveStore(){
       localStorage.setItem("rr_who_mine",JSON.stringify(whoMine));
       localStorage.setItem("rr_who_decks",JSON.stringify(whoDecks))}catch(e){}
 }
-var BKKEYS=["rs3_classes","rr_who_star","rr_who_mine","rr_who_decks","rr_lang","rr_theme"];
+var BKKEYS=["rs3_classes","rr_who_star","rr_who_mine","rr_who_decks","rr_lang"];
 function bkExport(){
   var d={_app:"raider-randomizer",_v:1,_date:new Date().toISOString()};
   BKKEYS.forEach(function(k){try{var v=localStorage.getItem(k);if(v!==null)d[k]=v}catch(e){}});
