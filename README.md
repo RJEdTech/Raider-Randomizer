@@ -83,6 +83,5 @@ Worth doing at the start of a semester once your class lists are in.
 5. **Timer** — set a length in ⚙ Settings and hit Start.
 6. Hit **⛶ Fullscreen** when you're ready to project.
 
-## Built by
 
 Jason Beyer, Director of Educational Technology — Regis Jesuit High School
