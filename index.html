@@ -545,6 +545,22 @@ body.fs .rj-masthead::before{display:none}
 @media(max-width:600px){.rj-masthead .brand,.rj-masthead h1{font-size:17px!important}.rj-masthead>label{flex-basis:100%}}
 @media print{.rj-masthead::before{display:none}.rj-masthead,.rj-masthead .brand,.rj-masthead h1{color:#000!important;-webkit-text-fill-color:#000!important}}
 /*/RJMASTHEAD*/
+
+/*RJCONTRAST*/
+/* Readability: text colours lifted to WCAG AA contrast (4.5:1) in each theme */
+:where(body.light) .mode-btn{color:#696969}
+:where(body.light) .rs-s{color:#6c6c6c}
+body.light .top-btn .sub{color:#696969}
+body.light .mode-btn{color:#696969}
+body.light .who-lead, body.light .who-help{color:#6d6d6d}
+body.light #noSv{color:#6d6d6d}
+:where(body:not(.light)) .top-btn .sub{color:#919191}
+:where(body:not(.light)) .mode-btn.a{color:#ee5a72}
+:where(body:not(.light)) .who-sum-t b{color:#e56777}
+:where(body:not(.light)) .rs-lnk{color:#ed516a}
+body:not(.light) .rj-tools h2{color:#ed516a}
+body:not(.light) .rj-here{color:#ee5870}
+/*/RJCONTRAST*/
 </style>
 </head>
 <body>
