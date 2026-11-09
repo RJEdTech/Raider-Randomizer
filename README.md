@@ -17,7 +17,7 @@ Load a class list once and use any of six pickers.
 - **Lineup** — Randomized order. Good for presentation order.
 - **Groups** — Divide the class into groups of 2, 3, 4, 5, or 6.
 - **Teams** — Split into exactly 2, 3, 4, 5, or 6 teams.
-- **Seating Chart** — Random grid with drag-and-drop to rearrange. Adjustable columns (3–8).
+- **Seating Chart** — Five room styles (Rows, Pairs, Pods, Horseshoe, Center + wings) sized to the class, or **draw your own room** square by square (student desks and the teacher's desk) and save it by room number. **Student marks** stay with each student in the saved class: ⭐ front (preferential seating), 👀 near me, 🗣 spread out, 🚪 easy exit, plus keep-apart and seat-together pairs. Shuffle honors the marks and says plainly if a room can't; tap two students to switch them (moved students stay put on the next shuffle). Each class remembers its chart per room. Marks never appear in Present mode, Copy, or Print.
 
 Five spinner styles: **🎡 Wheel** (tick sounds and smooth deceleration), **🎰 Slots** (reel scrolls names vertically), **🃏 Cards** (shuffle face-down, one revealed), **🎱 Lottery** (names bounce as balls, one drops), **💡 Spotlight** (grid with a sweeping highlight).
 
